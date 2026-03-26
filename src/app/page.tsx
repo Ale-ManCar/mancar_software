@@ -1,4 +1,50 @@
+"use client";
+
+import { useState } from 'react';
+
 export default function Home() {
+  const [selectedService, setSelectedService] = useState<number | null>(null);
+
+  // Datos detallados de cada servicio (índice 0 a 5)
+  const serviceDetails = [
+    {
+      title: "Diseño Web Profesional",
+      icon: "🎨",
+      fullDescription: "Creamos sitios web modernos, rápidos y completamente adaptados a cualquier dispositivo (responsive). Nos aseguramos de que tu negocio tenga una presencia online impactante, con un diseño que refleje tu identidad y capte la atención de tus clientes. Incluye optimización SEO básica y formularios de contacto.",
+      features: ["Diseño responsive", "Optimización SEO", "Formularios de contacto", "Integración con redes sociales", "Panel de administración fácil"]
+    },
+    {
+      title: "Desarrollo de Sistemas a Medida",
+      icon: "⚙️",
+      fullDescription: "Creamos software personalizado que se adapta exactamente a tus procesos y necesidades. Ya sea una aplicación de escritorio, una plataforma web interna o una herramienta de gestión, desarrollamos soluciones robustas, escalables y con interfaces intuitivas.",
+      features: ["Aplicaciones web y de escritorio", "Automatización de procesos", "Bases de datos a medida", "Reportes y dashboards", "Capacitación al personal"]
+    },
+    {
+      title: "Mantenimiento y Soporte Técnico",
+      icon: "🔧",
+      fullDescription: "Ofrecemos mantenimiento continuo para tu sitio web o sistema, garantizando que esté siempre actualizado, seguro y funcionando sin problemas. Resolvemos incidencias de forma ágil y realizamos mejoras periódicas para adaptarnos a tus necesidades cambiantes.",
+      features: ["Actualizaciones de seguridad", "Resolución de errores", "Monitoreo 24/7", "Copias de seguridad", "Soporte por chat/teléfono"]
+    },
+    {
+      title: "Tiendas Virtuales (E‑commerce)",
+      icon: "🛒",
+      fullDescription: "Implementamos tiendas en línea completas con pasarelas de pago integradas, gestión de inventario, carrito de compras y una experiencia de compra optimizada. Ayudamos a que tu negocio venda por internet de manera profesional y segura.",
+      features: ["Pasarelas de pago (PayPal, tarjetas)", "Gestión de inventario", "Diseño atractivo", "SEO para productos", "Panel de administración"]
+    },
+    {
+      title: "Optimización y Consultoría",
+      icon: "📈",
+      fullDescription: "Analizamos tu presencia digital actual y te proponemos mejoras concretas en rendimiento, SEO, usabilidad y conversión. Te asesoramos para que tomes decisiones informadas y alcances tus objetivos de negocio con tecnología.",
+      features: ["Auditoría técnica", "Optimización de velocidad", "Estrategia SEO", "Mejora de conversión", "Informes detallados"]
+    },
+    {
+      title: "Acompañamiento Continuo",
+      icon: "🤝",
+      fullDescription: "No solo entregamos un proyecto y nos vamos. Te ofrecemos un servicio cercano y rápido, con comunicación directa, porque sabemos que detrás de cada proyecto hay personas que necesitan respuestas claras. Estamos a tu lado para ajustes, mejoras y nuevos desafíos.",
+      features: ["Asesoría personalizada", "Respuesta rápida", "Mejoras continuas", "Capacitación", "Soporte post-lanzamiento"]
+    }
+  ];
+
   return (
     <main className="bg-white">
       {/* Hero Section */}
@@ -83,7 +129,7 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Servicio 1 */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300">
+            <div onClick={() => setSelectedService(0)} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 cursor-pointer">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                 <span className="text-primary-600 text-xl">🎨</span>
               </div>
@@ -93,7 +139,7 @@ export default function Home() {
               </p>
             </div>
             {/* Servicio 2 */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300">
+            <div onClick={() => setSelectedService(1)} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 cursor-pointer">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                 <span className="text-primary-600 text-xl">⚙️</span>
               </div>
@@ -103,7 +149,7 @@ export default function Home() {
               </p>
             </div>
             {/* Servicio 3 */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300">
+            <div onClick={() => setSelectedService(2)} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 cursor-pointer">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                 <span className="text-primary-600 text-xl">🔧</span>
               </div>
@@ -113,7 +159,7 @@ export default function Home() {
               </p>
             </div>
             {/* Servicio 4 */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300">
+            <div onClick={() => setSelectedService(3)} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 cursor-pointer">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                 <span className="text-primary-600 text-xl">🛒</span>
               </div>
@@ -123,7 +169,7 @@ export default function Home() {
               </p>
             </div>
             {/* Servicio 5 */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300">
+            <div onClick={() => setSelectedService(4)} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 cursor-pointer">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                 <span className="text-primary-600 text-xl">📈</span>
               </div>
@@ -133,7 +179,7 @@ export default function Home() {
               </p>
             </div>
             {/* Servicio 6 */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300">
+            <div onClick={() => setSelectedService(5)} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition duration-300 cursor-pointer">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                 <span className="text-primary-600 text-xl">🤝</span>
               </div>
@@ -236,7 +282,7 @@ export default function Home() {
         </div>
       </section>
 
-            {/* Sección Casos de éxito */}
+      {/* Sección Casos de éxito */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
@@ -375,6 +421,46 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Modal de detalles del servicio */}
+      {selectedService !== null && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedService(null)}>
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">{serviceDetails[selectedService].icon}</span>
+                  <h3 className="text-2xl font-bold text-gray-800">{serviceDetails[selectedService].title}</h3>
+                </div>
+                <button
+                  onClick={() => setSelectedService(null)}
+                  className="text-gray-400 hover:text-gray-600 text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+              <p className="text-gray-600 mb-6">
+                {serviceDetails[selectedService].fullDescription}
+              </p>
+              <h4 className="font-semibold text-gray-800 mb-2">Características destacadas:</h4>
+              <ul className="list-disc pl-5 mb-6 space-y-1 text-gray-600">
+                {serviceDetails[selectedService].features.map((feature, idx) => (
+                  <li key={idx}>{feature}</li>
+                ))}
+              </ul>
+              <div className="flex justify-end">
+                <a
+                  href="#contacto"
+                  onClick={() => setSelectedService(null)}
+                  className="bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition"
+                >
+                  Solicitar información
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
