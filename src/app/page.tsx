@@ -91,9 +91,9 @@ export default function Home() {
             Empresas que confían en nuestras soluciones
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><span className="text-gray-400 text-sm">Logo 1</span></div>
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><span className="text-gray-400 text-sm">Logo 2</span></div>
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><span className="text-gray-400 text-sm">Logo 3</span></div>
+            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><img src="/logos/orion.jpg" alt="Orion" className="h-12 w-auto object-contain"/></div>
+            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><img src="/logos/quantix.png" alt="Quantix" className="h-12 w-auto object-contain"/></div>
+            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><img src="/logos/vertex.png" alt="Vertex" className="h-12 w-auto object-contain"/></div>
             <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><span className="text-gray-400 text-sm">Logo 4</span></div>
             <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><span className="text-gray-400 text-sm">Logo 5</span></div>
           </div>
@@ -266,12 +266,12 @@ export default function Home() {
                   <h3 className="font-semibold text-gray-800 mb-2">📍 Oficinas</h3>
                   <p className="text-gray-600">
                     Av. Principal #123, Oficina 5<br />
-                    Quito, Ecuador
+                    Guayaquil, Ecuador
                   </p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">📞 Teléfono</h3>
-                  <p className="text-gray-600">+593 (9) 1234-5678</p>
+                  <p className="text-gray-600">+593 (9) 8695-1419</p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">✉️ Email</h3>
@@ -279,7 +279,7 @@ export default function Home() {
                 </div>
                 <div>
                   <a
-                    href="https://wa.me/593912345678?text=Hola%20quiero%20más%20información"
+                    href="https://wa.me/593986951419?text=Hola%20quiero%20más%20información"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-3 px-6 rounded-lg transition shadow-md"

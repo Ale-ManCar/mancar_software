@@ -12,18 +12,18 @@ export default function ContactoPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="font-semibold text-gray-800 mb-2">📍 Oficinas</h3>
-                <p className="text-gray-600">Av. Principal #123, Oficina 5<br />Quito, Ecuador</p>
+                <p className="text-gray-600">Av. Principal #123, Oficina 5<br />Guayaquil, Ecuador</p>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-800 mb-2">📞 Teléfono</h3>
-                <p className="text-gray-600">+593 (9) 1234-5678</p>
+                <p className="text-gray-600">+593 (9) 8695-1419</p>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-800 mb-2">✉️ Email</h3>
                 <p className="text-gray-600">contacto@mancarsoftware.com</p>
               </div>
               <div>
-                <a href="https://wa.me/593912345678" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition">💬 ¡Hablemos por WhatsApp!</a>
+                <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition">💬 ¡Hablemos por WhatsApp!</a>
               </div>
             </div>
           </div>

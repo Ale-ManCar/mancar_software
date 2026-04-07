@@ -39,9 +39,9 @@ export default function RootLayout({
               <div>
                 <h4 className="font-semibold mb-4">Contacto</h4>
                 <ul className="space-y-2 text-gray-400 text-sm">
-                  <li>📞 +593 (9) 1234-5678</li>
+                  <li>📞 +593 (9) 8695-1419</li>
                   <li>✉️ contacto@mancarsoftware.com</li>
-                  <li>📍 Quito, Ecuador</li>
+                  <li>📍 Guayaquil, Ecuador</li>
                 </ul>
               </div>
               <div>
