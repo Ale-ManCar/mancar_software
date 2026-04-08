@@ -92,7 +92,7 @@ export default function Home() {
           </h2>
           <div className="relative w-full overflow-hidden">
             <div className="flex animate-scroll w-max">
-              {/* Primera copia de logos */}
+              {/* Logos Carrusel */}
               <div className="flex gap-12 md:gap-16 items-center pr-12 md:pr-16">
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
                   <img src="/logos/orion.jpg" alt="Orion" className="h-12 w-auto object-contain" />
@@ -119,7 +119,7 @@ export default function Home() {
                   <span className="text-gray-400 text-sm">Logo 8</span>
                 </div>
               </div>
-              {/* Duplicado exacto para efecto infinito */}
+              {/* Carrusel infinito */}
               <div className="flex gap-12 md:gap-16 items-center">
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
                   <img src="/logos/orion.jpg" alt="Orion" className="h-12 w-auto object-contain" />
