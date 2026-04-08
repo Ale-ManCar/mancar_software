@@ -85,17 +85,68 @@ export default function Home() {
       </section>
 
       {/* Sección Clientes */}
-      <section className="py-12 bg-gray-100">
+      <section className="py-12 bg-gray-100 overflow-hidden">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">
             Empresas que confían en nuestras soluciones
           </h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><img src="/logos/orion.jpg" alt="Orion" className="h-12 w-auto object-contain"/></div>
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><img src="/logos/quantix.png" alt="Quantix" className="h-12 w-auto object-contain"/></div>
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><img src="/logos/vertex.png" alt="Vertex" className="h-12 w-auto object-contain"/></div>
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><span className="text-gray-400 text-sm">Logo 4</span></div>
-            <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center"><span className="text-gray-400 text-sm">Logo 5</span></div>
+          <div className="relative w-full overflow-hidden">
+            <div className="flex animate-scroll w-max">
+              {/* Primera copia de logos */}
+              <div className="flex gap-12 md:gap-16 items-center pr-12 md:pr-16">
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/orion.jpg" alt="Orion" className="h-12 w-auto object-contain" />
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/quantix.png" alt="Quantix" className="h-12 w-auto object-contain" />
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/vertex.png" alt="Vertex" className="h-12 w-auto object-contain" />
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 4</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 5</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 6</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 7</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 8</span>
+                </div>
+              </div>
+              {/* Duplicado exacto para efecto infinito */}
+              <div className="flex gap-12 md:gap-16 items-center">
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/orion.jpg" alt="Orion" className="h-12 w-auto object-contain" />
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/quantix.png" alt="Quantix" className="h-12 w-auto object-contain" />
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <img src="/logos/vertex.png" alt="Vertex" className="h-12 w-auto object-contain" />
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 4</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 5</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 6</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 7</span>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-gray-400 text-sm">Logo 8</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
