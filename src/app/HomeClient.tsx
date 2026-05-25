@@ -47,9 +47,6 @@ export default function HomeClient() {
     }
   ];
 
-
-
-
   const [activeCategory, setActiveCategory] = useState<(typeof caseCategories)[number]>('Todos');
 
   const filteredCases = useMemo(() => {
@@ -74,7 +71,7 @@ export default function HomeClient() {
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
                 Desarrollamos software y webs que
-                <span className="text-primary-700"> te ayudan a vender más</span>
+                <span className="text-primary-700">te ayudan a vender más</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
                 Para pymes y negocios en crecimiento. Diseñamos sitios web, creamos sistemas a medida y damos soporte continuo con comunicación directa y tiempos claros.
@@ -279,8 +276,6 @@ export default function HomeClient() {
         </div>
       </section>
 
-
-
       {/* Sección Planes */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -349,8 +344,6 @@ export default function HomeClient() {
         </div>
       </section>
 
-
-
       {/* Sección Testimonios de clientes */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -371,8 +364,6 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
-
-
 
       {/* Sección FAQ comercial */}
       <section className="py-16 bg-white">
@@ -469,7 +460,6 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
-
 
       {/* Modal de detalles del caso de éxito */}
       {selectedCase !== null && (
