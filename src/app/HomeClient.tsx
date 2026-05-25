@@ -71,26 +71,24 @@ export default function HomeClient() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
-                Soluciones Digitales que{" "}
-                <span className="text-primary-700">Impulsan tu Negocio</span>
+                Desarrollamos software y webs que
+                <span className="text-primary-700">te ayudan a vender más</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
-                Somos una agencia pequeña con dedicación personalizada. Creamos y diseñamos páginas web,
-                desarrollamos sistemas a medida y te acompañamos con mantenimiento continuo.
-                Tecnología que se adapta a ti, no al revés.
+                Para pymes y negocios en crecimiento. Diseñamos sitios web, creamos sistemas a medida y damos soporte continuo con comunicación directa y tiempos claros.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <a
                   href="#contacto"
                   className="bg-primary-700 hover:bg-primary-800 text-white font-medium py-3 px-6 rounded-lg transition duration-300 text-center shadow-md"
                 >
-                  Contáctanos
+                  Quiero una asesoría
                 </a>
                 <a
                   href="#servicios"
                   className="border border-primary-700 text-primary-700 hover:bg-primary-50 font-medium py-3 px-6 rounded-lg transition duration-300 text-center"
                 >
-                  Conoce más
+                  Ver servicios
                 </a>
               </div>
             </div>
@@ -123,19 +121,19 @@ export default function HomeClient() {
                   <Image src="/logos/vertex.png" alt="Vertex" width={120} height={48} className="h-12 w-auto object-contain" />
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 4</span>
+                  <span className="text-gray-400 text-sm">Sector 1</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 5</span>
+                  <span className="text-gray-400 text-sm">Sector 2</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 6</span>
+                  <span className="text-gray-400 text-sm">Sector 3</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 7</span>
+                  <span className="text-gray-400 text-sm">Sector 4</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 8</span>
+                  <span className="text-gray-400 text-sm">Sector 5</span>
                 </div>
               </div>
               {/* Carrusel infinito */}
@@ -150,19 +148,19 @@ export default function HomeClient() {
                   <Image src="/logos/vertex.png" alt="Vertex" width={120} height={48} className="h-12 w-auto object-contain" />
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 4</span>
+                  <span className="text-gray-400 text-sm">Sector 1</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 5</span>
+                  <span className="text-gray-400 text-sm">Sector 2</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 6</span>
+                  <span className="text-gray-400 text-sm">Sector 3</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 7</span>
+                  <span className="text-gray-400 text-sm">Sector 4</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Logo 8</span>
+                  <span className="text-gray-400 text-sm">Sector 5</span>
                 </div>
               </div>
             </div>
@@ -345,6 +343,20 @@ export default function HomeClient() {
         </div>
       </section>
 
+
+
+      {/* Sección FAQ comercial */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Preguntas frecuentes</h2>
+          <div className="space-y-4">
+            <details className="bg-gray-50 rounded-lg p-4 border border-gray-200"><summary className="font-semibold text-gray-800 cursor-pointer">¿En cuánto tiempo entregan un proyecto?</summary><p className="text-gray-600 mt-2">Depende del alcance, pero un sitio web corporativo suele estar entre 2 y 4 semanas.</p></details>
+            <details className="bg-gray-50 rounded-lg p-4 border border-gray-200"><summary className="font-semibold text-gray-800 cursor-pointer">¿Trabajan con adelantos y entregas parciales?</summary><p className="text-gray-600 mt-2">Sí. Definimos hitos y entregables para que tengas visibilidad del avance desde el inicio.</p></details>
+            <details className="bg-gray-50 rounded-lg p-4 border border-gray-200"><summary className="font-semibold text-gray-800 cursor-pointer">¿Incluyen soporte después del lanzamiento?</summary><p className="text-gray-600 mt-2">Sí. Ofrecemos acompañamiento post-lanzamiento para ajustes, mejoras y mantenimiento continuo.</p></details>
+          </div>
+        </div>
+      </section>
+
       {/* Sección CTA Contacto */}
       <section id="contacto" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
@@ -433,7 +445,7 @@ export default function HomeClient() {
       {/* Modal de detalles del caso de éxito */}
       {selectedCase !== null && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCase(null)}>
-          <div className="bg-white rounded-xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div role="dialog" aria-modal="true" className="bg-white rounded-xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-3">
@@ -490,7 +502,7 @@ export default function HomeClient() {
       {/* Modal de detalles del servicio */}
       {selectedService !== null && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedService(null)}>
-          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div role="dialog" aria-modal="true" className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-3">
@@ -524,6 +536,18 @@ export default function HomeClient() {
           </div>
         </div>
       )}
+
+      <a
+        href="https://wa.me/593986951419?text=Hola%20quiero%20una%20asesoria"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir WhatsApp"
+        onClick={() => trackEvent('cta_whatsapp_floating', { position: 'floating' })}
+        className="fixed bottom-6 right-6 z-40 md:hidden bg-secondary-600 text-white px-4 py-3 rounded-full shadow-lg"
+      >
+        WhatsApp
+      </a>
+
     </main>
   );
 }

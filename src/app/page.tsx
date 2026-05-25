@@ -12,7 +12,7 @@ export const metadata: Metadata = {
       'Creamos software, sitios web y soluciones de mantenimiento para impulsar negocios.',
     type: 'website',
   },
-};
+}; 
 
 export default function Page() {
   const jsonLd = {

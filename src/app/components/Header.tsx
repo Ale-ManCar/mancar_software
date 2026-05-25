@@ -3,15 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function Header() {
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+type ChevronIconProps = { isOpen: boolean };
 
-  const toggleDropdown = (name: string) => {
-    setOpenDropdown(openDropdown === name ? null : name);
-  };
-
-  const ChevronIcon = ({ isOpen }: { isOpen: boolean }) => (
+  function ChevronIcon({ isOpen }: ChevronIconProps) {
+  return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -23,6 +18,15 @@ export default function Header() {
       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
     </svg>
   );
+}
+
+  export default function Header() {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleDropdown = (name: string) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
