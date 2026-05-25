@@ -1,8 +1,26 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { successCases } from '../../cases';
 
 type Props = { params: Promise<{ slug: string }> };
+
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const currentCase = successCases.find((c) => c.slug === slug);
+  if (!currentCase) return { title: 'Caso no encontrado | Mancar Software' };
+
+  return {
+    title: `${currentCase.title} | Caso de éxito | Mancar Software`,
+    description: currentCase.summary,
+    openGraph: {
+      title: `${currentCase.title} | Caso de éxito`,
+      description: currentCase.summary,
+      type: 'article',
+    },
+  };
+}
 
 export function generateStaticParams() {
   return successCases.map((c) => ({ slug: c.slug }));
@@ -16,6 +34,7 @@ export default async function CasoPage({ params }: Props) {
   return (
     <main className="py-16 bg-gray-50 min-h-screen">
       <section className="container mx-auto px-4 max-w-4xl bg-white rounded-xl shadow-md p-8">
+        <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-3">Inicio / Casos de éxito / <span className="text-gray-700">{currentCase.title}</span></nav>
         <Link href="/" className="text-primary-700 hover:text-primary-800 font-medium">← Volver al inicio</Link>
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-3">{currentCase.icon} {currentCase.title}</h1>
         <p className="text-gray-600 mb-8">{currentCase.summary}</p>

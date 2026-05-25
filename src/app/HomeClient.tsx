@@ -60,6 +60,8 @@ export default function HomeClient() {
   const trackEvent = (event: string, payload: Record<string, string>) => {
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('mancar:analytics', { detail: { event, ...payload } }));
+      const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
+      if (Array.isArray(dataLayer)) dataLayer.push({ event, ...payload });
     }
   };
 
@@ -72,7 +74,7 @@ export default function HomeClient() {
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
                 Desarrollamos software y webs que
-                <span className="text-primary-700">te ayudan a vender más</span>
+                <span className="text-primary-700"> te ayudan a vender más</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
                 Para pymes y negocios en crecimiento. Diseñamos sitios web, creamos sistemas a medida y damos soporte continuo con comunicación directa y tiempos claros.
@@ -272,6 +274,28 @@ export default function HomeClient() {
         </div>
       </section>
 
+
+
+      {/* Sección Planes */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Planes orientativos</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Valores referenciales para que tomes decisiones más rápido. El alcance final se ajusta a tu necesidad.</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[{name:'Starter',price:'Desde $590',items:['Sitio web corporativo','Hasta 5 secciones','Formulario y WhatsApp']},{name:'Growth',price:'Desde $1,290',items:['Web + SEO técnico base','Integraciones clave','Soporte inicial 30 días']},{name:'Pro',price:'Desde $2,490',items:['Sistema o e-commerce','Panel administrativo','Acompañamiento continuo']}].map((plan) => (
+              <div key={plan.name} className="bg-gray-50 rounded-xl border border-gray-200 p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-800">{plan.name}</h3>
+                <p className="text-primary-700 font-bold text-2xl my-3">{plan.price}</p>
+                <ul className="space-y-2 text-gray-600 text-sm mb-4">
+                  {plan.items.map((item) => <li key={item}>• {item}</li>)}
+                </ul>
+                <a href="#contacto" className="text-primary-700 font-medium hover:text-primary-800" onClick={() => trackEvent('cta_plan_contact', { plan: plan.name })}>Solicitar propuesta →</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Sección Casos de éxito */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -322,10 +346,10 @@ export default function HomeClient() {
 
 
 
-      {/* Sección Testimonios */}
+      {/* Sección Testimonios de clientes */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Testimonios</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Testimonios de clientes</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <blockquote className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
               <p className="text-gray-600 mb-4">“El nuevo sitio nos ayudó a recibir más contactos calificados desde la primera semana.”</p>
@@ -434,7 +458,7 @@ export default function HomeClient() {
                 </button>
               </form>
               <p className="text-xs text-gray-400 mt-4 text-center">
-                Este es un formulario de demostración. Más adelante podremos conectarlo para que los mensajes te lleguen por correo.
+                Este es un formulario de demostración. Más adelante podremos conectarlo para que los mensajes te lleguen por correo. Al enviar, aceptas nuestra política de privacidad y tratamiento de datos.
               </p>
             </div>
           </div>
