@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 export default function Home() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
+  const [selectedCase, setSelectedCase] = useState<number | null>(null);
 
   const serviceDetails = [
     {
@@ -44,6 +45,52 @@ export default function Home() {
     }
   ];
 
+
+
+  const successCases = [
+    {
+      title: "Diseño Web Corporativo",
+      icon: "🌐",
+      summary: "Creamos un sitio web moderno y responsive para una empresa local, aumentando su visibilidad y generando un 40% más de consultas en los primeros 3 meses.",
+      clientProfile: "Empresa local de servicios profesionales con presencia digital limitada.",
+      challenge: "Dependían de recomendaciones boca a boca y no contaban con un canal digital efectivo para captar nuevos clientes.",
+      solution: "Diseñamos y desarrollamos un sitio web corporativo responsive, optimizado para SEO básico y orientado a conversiones con formularios de contacto visibles.",
+      results: [
+        "Incremento del 40% en consultas en los primeros 3 meses.",
+        "Mejor posicionamiento local en búsquedas relacionadas al servicio.",
+        "Imagen de marca más profesional y confiable para nuevos clientes."
+      ],
+      technologies: ["Next.js", "Tailwind CSS", "Optimización SEO on-page", "Formularios de contacto"],
+    },
+    {
+      title: "Sistema de Gestión a Medida",
+      icon: "📋",
+      summary: "Desarrollamos un software personalizado para automatizar la gestión de inventarios y pedidos, reduciendo errores manuales en un 70% y ahorrando 15 horas semanales.",
+      clientProfile: "Negocio comercial con alto volumen de pedidos y control manual de inventario.",
+      challenge: "Procesos manuales en hojas de cálculo, errores frecuentes y retrasos operativos en inventario y despacho.",
+      solution: "Construimos un sistema de gestión a medida para centralizar inventario y pedidos, con trazabilidad y reportes para la toma de decisiones.",
+      results: [
+        "Reducción del 70% en errores manuales.",
+        "Ahorro estimado de 15 horas de trabajo por semana.",
+        "Mayor control de stock y disminución de quiebres de inventario."
+      ],
+      technologies: ["Sistema web a medida", "Base de datos relacional", "Panel administrativo", "Reportes operativos"],
+    },
+    {
+      title: "Mantenimiento y Soporte Continuo",
+      icon: "🔧",
+      summary: "Brindamos soporte técnico y actualizaciones periódicas para una plataforma educativa, logrando un 99.9% de disponibilidad y reducción de incidencias críticas a cero.",
+      clientProfile: "Plataforma educativa con usuarios activos diarios y requerimientos de alta disponibilidad.",
+      challenge: "Incidencias técnicas recurrentes y falta de un plan de mantenimiento preventivo.",
+      solution: "Implementamos mantenimiento continuo, monitoreo, actualizaciones programadas y soporte ágil para incidentes.",
+      results: [
+        "Disponibilidad sostenida del 99.9%.",
+        "Reducción de incidencias críticas a cero.",
+        "Mayor estabilidad y confianza de usuarios finales."
+      ],
+      technologies: ["Monitoreo continuo", "Mantenimiento preventivo", "Actualizaciones de seguridad", "Gestión de incidencias"],
+    },
+  ];
   return (
     <main>
       {/* Hero Section */}
@@ -261,42 +308,24 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Casos de éxito</h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Conoce cómo hemos ayudado a empresas a transformar sus negocios con tecnología.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
-              <div className="bg-primary-100 h-32 flex items-center justify-center">
-                <span className="text-primary-500 text-4xl">🌐</span>
+            {successCases.map((successCase, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
+                <div className="bg-primary-100 h-32 flex items-center justify-center">
+                  <span className="text-primary-500 text-4xl">{successCase.icon}</span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{successCase.title}</h3>
+                  <p className="text-gray-600 mb-4">{successCase.summary}</p>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCase(idx)}
+                    className="text-primary-700 text-sm font-medium hover:text-primary-800"
+                  >
+                    Ver caso →
+                  </button>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Diseño Web Corporativo</h3>
-                <p className="text-gray-600 mb-4">
-                  Creamos un sitio web moderno y responsive para una empresa local, aumentando su visibilidad y generando un 40% más de consultas en los primeros 3 meses.
-                </p>
-                <span className="text-primary-700 text-sm font-medium">Ver caso →</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
-              <div className="bg-primary-100 h-32 flex items-center justify-center">
-                <span className="text-primary-500 text-4xl">📋</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Sistema de Gestión a Medida</h3>
-                <p className="text-gray-600 mb-4">
-                  Desarrollamos un software personalizado para automatizar la gestión de inventarios y pedidos, reduciendo errores manuales en un 70% y ahorrando 15 horas semanales.
-                </p>
-                <span className="text-primary-700 text-sm font-medium">Ver caso →</span>
-              </div>
-            </div>
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
-              <div className="bg-primary-100 h-32 flex items-center justify-center">
-                <span className="text-primary-500 text-4xl">🔧</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Mantenimiento y Soporte Continuo</h3>
-                <p className="text-gray-600 mb-4">
-                  Brindamos soporte técnico y actualizaciones periódicas para una plataforma educativa, logrando un 99.9% de disponibilidad y reducción de incidencias críticas a cero.
-                </p>
-                <span className="text-primary-700 text-sm font-medium">Ver caso →</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -384,6 +413,64 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
+      {/* Modal de detalles del caso de éxito */}
+      {selectedCase !== null && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCase(null)}>
+          <div className="bg-white rounded-xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">{successCases[selectedCase].icon}</span>
+                  <h3 className="text-2xl font-bold text-gray-800">{successCases[selectedCase].title}</h3>
+                </div>
+                <button
+                  onClick={() => setSelectedCase(null)}
+                  className="text-gray-400 hover:text-gray-600 text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <p className="text-gray-600 mb-5">{successCases[selectedCase].summary}</p>
+
+              <div className="space-y-4 text-gray-700">
+                <div>
+                  <h4 className="font-semibold text-gray-800">Perfil del cliente</h4>
+                  <p>{successCases[selectedCase].clientProfile}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-800">Desafío</h4>
+                  <p>{successCases[selectedCase].challenge}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-800">Solución implementada</h4>
+                  <p>{successCases[selectedCase].solution}</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-800">Resultados</h4>
+                  <ul className="list-disc pl-5 space-y-1">
+                    {successCases[selectedCase].results.map((result, idx) => (
+                      <li key={idx}>{result}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-800">Tecnologías y enfoque</h4>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {successCases[selectedCase].technologies.map((item, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full border border-primary-100">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Modal de detalles del servicio */}
       {selectedService !== null && (
