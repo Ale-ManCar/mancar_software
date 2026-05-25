@@ -123,19 +123,19 @@ export default function HomeClient() {
                   <Image src="/logos/vertex.png" alt="Vertex" width={120} height={48} className="h-12 w-auto object-contain" />
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 1</span>
+                  <span className="text-gray-400 text-sm">Orion</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 2</span>
+                  <span className="text-gray-400 text-sm">Quantix</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 3</span>
+                  <span className="text-gray-400 text-sm">Vertex</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 4</span>
+                  <span className="text-gray-400 text-sm">Orion</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 5</span>
+                  <span className="text-gray-400 text-sm">Quantix</span>
                 </div>
               </div>
               {/* Carrusel infinito */}
@@ -150,19 +150,19 @@ export default function HomeClient() {
                   <Image src="/logos/vertex.png" alt="Vertex" width={120} height={48} className="h-12 w-auto object-contain" />
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 1</span>
+                  <span className="text-gray-400 text-sm">Orion</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 2</span>
+                  <span className="text-gray-400 text-sm">Quantix</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 3</span>
+                  <span className="text-gray-400 text-sm">Vertex</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 4</span>
+                  <span className="text-gray-400 text-sm">Orion</span>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Sector 5</span>
+                  <span className="text-gray-400 text-sm">Quantix</span>
                 </div>
               </div>
             </div>
@@ -251,6 +251,11 @@ export default function HomeClient() {
               <p className="text-gray-600">
                 Entendemos tus necesidades y objetivos. Te damos asesoría clara sin tecnicismos innecesarios.
               </p>
+              <div className="text-xs text-center mt-2">
+                <a href="/politica-de-privacidad" className="text-primary-700 hover:underline">Política de privacidad</a>
+                <span className="mx-2 text-gray-300">|</span>
+                <a href="/aviso-legal" className="text-primary-700 hover:underline">Aviso legal</a>
+              </div>
             </div>
             <div className="text-center bg-white p-6 rounded-xl shadow-md">
               <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -458,7 +463,7 @@ export default function HomeClient() {
                 </button>
               </form>
               <p className="text-xs text-gray-400 mt-4 text-center">
-                Este es un formulario de demostración. Más adelante podremos conectarlo para que los mensajes te lleguen por correo. Al enviar, aceptas nuestra política de privacidad y tratamiento de datos.
+                Este es un formulario de demostración. Más adelante podremos conectarlo para que los mensajes te lleguen por correo. Al enviar, aceptas nuestra política de privacidad y nuestro aviso legal.
               </p>
             </div>
           </div>

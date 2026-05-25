@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import "./globals.css";
 import Header from "./components/Header";
 
@@ -16,6 +17,8 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased">
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');`}</Script>
         <Header />
         {children}
         {/* Footer */}
@@ -34,6 +37,8 @@ export default function RootLayout({
                   <li><Link href="/" className="hover:text-white transition">Inicio</Link></li>
                   <li><Link href="/sobre-nosotros" className="hover:text-white transition">Sobre nosotros</Link></li>
                   <li><Link href="/contacto" className="hover:text-white transition">Contacto</Link></li>
+                  <li><Link href="/politica-de-privacidad" className="hover:text-white transition">Política de privacidad</Link></li>
+                  <li><Link href="/aviso-legal" className="hover:text-white transition">Aviso legal</Link></li>
                 </ul>
               </div>
               <div>
@@ -42,6 +47,8 @@ export default function RootLayout({
                   <li>📞 +593 (9) 8695-1419</li>
                   <li>✉️ contacto@mancarsoftware.com</li>
                   <li>📍 Guayaquil, Ecuador</li>
+                  <li><Link href="/politica-de-privacidad" className="hover:text-white transition">Política de privacidad</Link></li>
+                  <li><Link href="/aviso-legal" className="hover:text-white transition">Aviso legal</Link></li>
                 </ul>
               </div>
               <div>
