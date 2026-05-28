@@ -10,9 +10,10 @@ const teamMembers = [
     strengths: ['React', 'Next.js', 'Node.js', 'UI/UX']
   },
   {
-    name: 'Nombre temporal',
+    name: 'Jeremy Macias',
     role: 'Desarrollador Frontend',
-    initials: 'NF',
+    image: '/desarrolladores/jeremy-macias.jpeg',
+    initials: 'JM',
     description: 'Transforma ideas y flujos de negocio en interfaces claras, accesibles y adaptadas a cualquier dispositivo.',
     strengths: ['React', 'Tailwind CSS', 'Accesibilidad', 'Diseño responsive']
   },
