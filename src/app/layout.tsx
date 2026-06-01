@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import "./globals.css";
 import Header from "./components/Header";
 
 export const metadata: Metadata = {
   title: "Mancar Software | Soluciones Digitales",
+  icons: {
+    icon: "/brand/mancar-mark.svg",
+    shortcut: "/brand/mancar-mark.svg",
+    apple: "/brand/mancar-mark.svg",
+  },
   description: "Diseño web, sistemas a medida, tiendas virtuales y soporte para pymes de Ecuador.",
 };
 
@@ -23,7 +29,13 @@ export default function RootLayout({
             <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
               <div className="md:col-span-1">
                 <div className="flex items-center gap-2 text-xl font-extrabold tracking-tight">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white text-sm text-gray-950">M</span>
+                  <Image
+                    src="/brand/mancar-mark.svg"
+                    alt="Logo de Mancar Software"
+                    width={38}
+                    height={38}
+                    className="h-9 w-9 rounded-xl"
+                  />
                   Mancar<span className="text-primary-200">Software</span>
                 </div>
                 <p className="mt-4 max-w-xs text-sm leading-6 text-gray-400">

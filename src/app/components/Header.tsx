@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type ChevronIconProps = { isOpen: boolean };
 
@@ -36,7 +37,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/82 backdrop-blur-xl">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="group flex items-center gap-2 text-xl font-extrabold tracking-tight text-gray-950">
-          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gray-950 text-sm text-white shadow-sm">M</span>
+          <Image
+            src="/brand/mancar-mark.svg"
+            alt="Logo de Mancar Software"
+            width={38}
+            height={38}
+            priority
+            className="h-9 w-9 rounded-xl shadow-sm transition duration-300 group-hover:scale-105"
+          />
           Mancar<span className="text-primary-700">Software</span>
         </Link>
 
@@ -89,7 +97,16 @@ export default function Header() {
           <div className="fixed inset-0 bg-gray-950/55 z-40 lg:hidden" onClick={closeMobileMenu} />
           <div className="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-50 lg:hidden overflow-y-auto">
             <div className="flex items-center justify-between border-b border-gray-100 p-4">
-              <span className="font-bold text-gray-950">Mancar Software</span>
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/brand/mancar-mark.svg"
+                  alt="Logo de Mancar Software"
+                  width={34}
+                  height={34}
+                  className="h-8 w-8 rounded-xl"
+                />
+                <span className="font-bold text-gray-950">Mancar Software</span>
+              </div>
               <button onClick={closeMobileMenu} className="rounded-full border border-gray-200 p-2 text-gray-600">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
