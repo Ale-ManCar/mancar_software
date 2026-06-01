@@ -45,12 +45,17 @@ export default function SobreNosotrosPage() {
               Trabajamos con comunicación directa, entregas por etapas y decisiones técnicas explicadas sin complicar lo necesario.
             </p>
           </div>
-          <div className="rounded-[2rem] bg-gray-950 p-7 text-white shadow-2xl shadow-gray-900/15">
-            <h2 className="text-2xl font-bold">Datos que nos respaldan</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              <div><div className="text-4xl font-extrabold text-primary-200">+2</div><div className="mt-1 text-sm text-gray-300">años de experiencia</div></div>
-              <div><div className="text-4xl font-extrabold text-primary-200">+15</div><div className="mt-1 text-sm text-gray-300">proyectos entregados</div></div>
-              <div><div className="text-4xl font-extrabold text-primary-200">100%</div><div className="mt-1 text-sm text-gray-300">atención personalizada</div></div>
+          <div className="overflow-hidden rounded-[2rem] bg-gray-950 shadow-2xl shadow-gray-900/15">
+            <div className="relative h-72">
+              <Image src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85" alt="Equipo colaborando en una planificación digital" fill className="object-cover opacity-80" sizes="(min-width: 1024px) 50vw, 100vw" />
+            </div>
+            <div className="p-7 text-white">
+              <h2 className="text-2xl font-bold">Datos que nos respaldan</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                <div><div className="text-4xl font-extrabold text-primary-200">+2</div><div className="mt-1 text-sm text-gray-300">años de experiencia</div></div>
+                <div><div className="text-4xl font-extrabold text-primary-200">+15</div><div className="mt-1 text-sm text-gray-300">proyectos entregados</div></div>
+                <div><div className="text-4xl font-extrabold text-primary-200">100%</div><div className="mt-1 text-sm text-gray-300">atención personalizada</div></div>
+              </div>
             </div>
           </div>
         </section>

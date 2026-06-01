@@ -1,15 +1,27 @@
+import Image from 'next/image';
+
+const items = [
+  'Este sitio web es operado por Mancar Software para informar sobre sus servicios tecnológicos.',
+  'El contenido de esta web es informativo y puede actualizarse sin previo aviso.',
+  'Se prohíbe la reproducción total o parcial del contenido sin autorización expresa.',
+  'Mancar Software no se responsabiliza por daños derivados del uso indebido del sitio o de enlaces externos.',
+  'Contacto legal: contacto@mancarsoftware.com.',
+];
+
 export default function AvisoLegalPage() {
   return (
     <main className="min-h-screen bg-gray-50 py-16">
-      <section className="container mx-auto px-4 max-w-4xl bg-white rounded-xl shadow-md p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">Aviso Legal</h1>
-        <div className="space-y-4 text-gray-700">
-          <p>Este sitio web es operado por Mancar Software para informar sobre sus servicios tecnológicos.</p>
-          <p>El contenido de esta web es informativo y puede actualizarse sin previo aviso.</p>
-          <p>Se prohíbe la reproducción total o parcial del contenido sin autorización expresa.</p>
-          <p>Mancar Software no se responsabiliza por daños derivados del uso indebido del sitio o de enlaces externos.</p>
-          <p>Contacto legal: contacto@mancarsoftware.com.</p>
-          <p>Última actualización: 25 de mayo de 2026.</p>
+      <section className="container mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-900/12">
+          <Image src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=85" alt="Documento legal y acuerdos profesionales" fill className="object-cover" sizes="(min-width: 1024px) 40vw, 100vw" />
+        </div>
+        <div className="soft-card p-8 md:p-10">
+          <p className="section-kicker">Legal</p>
+          <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-950 md:text-5xl">Aviso legal</h1>
+          <div className="mt-8 space-y-4 text-gray-700">
+            {items.map((item) => <p key={item} className="leading-7">{item}</p>)}
+          </div>
+          <p className="mt-8 text-sm text-gray-500">Última actualización: 25 de mayo de 2026.</p>
         </div>
       </section>
     </main>

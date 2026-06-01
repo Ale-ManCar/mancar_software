@@ -1,25 +1,37 @@
+import Image from 'next/image';
+
+const commitments = [
+  ['Integridad', 'Actuamos con honestidad en cada conversación, propuesta y entrega.'],
+  ['Confidencialidad', 'Protegemos la información de nuestros clientes como parte central del servicio.'],
+  ['Responsabilidad', 'Asumimos decisiones técnicas con criterio y explicamos sus implicaciones.'],
+  ['Respeto', 'Construimos relaciones de trabajo claras, colaborativas y profesionales.'],
+];
+
 export default function EticaPage() {
   return (
-    <main className="bg-white py-16">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6">Ética y conducta</h1>
-        <div className="max-w-3xl">
-          <p className="text-gray-600 mb-4">
-            En Mancar Software nos regimos por principios éticos que guían cada una de nuestras acciones. 
-            La honestidad, el respeto y la responsabilidad son la base de nuestra relación con clientes, colaboradores y aliados.
-          </p>
-          <h2 className="text-2xl font-semibold text-gray-800 mt-6 mb-3">Nuestros compromisos</h2>
-          <ul className="list-disc pl-5 text-gray-600 space-y-2">
-            <li><strong>Integridad:</strong> Actuamos con honestidad en todas nuestras interacciones.</li>
-            <li><strong>Confidencialidad:</strong> Protegemos la información de nuestros clientes como si fuera propia.</li>
-            <li><strong>Responsabilidad:</strong> Asumimos las consecuencias de nuestras decisiones y trabajamos para mejorar continuamente.</li>
-            <li><strong>Respeto:</strong> Valoramos la diversidad y fomentamos un ambiente de trabajo inclusivo.</li>
-          </ul>
-          <p className="text-gray-600 mt-6">
-            Este código de ética es la guía que nos permite construir relaciones duraderas y basadas en la confianza.
+    <main className="bg-gray-50">
+      <section className="container mx-auto grid items-center gap-12 px-4 py-16 lg:grid-cols-[1fr_0.9fr]">
+        <div>
+          <p className="section-kicker">Ética y conducta</p>
+          <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">La confianza también se diseña.</h1>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            En Mancar Software trabajamos con principios claros para que cada proyecto avance con honestidad, respeto, responsabilidad y protección de la información.
           </p>
         </div>
-      </div>
+        <div className="relative h-[430px] overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-900/12">
+          <Image src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85" alt="Acuerdo profesional entre colaboradores" fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" />
+        </div>
+      </section>
+      <section className="container mx-auto px-4 pb-20">
+        <div className="grid gap-6 md:grid-cols-2">
+          {commitments.map(([title, text]) => (
+            <article key={title} className="soft-card p-7">
+              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
+              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

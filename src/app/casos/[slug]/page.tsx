@@ -1,10 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { successCases } from '../../cases';
 
 type Props = { params: Promise<{ slug: string }> };
 
+const caseImages: Record<string, string> = {
+  'diseno-web-corporativo': 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85',
+  'sistema-gestion-a-medida': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85',
+  'mantenimiento-soporte-continuo': 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=85',
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -32,31 +38,47 @@ export default async function CasoPage({ params }: Props) {
   if (!currentCase) return notFound();
 
   return (
-    <main className="py-16 bg-gray-50 min-h-screen">
-      <section className="container mx-auto px-4 max-w-4xl bg-white rounded-xl shadow-md p-8">
-        <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-3">Inicio / Casos de éxito / <span className="text-gray-700">{currentCase.title}</span></nav>
-        <Link href="/" className="text-primary-700 hover:text-primary-800 font-medium">← Volver al inicio</Link>
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-3">{currentCase.icon} {currentCase.title}</h1>
-        <p className="text-gray-600 mb-8">{currentCase.summary}</p>
+    <main className="min-h-screen bg-gray-50">
+      <section className="container mx-auto px-4 py-16">
+        <Link href="/" className="font-semibold text-primary-700 hover:text-primary-900">Volver al inicio</Link>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <p className="section-kicker">{currentCase.category}</p>
+            <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">{currentCase.title}</h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600">{currentCase.summary}</p>
+          </div>
+          <div className="relative h-[420px] overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-900/12">
+            <Image src={caseImages[currentCase.slug]} alt={`Imagen del caso ${currentCase.title}`} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+          </div>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-3 mb-8">
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
           {currentCase.kpis.map((kpi) => (
-            <div key={kpi.label} className="bg-primary-50 border border-primary-100 rounded-lg p-4 text-center">
-              <div className="text-primary-700 text-xl font-bold">{kpi.value}</div>
-              <div className="text-gray-600 text-sm">{kpi.label}</div>
+            <div key={kpi.label} className="soft-card p-6 text-center">
+              <div className="text-3xl font-extrabold text-primary-700">{kpi.value}</div>
+              <div className="mt-1 text-sm text-gray-500">{kpi.label}</div>
             </div>
           ))}
         </div>
 
-        <div className="space-y-5 text-gray-700">
-          <div><h2 className="font-semibold text-gray-800">Perfil del cliente</h2><p>{currentCase.clientProfile}</p></div>
-          <div><h2 className="font-semibold text-gray-800">Desafío</h2><p>{currentCase.challenge}</p></div>
-          <div><h2 className="font-semibold text-gray-800">Solución implementada</h2><p>{currentCase.solution}</p></div>
-          <div>
-            <h2 className="font-semibold text-gray-800">Resultados</h2>
-            <ul className="list-disc pl-5 mt-2 space-y-1">{currentCase.results.map((r) => <li key={r}>{r}</li>)}</ul>
-          </div>
-        </div>
+        <section className="mt-10 grid gap-6 lg:grid-cols-2">
+          {[
+            ['Perfil del cliente', currentCase.clientProfile],
+            ['Desafío', currentCase.challenge],
+            ['Solución implementada', currentCase.solution],
+          ].map(([title, text]) => (
+            <article key={title} className="soft-card p-7">
+              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
+              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+            </article>
+          ))}
+          <article className="soft-card p-7 lg:col-span-2">
+            <h2 className="text-2xl font-bold text-gray-950">Resultados</h2>
+            <ul className="mt-4 grid gap-3 md:grid-cols-3">
+              {currentCase.results.map((result) => <li key={result} className="rounded-2xl bg-primary-50 p-4 text-primary-900">{result}</li>)}
+            </ul>
+          </article>
+        </section>
       </section>
     </main>
   );
