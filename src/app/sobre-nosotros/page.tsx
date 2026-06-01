@@ -5,6 +5,7 @@ const teamMembers = [
     name: 'Alejandro Mantilla',
     role: 'Desarrollador Full Stack',
     image: '/desarrolladores/alejandro-mantilla.jpeg',
+    imagePosition: 'object-top',
     initials: 'AM',
     description: 'Lidera la construcción de soluciones web completas, cuidando tanto la arquitectura técnica como la experiencia de uso.',
     strengths: ['React', 'Next.js', 'Node.js', 'UI/UX']
@@ -13,6 +14,7 @@ const teamMembers = [
     name: 'Jeremy Macias',
     role: 'Desarrollador Frontend',
     image: '/desarrolladores/jeremy-macias.jpeg',
+    imagePosition: 'object-center',
     initials: 'JM',
     description: 'Transforma ideas y flujos de negocio en interfaces claras, accesibles y adaptadas a cualquier dispositivo.',
     strengths: ['React', 'Tailwind CSS', 'Accesibilidad', 'Diseño responsive']
@@ -79,7 +81,7 @@ export default function SobreNosotrosPage() {
                     alt={`Foto de ${member.name}`}
                     width={96}
                     height={96}
-                    className="w-24 h-24 rounded-full object-cover object-top mb-5 border border-primary-100"
+                    className={`w-24 h-24 rounded-full object-cover ${member.imagePosition} mb-5 border border-primary-100`}
                   />
                 ) : (
                   <div
