@@ -1,55 +1,54 @@
 export default function ContactoPage() {
   return (
-    <main className="bg-white py-16">
+    <main className="bg-gray-50 py-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">Conversemos sobre tu proyecto</h1>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Cuéntanos qué necesitas mejorar, automatizar o vender mejor. Te responderemos con una orientación clara y aterrizada para tu negocio en Ecuador.
-        </p>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <div className="space-y-6">
+        <section className="mx-auto max-w-3xl text-center">
+          <p className="section-kicker mx-auto">Contacto</p>
+          <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">Conversemos sobre tu proyecto</h1>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Cuéntanos qué necesitas mejorar, automatizar o vender mejor. Te responderemos con una orientación clara y aterrizada para tu negocio en Ecuador.
+          </p>
+        </section>
+        <section className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="soft-card bg-gray-950 p-8 text-white">
+            <h2 className="text-2xl font-bold">Canales directos</h2>
+            <div className="mt-8 space-y-6 text-gray-300">
               <div>
-                <h3 className="font-semibold text-gray-800 mb-2">Atención</h3>
-                <p className="text-gray-600">Atención remota para pymes en Ecuador, con coordinación directa desde Guayaquil.</p>
+                <h3 className="font-semibold text-white">Atención</h3>
+                <p className="mt-1">Atención remota para pymes en Ecuador, con coordinación directa desde Guayaquil.</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800 mb-2">Teléfono y WhatsApp</h3>
-                <p className="text-gray-600">+593 98 695 1419</p>
+                <h3 className="font-semibold text-white">Teléfono y WhatsApp</h3>
+                <p className="mt-1">+593 98 695 1419</p>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
-                <p className="text-gray-600">contacto@mancarsoftware.com</p>
-              </div>
-              <div>
-                <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition">
-                  Hablemos por WhatsApp
-                </a>
+                <h3 className="font-semibold text-white">Email</h3>
+                <p className="mt-1">contacto@mancarsoftware.com</p>
               </div>
             </div>
+            <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-gray-950 transition hover:bg-primary-100">
+              Hablemos por WhatsApp
+            </a>
           </div>
-          <div className="bg-gray-50 p-6 rounded-xl shadow-md">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Envíanos un mensaje</h3>
-            <form className="space-y-4">
+          <div className="soft-card p-8">
+            <h2 className="text-2xl font-bold text-gray-950">Envíanos un mensaje</h2>
+            <form className="mt-6 space-y-4">
               <div>
-                <label htmlFor="nombre" className="block text-gray-700 mb-1">Nombre</label>
-                <input type="text" id="nombre" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500" placeholder="Tu nombre" />
+                <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700">Nombre</label>
+                <input type="text" id="nombre" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Tu nombre" />
               </div>
               <div>
-                <label htmlFor="email" className="block text-gray-700 mb-1">Email</label>
-                <input type="email" id="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500" placeholder="tu@email.com" />
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700">Email</label>
+                <input type="email" id="email" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="tu@email.com" />
               </div>
               <div>
-                <label htmlFor="mensaje" className="block text-gray-700 mb-1">Mensaje</label>
-                <textarea id="mensaje" rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500" placeholder="Cuéntanos qué quieres construir o mejorar"></textarea>
+                <label htmlFor="mensaje" className="block text-sm font-semibold text-gray-700">Mensaje</label>
+                <textarea id="mensaje" rows={4} className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Cuéntanos qué quieres construir o mejorar"></textarea>
               </div>
-              <button type="submit" className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition">Enviar mensaje</button>
+              <button type="submit" className="w-full rounded-full bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-primary-800">Enviar mensaje</button>
             </form>
-            <p className="text-xs text-gray-500 mt-4 text-center">
-              También puedes escribirnos por WhatsApp si prefieres una respuesta más directa.
-            </p>
           </div>
-        </div>
+        </section>
       </div>
     </main>
   );

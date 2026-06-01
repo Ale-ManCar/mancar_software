@@ -4,49 +4,77 @@ import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { caseCategories, successCases } from './cases';
 
+const heroImage = 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=85';
+
+const serviceDetails = [
+  {
+    title: 'Diseño Web Profesional',
+    icon: '01',
+    image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80',
+    fullDescription: 'Diseñamos sitios web modernos, rápidos y preparados para convertir visitas en contactos. Cuidamos estructura, velocidad, responsive, SEO base y una experiencia visual alineada con tu negocio.',
+    features: ['Diseño responsive', 'SEO técnico base', 'Formularios de contacto', 'Integración con redes sociales', 'Contenido fácil de actualizar']
+  },
+  {
+    title: 'Desarrollo de Sistemas a Medida',
+    icon: '02',
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80',
+    fullDescription: 'Construimos sistemas web que ordenan procesos, reducen trabajo manual y centralizan información clave. Cada módulo se diseña alrededor de cómo opera realmente tu empresa.',
+    features: ['Aplicaciones web', 'Automatización de procesos', 'Bases de datos', 'Dashboards', 'Capacitación al equipo']
+  },
+  {
+    title: 'Mantenimiento y Soporte Técnico',
+    icon: '03',
+    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80',
+    fullDescription: 'Mantenemos tu sitio o sistema estable, actualizado y protegido. Atendemos incidencias con comunicación directa y hacemos mejoras continuas para evitar problemas recurrentes.',
+    features: ['Actualizaciones de seguridad', 'Corrección de errores', 'Monitoreo preventivo', 'Copias de seguridad', 'Soporte por WhatsApp']
+  },
+  {
+    title: 'Tiendas Virtuales',
+    icon: '04',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80',
+    fullDescription: 'Creamos tiendas online pensadas para vender: catálogo, carrito, pagos, inventario y una experiencia de compra clara para clientes en Ecuador.',
+    features: ['Catálogo de productos', 'Pasarelas de pago', 'Gestión de inventario', 'SEO para productos', 'Panel administrativo']
+  },
+  {
+    title: 'Optimización y Consultoría',
+    icon: '05',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80',
+    fullDescription: 'Auditamos tu presencia digital y te damos una hoja de ruta concreta para mejorar velocidad, usabilidad, posicionamiento y conversión.',
+    features: ['Auditoría técnica', 'Optimización de velocidad', 'Estrategia SEO', 'Mejora de conversión', 'Informes claros']
+  },
+  {
+    title: 'Acompañamiento Continuo',
+    icon: '06',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80',
+    fullDescription: 'Te acompañamos después del lanzamiento con soporte, ajustes, mejoras incrementales y criterio técnico para tomar mejores decisiones.',
+    features: ['Asesoría cercana', 'Respuesta ágil', 'Mejoras continuas', 'Capacitación', 'Soporte post-lanzamiento']
+  }
+];
+
+const processSteps = [
+  {
+    title: 'Diagnóstico claro',
+    text: 'Entendemos tus objetivos, procesos y prioridades antes de proponer tecnología.',
+  },
+  {
+    title: 'Diseño y desarrollo',
+    text: 'Creamos una solución funcional, visualmente cuidada y fácil de usar para tu equipo.',
+  },
+  {
+    title: 'Lanzamiento y mejora',
+    text: 'Publicamos, medimos y seguimos optimizando para que el proyecto crezca contigo.',
+  },
+];
+
+const trustItems = [
+  { value: '+15', label: 'proyectos entregados' },
+  { value: '+2', label: 'años acompañando pymes' },
+  { value: '100%', label: 'comunicación directa' },
+];
+
 export default function HomeClient() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const [selectedCase, setSelectedCase] = useState<number | null>(null);
-
-  const serviceDetails = [
-    {
-      title: "Diseño Web Profesional",
-      icon: "🎨",
-      fullDescription: "Creamos sitios web modernos, rápidos y completamente adaptados a cualquier dispositivo (responsive). Nos aseguramos de que tu negocio tenga una presencia online impactante, con un diseño que refleje tu identidad y capte la atención de tus clientes. Incluye optimización SEO básica y formularios de contacto.",
-      features: ["Diseño responsive", "Optimización SEO", "Formularios de contacto", "Integración con redes sociales", "Panel de administración fácil"]
-    },
-    {
-      title: "Desarrollo de Sistemas a Medida",
-      icon: "⚙️",
-      fullDescription: "Creamos software personalizado que se adapta exactamente a tus procesos y necesidades. Ya sea una aplicación de escritorio, una plataforma web interna o una herramienta de gestión, desarrollamos soluciones robustas, escalables y con interfaces intuitivas.",
-      features: ["Aplicaciones web y de escritorio", "Automatización de procesos", "Bases de datos a medida", "Reportes y dashboards", "Capacitación al personal"]
-    },
-    {
-      title: "Mantenimiento y Soporte Técnico",
-      icon: "🔧",
-      fullDescription: "Ofrecemos mantenimiento continuo para tu sitio web o sistema, garantizando que esté siempre actualizado, seguro y funcionando sin problemas. Resolvemos incidencias de forma ágil y realizamos mejoras periódicas para adaptarnos a tus necesidades cambiantes.",
-      features: ["Actualizaciones de seguridad", "Resolución de errores", "Monitoreo 24/7", "Copias de seguridad", "Soporte por chat/teléfono"]
-    },
-    {
-      title: "Tiendas Virtuales (E‑commerce)",
-      icon: "🛒",
-      fullDescription: "Implementamos tiendas en línea completas con pasarelas de pago integradas, gestión de inventario, carrito de compras y una experiencia de compra optimizada. Ayudamos a que tu negocio venda por internet de manera profesional y segura.",
-      features: ["Pasarelas de pago (PayPal, tarjetas)", "Gestión de inventario", "Diseño atractivo", "SEO para productos", "Panel de administración"]
-    },
-    {
-      title: "Optimización y Consultoría",
-      icon: "📈",
-      fullDescription: "Analizamos tu presencia digital actual y te proponemos mejoras concretas en rendimiento, SEO, usabilidad y conversión. Te asesoramos para que tomes decisiones informadas y alcances tus objetivos de negocio con tecnología.",
-      features: ["Auditoría técnica", "Optimización de velocidad", "Estrategia SEO", "Mejora de conversión", "Informes detallados"]
-    },
-    {
-      title: "Acompañamiento Continuo",
-      icon: "🤝",
-      fullDescription: "No solo entregamos un proyecto y nos vamos. Te ofrecemos un servicio cercano y rápido, con comunicación directa, porque sabemos que detrás de cada proyecto hay personas que necesitan respuestas claras. Estamos a tu lado para ajustes, mejoras y nuevos desafíos.",
-      features: ["Asesoría personalizada", "Respuesta rápida", "Mejoras continuas", "Capacitación", "Soporte post-lanzamiento"]
-    }
-  ];
-
   const [activeCategory, setActiveCategory] = useState<(typeof caseCategories)[number]>('Todos');
 
   const filteredCases = useMemo(() => {
@@ -63,103 +91,66 @@ export default function HomeClient() {
   };
 
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-50 to-gray-100 py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center md:text-left">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
-                Desarrollamos software y webs que
-                <span className="text-primary-700">te ayudan a vender más</span>
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
-                Para pymes y negocios en crecimiento. Diseñamos sitios web, creamos sistemas a medida y damos soporte continuo con comunicación directa y tiempos claros.
+    <main className="overflow-hidden">
+      <section className="relative min-h-[calc(100vh-64px)] bg-gray-950 text-white">
+        <Image
+          src={heroImage}
+          alt="Equipo de desarrollo trabajando en una solución digital"
+          fill
+          priority
+          className="object-cover opacity-38"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,17,31,0.96)_0%,rgba(7,17,31,0.78)_46%,rgba(7,17,31,0.25)_100%)]" />
+        <div className="relative container mx-auto px-4 py-20 md:py-28">
+          <div className="grid min-h-[640px] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="max-w-3xl">
+              <p className="section-kicker border-white/10 bg-white/10 text-primary-100">
+                Diseño, software y soporte para pymes de Ecuador
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a
-                  href="#contacto"
-                  className="bg-primary-700 hover:bg-primary-800 text-white font-medium py-3 px-6 rounded-lg transition duration-300 text-center shadow-md"
-                >
+              <h1 className="mt-6 text-5xl font-extrabold leading-[0.95] tracking-tight text-white md:text-7xl">
+                Tecnología simple para negocios que necesitan vender y operar mejor.
+              </h1>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-gray-200">
+                Creamos sitios web, sistemas a medida y tiendas virtuales con una mezcla de estrategia, diseño limpio y desarrollo confiable.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <a href="#contacto" className="rounded-full bg-white px-7 py-3 text-center font-semibold text-gray-950 shadow-2xl shadow-black/20 transition hover:bg-primary-100">
                   Quiero una asesoría
                 </a>
-                <a
-                  href="#servicios"
-                  className="border border-primary-700 text-primary-700 hover:bg-primary-50 font-medium py-3 px-6 rounded-lg transition duration-300 text-center"
-                >
-                  Ver servicios
+                <a href="#servicios" className="rounded-full border border-white/20 px-7 py-3 text-center font-semibold text-white transition hover:bg-white/10">
+                  Explorar servicios
                 </a>
               </div>
             </div>
-            <div className="hidden md:block">
-              <div className="bg-primary-100 rounded-lg h-64 flex items-center justify-center shadow-inner">
-                <span className="text-primary-500 text-6xl">🚀</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Sección Clientes */}
-      <section className="py-12 bg-gray-100 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">
-            Empresas que confían en nuestras soluciones
-          </h2>
-          <div className="relative w-full overflow-hidden">
-            <div className="flex animate-scroll w-max">
-              {/* Logos Carrusel */}
-              <div className="flex gap-12 md:gap-16 items-center pr-12 md:pr-16">
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <Image src="/logos/orion.jpg" alt="Orion" width={120} height={48} className="h-12 w-auto object-contain" />
+            <div className="soft-card border-white/10 bg-white/10 p-5 text-white backdrop-blur-xl">
+              <div className="rounded-2xl bg-white p-5 text-gray-950">
+                <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+                  <div>
+                    <p className="font-semibold">Radiografía digital</p>
+                    <p className="text-sm text-gray-500">Proyecto pyme en crecimiento</p>
+                  </div>
+                  <span className="rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-700">Activo</span>
                 </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <Image src="/logos/quantix.png" alt="Quantix" width={120} height={48} className="h-12 w-auto object-contain" />
+                <div className="grid grid-cols-3 gap-3 py-5">
+                  {trustItems.map((item) => (
+                    <div key={item.label} className="rounded-2xl border border-gray-100 bg-gray-50 p-4">
+                      <p className="text-2xl font-extrabold text-gray-950">{item.value}</p>
+                      <p className="mt-1 text-xs text-gray-500">{item.label}</p>
+                    </div>
+                  ))}
                 </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <Image src="/logos/vertex.png" alt="Vertex" width={120} height={48} className="h-12 w-auto object-contain" />
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Orion</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Quantix</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Vertex</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Orion</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Quantix</span>
-                </div>
-              </div>
-              {/* Carrusel infinito */}
-              <div className="flex gap-12 md:gap-16 items-center">
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <Image src="/logos/orion.jpg" alt="Orion" width={120} height={48} className="h-12 w-auto object-contain" />
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <Image src="/logos/quantix.png" alt="Quantix" width={120} height={48} className="h-12 w-auto object-contain" />
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <Image src="/logos/vertex.png" alt="Vertex" width={120} height={48} className="h-12 w-auto object-contain" />
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Orion</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Quantix</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Vertex</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Orion</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-32 h-20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-gray-400 text-sm">Quantix</span>
+                <div className="space-y-3">
+                  {['Experiencia de usuario', 'Automatización', 'Soporte continuo'].map((item, index) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <span className="h-2.5 w-2.5 rounded-full bg-secondary-500"></span>
+                      <div className="h-2 flex-1 overflow-hidden rounded-full bg-gray-100">
+                        <div className="h-full rounded-full bg-primary-700" style={{ width: `${92 - index * 16}%` }} />
+                      </div>
+                      <span className="w-32 text-right text-xs text-gray-500">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -167,406 +158,296 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* Sección Servicios */}
-      <section id="servicios" className="py-16 bg-gray-50">
+      <section className="border-y border-gray-100 bg-white py-10">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Nuestros Servicios</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Soluciones digitales creadas con dedicación y enfoque en tus necesidades.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <p className="text-center text-sm font-semibold text-gray-500">Empresas que confían en nuestras soluciones</p>
+          <div className="mt-7 overflow-hidden">
+            <div className="flex w-max animate-scroll items-center gap-12 pr-12">
+              {[...Array(2)].map((_, group) => (
+                <div key={group} className="flex items-center gap-12">
+                  {[
+                    ['/logos/orion.jpg', 'Orion'],
+                    ['/logos/quantix.png', 'Quantix'],
+                    ['/logos/vertex.png', 'Vertex'],
+                    ['/logos/orion.jpg', 'Orion'],
+                    ['/logos/quantix.png', 'Quantix'],
+                  ].map(([src, alt], index) => (
+                    <div key={`${group}-${alt}-${index}`} className="flex h-16 w-32 shrink-0 items-center justify-center rounded-2xl border border-gray-100 bg-white p-4 grayscale opacity-70 shadow-sm">
+                      <Image src={src} alt={alt} width={120} height={48} className="h-10 w-auto object-contain" />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" className="bg-gray-50 py-24">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="section-kicker mx-auto">Soluciones</p>
+            <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-950 md:text-5xl">Servicios con estrategia, diseño y criterio técnico.</h2>
+            <p className="mt-5 text-gray-600">Cada servicio está pensado para una meta concreta: vender mejor, ordenar procesos o mantener tu operación digital estable.</p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {serviceDetails.map((service, idx) => (
-              <div
-                key={idx}
-                onClick={() => setSelectedService(idx)}
-                className="bg-white rounded-xl p-6 hover:shadow-xl transition duration-300 cursor-pointer shadow-md"
-              >
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-primary-700 text-xl">{service.icon}</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h3>
-                <p className="text-gray-600">{service.fullDescription.substring(0, 100)}...</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sección Sobre Nosotros */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Tenemos una misión: <span className="text-primary-700">Ayudarte a crecer</span>
-              </h2>
-              <p className="text-gray-600 mb-6">
-                En Mancar Software somos un equipo pequeño pero apasionado por la tecnología.
-                Creemos que las soluciones digitales deben ser accesibles, funcionales y hechas
-                a la medida de cada negocio. Te escuchamos, te asesoramos y construimos contigo.
-              </p>
-              <div className="flex flex-wrap gap-6 mt-8">
-                <div>
-                  <div className="text-3xl font-bold text-primary-700">+2</div>
-                  <div className="text-gray-500 text-sm">Años de experiencia</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-primary-700">+15</div>
-                  <div className="text-gray-500 text-sm">Proyectos entregados</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-primary-700">100%</div>
-                  <div className="text-gray-500 text-sm">Atención personalizada</div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-primary-50 p-6 rounded-xl shadow-md">
-              <div className="text-center">
-                <div className="inline-block bg-primary-100 p-4 rounded-full mb-4">
-                  <span className="text-4xl">⭐</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Compromiso con la calidad</h3>
-                <p className="text-gray-600">
-                  Trabajamos con metodologías ágiles y comunicación directa. Cada proyecto recibe
-                  la misma dedicación, sin importar el tamaño.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección Proceso de trabajo */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Cómo trabajamos</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Obtenemos resultados gracias a nuestro enfoque estratégico y colaborativo.</p>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center bg-white p-6 rounded-xl shadow-md">
-              <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-700 text-2xl font-bold">1</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Escuchamos tus ideas</h3>
-              <p className="text-gray-600">
-                Entendemos tus necesidades y objetivos. Te damos asesoría clara sin tecnicismos innecesarios.
-              </p>
-              <div className="text-xs text-center mt-2">
-                <a href="/politica-de-privacidad" className="text-primary-700 hover:underline">Política de privacidad</a>
-                <span className="mx-2 text-gray-300">|</span>
-                <a href="/aviso-legal" className="text-primary-700 hover:underline">Aviso legal</a>
-              </div>
-            </div>
-            <div className="text-center bg-white p-6 rounded-xl shadow-md">
-              <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-700 text-2xl font-bold">2</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Diseñamos y desarrollamos</h3>
-              <p className="text-gray-600">
-                Creamos la solución paso a paso, con entregas periódicas y pruebas para garantizar calidad.
-              </p>
-            </div>
-            <div className="text-center bg-white p-6 rounded-xl shadow-md">
-              <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary-700 text-2xl font-bold">3</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Lanzamiento y acompañamiento</h3>
-              <p className="text-gray-600">
-                Publicamos tu proyecto y seguimos a tu lado para ajustes, capacitación y mejoras continuas.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección Planes */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Planes orientativos</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Valores referenciales para que tomes decisiones más rápido. El alcance final se ajusta a tu necesidad.</p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[{name:'Starter',price:'Desde $590',items:['Sitio web corporativo','Hasta 5 secciones','Formulario y WhatsApp']},{name:'Growth',price:'Desde $1,290',items:['Web + SEO técnico base','Integraciones clave','Soporte inicial 30 días']},{name:'Pro',price:'Desde $2,490',items:['Sistema o e-commerce','Panel administrativo','Acompañamiento continuo']}].map((plan) => (
-              <div key={plan.name} className="bg-gray-50 rounded-xl border border-gray-200 p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-800">{plan.name}</h3>
-                <p className="text-primary-700 font-bold text-2xl my-3">{plan.price}</p>
-                <ul className="space-y-2 text-gray-600 text-sm mb-4">
-                  {plan.items.map((item) => <li key={item}>• {item}</li>)}
-                </ul>
-                <a href="#contacto" className="text-primary-700 font-medium hover:text-primary-800" onClick={() => trackEvent('cta_plan_contact', { plan: plan.name })}>Solicitar propuesta →</a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sección Casos de éxito */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Casos de éxito</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Conoce cómo hemos ayudado a empresas a transformar sus negocios con tecnología.</p>
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {caseCategories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full border text-sm font-medium transition ${activeCategory === category ? 'bg-primary-700 text-white border-primary-700' : 'bg-white text-gray-700 border-gray-300 hover:border-primary-500'}`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCases.map((successCase, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
-                <div className="bg-primary-100 h-32 flex items-center justify-center">
-                  <span className="text-primary-500 text-4xl">{successCase.icon}</span>
+              <article key={service.title} className="soft-card group overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <Image src={service.image} alt={`Imagen de ${service.title}`} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" />
+                  <div className="absolute left-4 top-4 rounded-full bg-white/92 px-3 py-1 text-xs font-bold text-gray-950 shadow-sm">{service.icon}</div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{successCase.title}</h3>
-                  <p className="text-gray-600 mb-4">{successCase.summary}</p>
-                  <div className="grid grid-cols-3 gap-2 mb-4">
-                    {successCase.kpis.map((kpi) => (
-                      <div key={kpi.label} className="bg-gray-50 border border-gray-100 rounded-md p-2 text-center">
-                        <div className="text-primary-700 font-bold text-sm">{kpi.value}</div>
-                        <div className="text-[11px] text-gray-500">{kpi.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => { setSelectedCase(successCases.findIndex((item) => item.slug === successCase.slug)); trackEvent('case_preview_open', { slug: successCase.slug }); }}
-                    className="text-primary-700 text-sm font-medium hover:text-primary-800"
-                  >
-                    Ver caso →
+                  <h3 className="text-xl font-bold text-gray-950">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-gray-600">{service.fullDescription}</p>
+                  <button type="button" onClick={() => setSelectedService(idx)} className="mt-5 font-semibold text-primary-700 hover:text-primary-900">
+                    Ver enfoque
                   </button>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Sección Testimonios de clientes */}
-      <section className="py-16 bg-gray-50">
+      <section className="bg-white py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Testimonios de clientes</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <blockquote className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-              <p className="text-gray-600 mb-4">“El nuevo sitio nos ayudó a recibir más contactos calificados desde la primera semana.”</p>
-              <footer className="text-sm text-gray-500">María López · Gerente Comercial · Orion</footer>
-            </blockquote>
-            <blockquote className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-              <p className="text-gray-600 mb-4">“Con el sistema a medida reducimos errores y ahora tenemos control real del inventario.”</p>
-              <footer className="text-sm text-gray-500">Javier Cedeño · Operaciones · Quantix</footer>
-            </blockquote>
-            <blockquote className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-              <p className="text-gray-600 mb-4">“El soporte es rápido y cercano; bajamos incidencias críticas a cero.”</p>
-              <footer className="text-sm text-gray-500">Andrea Ruiz · Coordinación Académica · Vertex</footer>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección FAQ comercial */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">Preguntas frecuentes</h2>
-          <div className="space-y-4">
-            <details className="bg-gray-50 rounded-lg p-4 border border-gray-200"><summary className="font-semibold text-gray-800 cursor-pointer">¿En cuánto tiempo entregan un proyecto?</summary><p className="text-gray-600 mt-2">Depende del alcance, pero un sitio web corporativo suele estar entre 2 y 4 semanas.</p></details>
-            <details className="bg-gray-50 rounded-lg p-4 border border-gray-200"><summary className="font-semibold text-gray-800 cursor-pointer">¿Trabajan con adelantos y entregas parciales?</summary><p className="text-gray-600 mt-2">Sí. Definimos hitos y entregables para que tengas visibilidad del avance desde el inicio.</p></details>
-            <details className="bg-gray-50 rounded-lg p-4 border border-gray-200"><summary className="font-semibold text-gray-800 cursor-pointer">¿Incluyen soporte después del lanzamiento?</summary><p className="text-gray-600 mt-2">Sí. Ofrecemos acompañamiento post-lanzamiento para ajustes, mejoras y mantenimiento continuo.</p></details>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección CTA Contacto */}
-      <section id="contacto" className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="relative h-[520px] overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-900/12">
+              <Image src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85" alt="Equipo planificando una solución digital" fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" />
+            </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                ¿Cómo podemos ayudarte? <span className="text-primary-700">Escríbenos</span>
+              <p className="section-kicker">Sobre Mancar</p>
+              <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-950 md:text-5xl">
+                Una forma más humana de construir tecnología.
               </h2>
-              <p className="text-gray-600 mb-8">
-                Hacemos de la tecnología una herramienta sencilla y efectiva para tu negocio.
+              <p className="mt-5 text-lg leading-8 text-gray-600">
+                Somos un equipo cercano, técnico y directo. Nos enfocamos en que cada solución tenga sentido para tu operación, tu presupuesto y tus clientes.
               </p>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">📍 Oficinas</h3>
-                  <p className="text-gray-600">
-                    Av. Principal #123, Oficina 5<br />
-                    Guayaquil, Ecuador
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">📞 Teléfono</h3>
-                  <p className="text-gray-600">+593 (9) 8695-1419</p>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">✉️ Email</h3>
-                  <p className="text-gray-600">contacto@mancarsoftware.com</p>
-                </div>
-                <div>
-                  <a
-                    href="https://wa.me/593986951419?text=Hola%20quiero%20resultados%20similares"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-3 px-6 rounded-lg transition shadow-md"
-                  >
-                    💬 Agenda una llamada
-                  </a>
-                </div>
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                {trustItems.map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
+                    <p className="text-3xl font-extrabold text-primary-700">{item.value}</p>
+                    <p className="mt-1 text-sm text-gray-500">{item.label}</p>
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Envíanos un mensaje</h3>
-              <form className="space-y-4">
-                <div>
-                  <label htmlFor="nombre" className="block text-gray-700 mb-1">Nombre</label>
-                  <input
-                    type="text"
-                    id="nombre"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-gray-700 mb-1">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="mensaje" className="block text-gray-700 mb-1">Mensaje</label>
-                  <textarea
-                    id="mensaje"
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    placeholder="¿En qué podemos ayudarte?"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-primary-700 hover:bg-primary-800 text-white font-medium py-2 px-4 rounded-lg transition shadow-md"
-                >
-                  Enviar mensaje
-                </button>
-              </form>
-              <p className="text-xs text-gray-400 mt-4 text-center">
-                Este es un formulario de demostración. Más adelante podremos conectarlo para que los mensajes te lleguen por correo. Al enviar, aceptas nuestra política de privacidad y nuestro aviso legal.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Modal de detalles del caso de éxito */}
-      {selectedCase !== null && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCase(null)}>
-          <div role="dialog" aria-modal="true" className="bg-white rounded-xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">{successCases[selectedCase].icon}</span>
-                  <h3 className="text-2xl font-bold text-gray-800">{successCases[selectedCase].title}</h3>
-                </div>
-                <button
-                  onClick={() => setSelectedCase(null)}
-                  className="text-gray-400 hover:text-gray-600 text-2xl"
-                >
-                  ✕
-                </button>
-              </div>
-
-              <p className="text-gray-600 mb-5">{successCases[selectedCase].summary}</p>
-
-              <div className="space-y-4 text-gray-700">
-                <div>
-                  <h4 className="font-semibold text-gray-800">Perfil del cliente</h4>
-                  <p>{successCases[selectedCase].clientProfile}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">Desafío</h4>
-                  <p>{successCases[selectedCase].challenge}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">Solución implementada</h4>
-                  <p>{successCases[selectedCase].solution}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">Resultados</h4>
-                  <ul className="list-disc pl-5 space-y-1">
-                    {successCases[selectedCase].results.map((result, idx) => (
-                      <li key={idx}>{result}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">Tecnologías y enfoque</h4>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {successCases[selectedCase].technologies.map((item, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full border border-primary-100">
-                        {item}
-                      </span>
-                    ))}
+      <section className="bg-gray-950 py-24 text-white">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="section-kicker border-white/10 bg-white/10 text-primary-100">Proceso</p>
+              <h2 className="mt-5 text-4xl font-extrabold tracking-tight md:text-5xl">Un proceso simple, pero bien pensado.</h2>
+              <p className="mt-5 text-gray-300">Menos ruido, más decisiones claras. Trabajamos por etapas para que sepas qué se está construyendo, por qué y qué resultado esperar.</p>
+            </div>
+            <div className="grid gap-4">
+              {processSteps.map((step, index) => (
+                <div key={step.title} className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur">
+                  <div className="flex gap-5">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary-300 text-sm font-extrabold text-gray-950">{index + 1}</span>
+                    <div>
+                      <h3 className="text-xl font-bold">{step.title}</h3>
+                      <p className="mt-2 text-gray-300">{step.text}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* Modal de detalles del servicio */}
-      {selectedService !== null && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedService(null)}>
-          <div role="dialog" aria-modal="true" className="bg-white rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="section-kicker mx-auto">Inversión</p>
+            <h2 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-5xl">Planes orientativos para empezar con claridad.</h2>
+            <p className="mt-5 text-gray-600">Valores referenciales. El alcance final se ajusta según tus objetivos, integraciones y tiempos.</p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              { name: 'Starter', price: 'Desde $590', items: ['Sitio web corporativo', 'Hasta 5 secciones', 'Formulario y WhatsApp'] },
+              { name: 'Growth', price: 'Desde $1,290', items: ['Web + SEO técnico base', 'Integraciones clave', 'Soporte inicial 30 días'] },
+              { name: 'Pro', price: 'Desde $2,490', items: ['Sistema o e-commerce', 'Panel administrativo', 'Acompañamiento continuo'] },
+            ].map((plan) => (
+              <article key={plan.name} className="soft-card p-7">
+                <h3 className="text-xl font-bold text-gray-950">{plan.name}</h3>
+                <p className="my-4 text-3xl font-extrabold text-primary-700">{plan.price}</p>
+                <ul className="space-y-3 text-sm text-gray-600">
+                  {plan.items.map((item) => <li key={item}>• {item}</li>)}
+                </ul>
+                <a href="#contacto" className="mt-6 inline-flex font-semibold text-primary-700 hover:text-primary-900" onClick={() => trackEvent('cta_plan_contact', { plan: plan.name })}>Solicitar propuesta</a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-50 py-24">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="section-kicker">Casos</p>
+              <h2 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-5xl">Resultados que se entienden.</h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {caseCategories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActiveCategory(category)}
+                  className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${activeCategory === category ? 'border-gray-950 bg-gray-950 text-white' : 'border-gray-200 bg-white text-gray-700 hover:border-primary-300'}`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredCases.map((successCase) => (
+              <article key={successCase.slug} className="soft-card overflow-hidden">
+                <div className="relative h-36 bg-gray-950 p-6 text-white">
+                  <p className="text-sm text-primary-200">{successCase.category}</p>
+                  <p className="mt-5 text-4xl font-extrabold">{successCase.kpis[0].value}</p>
+                  <p className="text-sm text-gray-300">{successCase.kpis[0].label}</p>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-950">{successCase.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-gray-600">{successCase.summary}</p>
+                  <button type="button" onClick={() => { setSelectedCase(successCases.findIndex((item) => item.slug === successCase.slug)); trackEvent('case_preview_open', { slug: successCase.slug }); }} className="mt-5 font-semibold text-primary-700 hover:text-primary-900">
+                    Ver caso
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="text-center text-4xl font-extrabold text-gray-950 md:text-5xl">Lo que buscamos en cada proyecto</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              ['Claridad', 'Que sepas qué se está haciendo, cuánto tarda y qué valor aporta.'],
+              ['Cercanía', 'Comunicación directa, sin tecnicismos innecesarios y con seguimiento real.'],
+              ['Calidad', 'Soluciones visualmente cuidadas, rápidas, seguras y listas para crecer.'],
+            ].map(([title, text]) => (
+              <blockquote key={title} className="soft-card p-7">
+                <h3 className="text-xl font-bold text-gray-950">{title}</h3>
+                <p className="mt-4 leading-7 text-gray-600">{text}</p>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-50 py-24">
+        <div className="container mx-auto max-w-4xl px-4">
+          <h2 className="text-center text-4xl font-extrabold text-gray-950 md:text-5xl">Preguntas frecuentes</h2>
+          <div className="mt-10 space-y-4">
+            <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿En cuánto tiempo entregan un proyecto?</summary><p className="mt-3 text-gray-600">Depende del alcance, pero un sitio web corporativo suele tomar entre 2 y 4 semanas.</p></details>
+            <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿Trabajan con adelantos y entregas parciales?</summary><p className="mt-3 text-gray-600">Sí. Definimos hitos y entregables para que tengas visibilidad desde el inicio.</p></details>
+            <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿Incluyen soporte después del lanzamiento?</summary><p className="mt-3 text-gray-600">Sí. Podemos acompañarte con ajustes, mejoras, seguridad y mantenimiento continuo.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" className="relative overflow-hidden bg-gray-950 py-24 text-white">
+        <Image src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=85" alt="Reunión de planificación para un proyecto digital" fill className="object-cover opacity-18" sizes="100vw" />
+        <div className="absolute inset-0 bg-gray-950/84" />
+        <div className="relative container mx-auto px-4">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <p className="section-kicker border-white/10 bg-white/10 text-primary-100">Contacto</p>
+              <h2 className="mt-5 text-4xl font-extrabold md:text-5xl">Hablemos de lo que tu negocio necesita resolver.</h2>
+              <p className="mt-5 text-gray-300">Atención remota para pymes en Ecuador, con coordinación directa desde Guayaquil.</p>
+              <div className="mt-8 space-y-4 text-gray-300">
+                <p><strong className="text-white">Teléfono y WhatsApp:</strong> +593 98 695 1419</p>
+                <p><strong className="text-white">Email:</strong> contacto@mancarsoftware.com</p>
+              </div>
+              <a href="https://wa.me/593986951419?text=Hola%20quiero%20una%20asesoria" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-white px-7 py-3 font-semibold text-gray-950 transition hover:bg-primary-100">
+                Escribir por WhatsApp
+              </a>
+            </div>
+            <div className="rounded-[2rem] border border-white/10 bg-white p-6 text-gray-900 shadow-2xl shadow-black/25">
+              <h3 className="text-xl font-bold">Envíanos un mensaje</h3>
+              <form className="mt-5 space-y-4">
+                <div>
+                  <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700">Nombre</label>
+                  <input type="text" id="nombre" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Tu nombre" />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700">Email</label>
+                  <input type="email" id="email" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="tu@email.com" />
+                </div>
+                <div>
+                  <label htmlFor="mensaje" className="block text-sm font-semibold text-gray-700">Mensaje</label>
+                  <textarea id="mensaje" rows={4} className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Cuéntanos qué quieres construir o mejorar"></textarea>
+                </div>
+                <button type="submit" className="w-full rounded-full bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-primary-800">Enviar mensaje</button>
+              </form>
+              <p className="mt-4 text-center text-xs text-gray-500">También puedes escribirnos por WhatsApp si prefieres una respuesta más directa.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {selectedCase !== null && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCase(null)}>
+          <div role="dialog" aria-modal="true" className="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-3xl">{serviceDetails[selectedService].icon}</span>
-                  <h3 className="text-2xl font-bold text-gray-800">{serviceDetails[selectedService].title}</h3>
-                </div>
-                <button
-                  onClick={() => setSelectedService(null)}
-                  className="text-gray-400 hover:text-gray-600 text-2xl"
-                >
-                  ✕
-                </button>
+                <h3 className="text-2xl font-bold text-gray-950">{successCases[selectedCase].title}</h3>
+                <button onClick={() => setSelectedCase(null)} className="text-gray-400 hover:text-gray-600 text-2xl">×</button>
               </div>
-              <p className="text-gray-600 mb-6">{serviceDetails[selectedService].fullDescription}</p>
-              <h4 className="font-semibold text-gray-800 mb-2">Características destacadas:</h4>
-              <ul className="list-disc pl-5 mb-6 space-y-1 text-gray-600">
-                {serviceDetails[selectedService].features.map((feature, idx) => (
-                  <li key={idx}>{feature}</li>
-                ))}
-              </ul>
-              <div className="flex justify-end">
-                <a
-                  href="#contacto"
-                  onClick={() => setSelectedService(null)}
-                  className="bg-primary-700 hover:bg-primary-800 text-white font-medium py-2 px-4 rounded-lg transition shadow-md"
-                >
-                  Quiero esta solución
-                </a>
+              <p className="text-gray-600 mb-5">{successCases[selectedCase].summary}</p>
+              <div className="space-y-4 text-gray-700">
+                <div><h4 className="font-semibold text-gray-950">Perfil del cliente</h4><p>{successCases[selectedCase].clientProfile}</p></div>
+                <div><h4 className="font-semibold text-gray-950">Desafío</h4><p>{successCases[selectedCase].challenge}</p></div>
+                <div><h4 className="font-semibold text-gray-950">Solución implementada</h4><p>{successCases[selectedCase].solution}</p></div>
+                <div>
+                  <h4 className="font-semibold text-gray-950">Resultados</h4>
+                  <ul className="list-disc pl-5 space-y-1">{successCases[selectedCase].results.map((result, idx) => <li key={idx}>{result}</li>)}</ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-950">Tecnologías y enfoque</h4>
+                  <div className="flex flex-wrap gap-2 mt-2">{successCases[selectedCase].technologies.map((item) => <span key={item} className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full border border-primary-100">{item}</span>)}</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      <a
-        href="https://wa.me/593986951419?text=Hola%20quiero%20una%20asesoria"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Abrir WhatsApp"
-        onClick={() => trackEvent('cta_whatsapp_floating', { position: 'floating' })}
-        className="fixed bottom-6 right-6 z-40 md:hidden bg-secondary-600 text-white px-4 py-3 rounded-full shadow-lg"
-      >
+      {selectedService !== null && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedService(null)}>
+          <div role="dialog" aria-modal="true" className="bg-white rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-2xl font-bold text-gray-950">{serviceDetails[selectedService].title}</h3>
+                <button onClick={() => setSelectedService(null)} className="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+              </div>
+              <p className="text-gray-600 mb-6">{serviceDetails[selectedService].fullDescription}</p>
+              <h4 className="font-semibold text-gray-950 mb-2">Características destacadas</h4>
+              <ul className="list-disc pl-5 mb-6 space-y-1 text-gray-600">{serviceDetails[selectedService].features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+              <div className="flex justify-end">
+                <a href="#contacto" onClick={() => setSelectedService(null)} className="bg-gray-950 hover:bg-primary-800 text-white font-medium py-2 px-5 rounded-full transition">Quiero esta solución</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <a href="https://wa.me/593986951419?text=Hola%20quiero%20una%20asesoria" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp" onClick={() => trackEvent('cta_whatsapp_floating', { position: 'floating' })} className="fixed bottom-6 right-6 z-40 md:hidden bg-gray-950 text-white px-4 py-3 rounded-full shadow-lg">
         WhatsApp
       </a>
-
     </main>
   );
 }

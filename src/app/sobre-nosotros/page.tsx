@@ -20,9 +20,9 @@ const teamMembers = [
     strengths: ['React', 'Tailwind CSS', 'Accesibilidad', 'Diseño responsive']
   },
   {
-    name: 'Nombre temporal',
-    role: 'Desarrollador Backend',
-    initials: 'NB',
+    name: 'Equipo Backend Mancar',
+    role: 'Desarrollo Backend y Automatización',
+    initials: 'MB',
     description: 'Construye servicios confiables para que cada sistema sea seguro, ordenado y fácil de mantener a largo plazo.',
     strengths: ['APIs', 'Bases de datos', 'Seguridad', 'Automatización']
   }
@@ -30,74 +30,75 @@ const teamMembers = [
 
 export default function SobreNosotrosPage() {
   return (
-    <main className="bg-white py-16">
+    <main className="bg-gray-50 py-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6">Sobre nosotros</h1>
-        <div className="grid md:grid-cols-2 gap-12">
+        <section className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="text-gray-600 mb-4">
-              En <strong>Mancar Software</strong> somos un equipo pequeño pero apasionado por la tecnología.
-              Creemos que las soluciones digitales deben ser accesibles, funcionales y hechas a la medida de cada negocio.
+            <p className="section-kicker">Sobre nosotros</p>
+            <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">
+              Tecnología con criterio, cercanía y responsabilidad.
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              En <strong>Mancar Software</strong> ayudamos a pymes de Ecuador a convertir ideas y procesos en soluciones digitales claras, mantenibles y orientadas a resultados.
             </p>
-            <p className="text-gray-600 mb-4">
-              Nuestra misión es ayudarte a crecer mediante herramientas tecnológicas que simplifiquen tus procesos y potencien tu presencia digital.
+            <p className="mt-4 text-lg leading-8 text-gray-600">
+              Trabajamos con comunicación directa, entregas por etapas y decisiones técnicas explicadas sin complicar lo necesario.
             </p>
-            <p className="text-gray-600 mb-4">
-              Trabajamos con metodologías ágiles y comunicación directa. Cada proyecto recibe la misma dedicación, sin importar el tamaño.
-            </p>
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-3">Nuestros valores</h2>
-            <ul className="list-disc pl-5 text-gray-600 space-y-1">
-              <li><strong>Cercanía:</strong> Estamos siempre disponibles para escucharte.</li>
-              <li><strong>Transparencia:</strong> Comunicación clara y honesta.</li>
-              <li><strong>Compromiso:</strong> Nos involucramos como si fuera nuestro propio proyecto.</li>
-              <li><strong>Calidad:</strong> Buscamos la excelencia en cada detalle.</li>
-            </ul>
           </div>
-          <div>
-            <div className="bg-primary-50 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Datos que nos respaldan</h3>
-              <div className="flex justify-between gap-4 mt-4">
-                <div><div className="text-3xl font-bold text-primary-600">+2</div><div className="text-gray-500">años de experiencia</div></div>
-                <div><div className="text-3xl font-bold text-primary-600">+15</div><div className="text-gray-500">proyectos entregados</div></div>
-                <div><div className="text-3xl font-bold text-primary-600">100%</div><div className="text-gray-500">atención personalizada</div></div>
-              </div>
+          <div className="rounded-[2rem] bg-gray-950 p-7 text-white shadow-2xl shadow-gray-900/15">
+            <h2 className="text-2xl font-bold">Datos que nos respaldan</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              <div><div className="text-4xl font-extrabold text-primary-200">+2</div><div className="mt-1 text-sm text-gray-300">años de experiencia</div></div>
+              <div><div className="text-4xl font-extrabold text-primary-200">+15</div><div className="mt-1 text-sm text-gray-300">proyectos entregados</div></div>
+              <div><div className="text-4xl font-extrabold text-primary-200">100%</div><div className="mt-1 text-sm text-gray-300">atención personalizada</div></div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <section id="equipo" className="mt-16 pt-12 border-t border-gray-100">
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestro equipo de desarrolladores</h2>
-            <p className="text-gray-600">
+        <section className="mt-16 grid gap-5 md:grid-cols-4">
+          {[
+            ['Cercanía', 'Escuchamos antes de proponer.'],
+            ['Transparencia', 'Hablamos claro sobre alcance, tiempos y prioridades.'],
+            ['Compromiso', 'Nos involucramos como aliados del proyecto.'],
+            ['Calidad', 'Cuidamos diseño, rendimiento, seguridad y mantenimiento.'],
+          ].map(([title, text]) => (
+            <article key={title} className="soft-card p-6">
+              <h2 className="text-lg font-bold text-gray-950">{title}</h2>
+              <p className="mt-3 text-sm leading-6 text-gray-600">{text}</p>
+            </article>
+          ))}
+        </section>
+
+        <section id="equipo" className="mt-16 scroll-mt-24 border-t border-gray-200 pt-12">
+          <div className="mx-auto mb-10 max-w-3xl text-center">
+            <p className="section-kicker mx-auto">Equipo</p>
+            <h2 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-5xl">Nuestro equipo de desarrolladores</h2>
+            <p className="mt-4 text-gray-600">
               Personas cercanas, criterio técnico y comunicación clara para construir soluciones confiables desde el primer contacto.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member) => (
-              <article key={`${member.name}-${member.role}`} className="bg-white rounded-xl shadow-md border border-gray-100 p-6 h-full">
+              <article key={`${member.name}-${member.role}`} className="soft-card p-7">
                 {member.image ? (
                   <Image
                     src={member.image}
                     alt={`Foto de ${member.name}`}
-                    width={96}
-                    height={96}
-                    className={`w-24 h-24 rounded-full object-cover ${member.imagePosition} mb-5 border border-primary-100`}
+                    width={108}
+                    height={108}
+                    className={`mb-6 h-28 w-28 rounded-full border border-primary-100 object-cover ${member.imagePosition}`}
                   />
                 ) : (
-                  <div
-                    role="img"
-                    aria-label={`Placeholder de foto de ${member.name}`}
-                    className="w-24 h-24 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-2xl font-bold mb-5"
-                  >
+                  <div role="img" aria-label={`Placeholder de foto de ${member.name}`} className="mb-6 flex h-28 w-28 items-center justify-center rounded-full bg-primary-100 text-2xl font-extrabold text-primary-700">
                     {member.initials}
                   </div>
                 )}
-                <h3 className="text-xl font-semibold text-gray-800 mb-1">{member.name}</h3>
-                <p className="text-primary-700 font-medium text-sm mb-4">{member.role}</p>
-                <p className="text-gray-600 mb-5">{member.description}</p>
-                <ul className="flex flex-wrap gap-2" aria-label={`Fortalezas de ${member.name}`}>
+                <h3 className="text-2xl font-bold text-gray-950">{member.name}</h3>
+                <p className="mt-1 font-semibold text-primary-700">{member.role}</p>
+                <p className="mt-5 leading-7 text-gray-600">{member.description}</p>
+                <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Fortalezas de ${member.name}`}>
                   {member.strengths.map((strength) => (
-                    <li key={strength} className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full border border-primary-100">
+                    <li key={strength} className="rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-sm font-medium text-primary-700">
                       {strength}
                     </li>
                   ))}
