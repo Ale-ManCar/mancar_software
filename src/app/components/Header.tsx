@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-gray-50/90 backdrop-blur-xl">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="group flex items-center gap-2 text-xl font-extrabold tracking-tight text-gray-950">
+        <Link href="/" className="group flex min-h-11 items-center gap-2 text-xl font-extrabold tracking-tight text-gray-950">
           <Image
             src="/brand/mancar-mark.svg"
             alt="Logo de Mancar Software"
@@ -95,8 +95,8 @@ export default function Header() {
 
       {isMobileMenuOpen && (
         <>
-          <div className="fixed inset-0 bg-gray-950/55 z-40 lg:hidden" onClick={closeMobileMenu} />
-          <div className="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-50 lg:hidden overflow-y-auto">
+          <div className="fixed inset-0 z-40 min-h-dvh bg-gray-950/55 lg:hidden" onClick={closeMobileMenu} />
+          <div className="fixed inset-y-0 right-0 z-50 min-h-dvh w-[min(20rem,88vw)] overflow-y-auto bg-white shadow-2xl lg:hidden">
             <div className="flex items-center justify-between border-b border-gray-100 p-4">
               <div className="flex items-center gap-2">
                 <Image
@@ -115,21 +115,21 @@ export default function Header() {
               </button>
             </div>
             <nav className="flex flex-col gap-1 p-4">
-              <Link href="/sobre-nosotros" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Sobre nosotros</Link>
-              <Link href="/sobre-nosotros#equipo" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Equipo</Link>
-              <Link href="/etica-y-conducta" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Ética y conducta</Link>
-              <Link href="/politica-de-seguridad" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Política de seguridad</Link>
+              <Link href="/sobre-nosotros" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Sobre nosotros</Link>
+              <Link href="/sobre-nosotros#equipo" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Equipo</Link>
+              <Link href="/etica-y-conducta" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Ética y conducta</Link>
+              <Link href="/politica-de-seguridad" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Política de seguridad</Link>
               <div className="my-2 border-t border-gray-100"></div>
-              <Link href="/soluciones/diseno-web" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Diseño Web Profesional</Link>
-              <Link href="/soluciones/desarrollo-sistemas" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Desarrollo de Sistemas</Link>
-              <Link href="/soluciones/mantenimiento-soporte" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Mantenimiento y Soporte</Link>
-              <Link href="/soluciones/tiendas-virtuales" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Tiendas Virtuales</Link>
-              <Link href="/soluciones/optimizacion-consultoria" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Optimización y Consultoría</Link>
-              <Link href="/soluciones/acompanamiento-continuo" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Acompañamiento Continuo</Link>
+              <Link href="/soluciones/diseno-web" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Diseño Web Profesional</Link>
+              <Link href="/soluciones/desarrollo-sistemas" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Desarrollo de Sistemas</Link>
+              <Link href="/soluciones/mantenimiento-soporte" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Mantenimiento y Soporte</Link>
+              <Link href="/soluciones/tiendas-virtuales" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Tiendas Virtuales</Link>
+              <Link href="/soluciones/optimizacion-consultoria" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Optimización y Consultoría</Link>
+              <Link href="/soluciones/acompanamiento-continuo" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Acompañamiento Continuo</Link>
               <div className="my-2 border-t border-gray-100"></div>
-              <Link href="/aplicativos-empresariales" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Aplicativos Empresariales</Link>
-              <Link href="/soporte" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Soporte</Link>
-              <Link href="/contacto" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Contacto</Link>
+              <Link href="/aplicativos-empresariales" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Aplicativos Empresariales</Link>
+              <Link href="/soporte" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Soporte</Link>
+              <Link href="/contacto" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Contacto</Link>
             </nav>
           </div>
         </>

@@ -40,7 +40,7 @@ export default async function CasoPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-gray-50">
       <section className="page-hero container mx-auto px-4">
-        <Link href="/" className="font-semibold text-primary-700 hover:text-primary-900">Volver al inicio</Link>
+        <Link href="/" className="inline-flex min-h-11 items-center rounded-full border border-primary-100 bg-white px-4 font-semibold text-primary-700 hover:text-primary-900">Volver al inicio</Link>
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="section-kicker">Caso de referencia · {currentCase.category}</p>
