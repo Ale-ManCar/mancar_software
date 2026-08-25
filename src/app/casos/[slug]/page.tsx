@@ -1,18 +1,57 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { successCases } from '../../cases';
+import { type SuccessCase, successCases } from '../../cases';
 
 type Props = { params: Promise<{ slug: string }> };
 
-const caseImages: Record<string, string> = {
-  odontocare: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=85',
-  'vetcare-pro-lan': 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=1200&q=85',
-  'casa-nativa': 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85',
-  'nova-store': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85',
-  'alma-vet': 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=1200&q=85',
-};
+function CaseLogoHero({ currentCase }: { currentCase: SuccessCase }) {
+  return (
+    <div
+      className="relative min-h-[320px] overflow-hidden rounded-3xl border border-gray-100 p-8 shadow-2xl shadow-gray-950/10 md:min-h-[420px]"
+      style={{ background: currentCase.brand.background }}
+    >
+      <div
+        className="absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-15"
+        style={{ background: currentCase.brand.accent }}
+      />
+      <div
+        className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full opacity-10"
+        style={{ background: currentCase.brand.accent }}
+      />
+      <div className="relative flex h-full min-h-[260px] flex-col justify-between">
+        <div className="flex items-center justify-between gap-4">
+          <span
+            className="rounded-full border border-white/60 bg-white/70 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.18em]"
+            style={{ color: currentCase.brand.foreground }}
+          >
+            {currentCase.category}
+          </span>
+          <span className="rounded-full bg-white/70 px-4 py-2 text-xs font-extrabold text-gray-500">
+            {currentCase.liveUrl ? 'Demo online' : 'Caso privado'}
+          </span>
+        </div>
+        <div className="flex items-center gap-5">
+          <div
+            className="flex h-24 w-24 shrink-0 items-center justify-center rounded-[1.75rem] text-3xl font-extrabold shadow-2xl shadow-black/15"
+            style={{ background: currentCase.brand.accent, color: 'white' }}
+            aria-hidden="true"
+          >
+            {currentCase.icon}
+          </div>
+          <div>
+            <p className="text-sm font-extrabold uppercase tracking-[0.22em]" style={{ color: currentCase.brand.accent }}>
+              Mancar Software
+            </p>
+            <p className="mt-3 font-display text-4xl font-extrabold md:text-5xl" style={{ color: currentCase.brand.foreground }}>
+              {currentCase.title}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -42,7 +81,7 @@ export default async function CasoPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-gray-50">
       <section className="page-hero container mx-auto px-4">
-        <Link href="/" className="inline-flex min-h-11 items-center rounded-full border border-primary-100 bg-white px-4 font-semibold text-primary-700 hover:text-primary-900">Volver al inicio</Link>
+        <Link href="/casos" className="inline-flex min-h-11 items-center rounded-full border border-primary-100 bg-white px-4 font-semibold text-primary-700 hover:text-primary-900">Atrás</Link>
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="section-kicker">Caso de referencia · {currentCase.category}</p>
@@ -59,9 +98,7 @@ export default async function CasoPage({ params }: Props) {
               </a>
             )}
           </div>
-          <div className="image-frame h-[320px] md:h-[420px]">
-            <Image src={caseImages[currentCase.slug]} alt={`Imagen del caso ${currentCase.title}`} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
-          </div>
+          <CaseLogoHero currentCase={currentCase} />
         </div>
 
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">

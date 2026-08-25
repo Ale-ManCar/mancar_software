@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { successCases } from "../cases";
+import { type SuccessCase, successCases } from "../cases";
 
 export const metadata: Metadata = {
   title: "Portafolio de proyectos | Mancar Software",
@@ -13,6 +13,37 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+function CaseLogoPanel({ successCase }: { successCase: SuccessCase }) {
+  return (
+    <div
+      className="relative mb-5 overflow-hidden rounded-2xl border border-gray-100 p-5"
+      style={{ background: successCase.brand.background }}
+    >
+      <div
+        className="absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-15"
+        style={{ background: successCase.brand.accent }}
+      />
+      <div className="relative flex min-h-32 items-center gap-4">
+        <div
+          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-xl font-extrabold shadow-lg shadow-black/10"
+          style={{ background: successCase.brand.accent, color: "white" }}
+          aria-hidden="true"
+        >
+          {successCase.icon}
+        </div>
+        <div>
+          <p className="text-xs font-extrabold uppercase tracking-[0.18em]" style={{ color: successCase.brand.accent }}>
+            {successCase.category}
+          </p>
+          <p className="mt-2 font-display text-2xl font-extrabold" style={{ color: successCase.brand.foreground }}>
+            {successCase.title}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function CasesPage() {
   return (
@@ -31,6 +62,7 @@ export default function CasesPage() {
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {successCases.map((successCase) => (
             <article key={successCase.slug} className="soft-card flex h-full flex-col p-6">
+              <CaseLogoPanel successCase={successCase} />
               <div className="flex items-center justify-between gap-4">
                 <p className="text-sm font-extrabold text-primary-700">{successCase.category}</p>
                 <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-extrabold text-gray-500">

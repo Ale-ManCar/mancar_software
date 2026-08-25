@@ -12,6 +12,11 @@ export type SuccessCase = {
   timeline: string;
   category: 'Web' | 'Sistema' | 'Soporte';
   liveUrl?: string;
+  brand: {
+    accent: string;
+    background: string;
+    foreground: string;
+  };
 };
 
 export const successCases: SuccessCase[] = [
@@ -20,6 +25,11 @@ export const successCases: SuccessCase[] = [
     title: 'OdontoCare',
     icon: 'OC',
     category: 'Sistema',
+    brand: {
+      accent: '#22C7D8',
+      background: '#EAFBFF',
+      foreground: '#063B4A',
+    },
     summary:
       'Sistema odontológico desktop para clínicas que necesitan operar en Windows con datos locales, roles, pacientes, agenda, tratamientos, pagos y respaldos.',
     clientProfile: 'Clínicas odontológicas que requieren una herramienta instalable, privada y preparada para trabajo diario sin depender de una web pública.',
@@ -45,6 +55,11 @@ export const successCases: SuccessCase[] = [
     title: 'VetCare Pro LAN',
     icon: 'VP',
     category: 'Sistema',
+    brand: {
+      accent: '#0F9B9A',
+      background: '#EAF8F7',
+      foreground: '#053B3A',
+    },
     summary:
       'Sistema veterinario local para Windows con modo servidor LAN y clientes conectados dentro de la misma red de la clínica.',
     clientProfile: 'Clínicas veterinarias que trabajan con dos o más equipos y necesitan operar sin depender de internet o servicios en la nube.',
@@ -71,6 +86,11 @@ export const successCases: SuccessCase[] = [
     icon: 'CN',
     category: 'Web',
     liveUrl: 'https://mancarsoftware.github.io/muebleria/',
+    brand: {
+      accent: '#173F33',
+      background: '#F2F5EE',
+      foreground: '#173F33',
+    },
     summary:
       'Sitio comercial premium para una mueblería, con catálogo administrable, leads, analítica interna y asesoría de producto asistida por IA.',
     clientProfile: 'Negocio de muebles que necesita mostrar productos con una experiencia visual cuidada y captar oportunidades comerciales.',
@@ -97,6 +117,11 @@ export const successCases: SuccessCase[] = [
     icon: 'NS',
     category: 'Web',
     liveUrl: 'https://ale-mancar.github.io/tiendaOnline/',
+    brand: {
+      accent: '#FF5A45',
+      background: '#FFF4F1',
+      foreground: '#17181C',
+    },
     summary:
       'Ecommerce orientado a producción con vitrina, autenticación, carrito, checkout, panel administrativo y backend API conectado a base de datos.',
     clientProfile: 'Negocios que necesitan vender online con una experiencia moderna, catálogo administrable y arquitectura preparada para crecer.',
@@ -123,6 +148,11 @@ export const successCases: SuccessCase[] = [
     icon: 'AV',
     category: 'Web',
     liveUrl: 'https://mancarsoftware.github.io/veterinaria/',
+    brand: {
+      accent: '#FF003D',
+      background: '#EEF5FF',
+      foreground: '#08111F',
+    },
     summary:
       'Sitio web estático para veterinaria con backend ligero para recibir y validar solicitudes de citas.',
     clientProfile: 'Clínica veterinaria que necesita comunicar confianza, servicios y canales de atención de forma simple.',
