@@ -21,9 +21,8 @@ type FormState = {
 type SubmissionState =
   | { kind: "idle" }
   | { kind: "submitting" }
-  | { kind: "success"; message: string };
-
-const recipientEmail = "mancarsoftwares@gmail.com";
+  | { kind: "success"; message: string }
+  | { kind: "error"; message: string };
 
 const initialState: FormState = {
   name: "",
@@ -60,7 +59,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     if (submission.kind !== "idle") setSubmission({ kind: "idle" });
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const nextErrors: Record<string, string> = {};
 
@@ -81,38 +80,40 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
 
     setSubmission({ kind: "submitting" });
 
-    const subject = `Nueva solicitud web - ${form.projectType}`;
-    const body = [
-      "Hola Mancar Software, quiero solicitar información para mi proyecto.",
-      "",
-      `Nombre: ${form.name.trim()}`,
-      `Email: ${form.email.trim()}`,
-      `Teléfono: ${form.phone.trim()}`,
-      `Tipo de proyecto: ${form.projectType}`,
-      `Origen: ${source}`,
-      "",
-      "Mensaje:",
-      form.message.trim(),
-      "",
-      "Acepto que mis datos se utilicen para gestionar esta solicitud conforme a la Política de privacidad.",
-    ].join("\n");
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, source }),
+      });
+      const body = (await response.json().catch(() => ({}))) as { error?: string; fields?: Record<string, string> };
 
-    window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setForm(initialState);
-    setErrors({});
-    setSubmission({
-      kind: "success",
-      message: "Se abrió tu aplicación de correo con la solicitud lista para enviar a Mancar Software.",
-    });
+      if (!response.ok) {
+        if (body.fields) setErrors(body.fields);
+        throw new Error(body.error || "No pudimos enviar la solicitud. Inténtalo nuevamente.");
+      }
 
-    window.dispatchEvent(
-      new CustomEvent("mancar:analytics", {
-        detail: { event: "lead_form_email_start", source, projectType: form.projectType },
-      }),
-    );
-    const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
-    if (Array.isArray(dataLayer)) {
-      dataLayer.push({ event: "lead_form_email_start", source, projectType: form.projectType });
+      setForm(initialState);
+      setErrors({});
+      setSubmission({
+        kind: "success",
+        message: "Recibimos tu solicitud. Te responderemos pronto por correo o WhatsApp.",
+      });
+
+      window.dispatchEvent(
+        new CustomEvent("mancar:analytics", {
+          detail: { event: "lead_form_submit", source, projectType: form.projectType },
+        }),
+      );
+      const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
+      if (Array.isArray(dataLayer)) {
+        dataLayer.push({ event: "lead_form_submit", source, projectType: form.projectType });
+      }
+    } catch (error) {
+      setSubmission({
+        kind: "error",
+        message: error instanceof Error ? error.message : "No pudimos enviar la solicitud.",
+      });
     }
   };
 
@@ -247,12 +248,18 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         </p>
       )}
 
+      {submission.kind === "error" && (
+        <p aria-live="polite" className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
+          {submission.message}
+        </p>
+      )}
+
       <button
         type="submit"
         disabled={busy}
         className="w-full rounded-full bg-gray-950 px-5 py-3 font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
-        {busy ? "Preparando correo..." : submitLabel}
+        {busy ? "Enviando..." : submitLabel}
       </button>
     </form>
   );

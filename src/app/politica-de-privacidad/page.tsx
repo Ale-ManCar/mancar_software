@@ -3,7 +3,7 @@ import Image from 'next/image';
 const sections = [
   ['Datos que recopilamos', 'Podemos recopilar datos de contacto, información de navegación y mensajes enviados mediante el formulario de contacto.'],
   ['Uso de la información', 'Usamos la información para responder consultas, mejorar servicios, brindar soporte, medir el rendimiento del sitio y realizar análisis estadísticos.'],
-  ['Servicios externos', 'Podemos usar herramientas de analítica configuradas por Mancar Software y el cliente de correo del usuario para preparar solicitudes de contacto.'],
+  ['Servicios externos', 'Podemos usar proveedores de correo transaccional como Resend para enviar solicitudes de contacto y herramientas de analítica configuradas por Mancar Software.'],
   ['Conservación y seguridad', 'Aplicamos medidas técnicas y organizativas razonables para proteger tus datos y conservarlos solo durante el tiempo necesario.'],
   ['Tus derechos', 'Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a mancarsoftwares@gmail.com.'],
 ];
