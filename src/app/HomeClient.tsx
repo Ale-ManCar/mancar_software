@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { caseCategories, successCases } from './cases';
 import LeadForm from './components/LeadForm';
@@ -312,11 +313,9 @@ export default function HomeClient() {
               <article key={successCase.slug} className="soft-card p-6">
                 <div className="flex items-center justify-between gap-4">
                   <p className="text-sm font-extrabold text-primary-700">{successCase.category}</p>
-                  {successCase.liveUrl && (
-                    <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-extrabold text-gray-500">
-                      Demo
-                    </span>
-                  )}
+                  <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-extrabold text-gray-500">
+                    {successCase.liveUrl ? 'Demo' : 'Caso'}
+                  </span>
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-950">{successCase.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-gray-600">{successCase.summary}</p>
@@ -422,17 +421,26 @@ export default function HomeClient() {
                   <h4 className="font-semibold text-gray-950">Tecnologías y enfoque</h4>
                   <div className="mt-2 flex flex-wrap gap-2">{successCases[selectedCase].technologies.map((item) => <span key={item} className="rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-sm text-primary-700">{item}</span>)}</div>
                 </div>
-                {successCases[selectedCase].liveUrl && (
-                  <a
-                    href={successCases[selectedCase].liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackEvent('case_demo_open', { slug: successCases[selectedCase].slug })}
-                    className="inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    href={`/casos/${successCases[selectedCase].slug}`}
+                    onClick={() => trackEvent('case_detail_open', { slug: successCases[selectedCase].slug })}
+                    className="inline-flex justify-center rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
                   >
-                    Ver demo online
-                  </a>
-                )}
+                    Ver caso completo
+                  </Link>
+                  {successCases[selectedCase].liveUrl && (
+                    <a
+                      href={successCases[selectedCase].liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackEvent('case_demo_open', { slug: successCases[selectedCase].slug })}
+                      className="inline-flex justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-extrabold text-gray-950 transition hover:border-primary-200 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+                    >
+                      Ver demo online
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
