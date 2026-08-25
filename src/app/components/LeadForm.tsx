@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useCallback, useMemo, useState } from "react";
+import Link from "next/link";
 import TurnstileWidget from "./TurnstileWidget";
 
 type LeadFormProps = {
@@ -55,6 +56,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileReset, setTurnstileReset] = useState(0);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
+  const leadFunctionUrl = process.env.NEXT_PUBLIC_SUPABASE_LEAD_FUNCTION_URL || "";
   const busy = submission.kind === "submitting";
 
   const handleTurnstileToken = useCallback((token: string) => {
@@ -101,6 +103,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     if (!/^(?:\+593\s?)?0?9\d{8}$/.test(form.phone.replace(/\s|-/g, ""))) nextErrors.phone = "Ingresa un WhatsApp ecuatoriano válido.";
     if (form.message.trim().length < 12) nextErrors.message = "Describe brevemente qué necesitas resolver.";
     if (!form.consent) nextErrors.consent = "Acepta el uso de tus datos para responder la solicitud.";
+    if (!leadFunctionUrl) nextErrors.form = "El formulario todavía no está conectado al servidor de producción.";
     if (!turnstileSiteKey) nextErrors.turnstile = "La verificación de seguridad todavía no está configurada.";
     if (!turnstileToken) nextErrors.turnstile = "Completa la verificación de seguridad.";
 
@@ -110,7 +113,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     setSubmission({ kind: "submitting" });
 
     try {
-      const response = await fetch("/api/leads", {
+      const response = await fetch(leadFunctionUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, source, turnstileToken }),
@@ -255,34 +258,45 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         />
       </label>
 
-      <label className="flex gap-3 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm leading-6 text-gray-600">
+      <label className="flex items-start gap-4 text-base leading-6 text-gray-700">
         <input
           type="checkbox"
           checked={form.consent}
           onChange={(event) => updateField("consent", event.target.checked)}
-          className="mt-1 h-4 w-4 rounded border-gray-300 text-primary-700 focus:ring-primary-300"
+          className="mt-0.5 h-6 w-6 shrink-0 rounded border-gray-300 text-primary-700 focus:ring-primary-300"
           aria-invalid={!!errors.consent}
           required
         />
         <span>
-          Acepto que Mancar Software use estos datos únicamente para responder mi solicitud y dar seguimiento a esta conversación.
+          Acepto que mis datos se utilicen para gestionar esta solicitud conforme a la{" "}
+          <Link href="/politica-de-privacidad" className="font-extrabold text-primary-800 underline underline-offset-2 hover:text-primary-950">
+            Política de privacidad
+          </Link>
+          .
         </span>
       </label>
       {errors.consent && <p className="text-sm font-medium text-secondary-700">{errors.consent}</p>}
 
       {turnstileSiteKey ? (
-        <TurnstileWidget
-          siteKey={turnstileSiteKey}
-          resetKey={turnstileReset}
-          onToken={handleTurnstileToken}
-          onExpire={() => setErrors((current) => ({ ...current, turnstile: "La verificación venció. Inténtalo nuevamente." }))}
-        />
+        <div className="max-w-full overflow-x-auto">
+          <TurnstileWidget
+            siteKey={turnstileSiteKey}
+            resetKey={turnstileReset}
+            onToken={handleTurnstileToken}
+            onExpire={() => setErrors((current) => ({ ...current, turnstile: "La verificación venció. Inténtalo nuevamente." }))}
+          />
+        </div>
       ) : (
         <p className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
           La verificación de seguridad todavía no está configurada.
         </p>
       )}
       {errors.turnstile && <p className="text-sm font-medium text-secondary-700">{errors.turnstile}</p>}
+      {errors.form && (
+        <p className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
+          {errors.form}
+        </p>
+      )}
 
       {submission.kind === "error" && (
         <p aria-live="polite" className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
@@ -298,7 +312,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
 
       <button
         type="submit"
-        disabled={busy || !turnstileSiteKey}
+        disabled={busy || !turnstileSiteKey || !leadFunctionUrl}
         className="w-full rounded-full bg-gray-950 px-5 py-3 font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
         {busy ? "Enviando..." : submitLabel}

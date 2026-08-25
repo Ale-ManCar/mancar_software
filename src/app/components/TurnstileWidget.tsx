@@ -59,6 +59,8 @@ export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }
       containerRef.current.innerHTML = "";
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
+        theme: "light",
+        size: "normal",
         callback: onToken,
         "expired-callback": () => {
           onToken("");
@@ -76,5 +78,5 @@ export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }
     };
   }, [siteKey, resetKey, onToken, onExpire]);
 
-  return <div ref={containerRef} className="min-h-[65px]" />;
+  return <div ref={containerRef} className="min-h-[65px] w-fit max-w-full" />;
 }
