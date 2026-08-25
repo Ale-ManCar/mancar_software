@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 type SolutionPageProps = {
   kicker: string;
@@ -21,9 +20,6 @@ export default function SolutionPage({ kicker, title, description, secondary, im
             <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">{title}</h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">{description}</p>
             <p className="mt-4 text-lg leading-8 text-gray-600">{secondary}</p>
-            <Link href="/contacto" className="btn-primary mt-8">
-              Solicitar diagnóstico gratuito
-            </Link>
           </div>
           <div className="image-frame h-[320px] md:h-[470px]">
             <Image src={image} alt={imageAlt} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
@@ -44,11 +40,6 @@ export default function SolutionPage({ kicker, title, description, secondary, im
               <p className="mt-3 text-sm leading-6 text-gray-600">Aplicado con una estructura simple, mantenible y pensada para usuarios reales.</p>
             </article>
           ))}
-        </div>
-        <div className="mt-10 rounded-2xl bg-white p-6 text-center shadow-sm md:p-8">
-          <h2 className="text-2xl font-bold text-gray-950">¿Quieres aterrizar esta solución a tu negocio?</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-gray-600">Cuéntanos tu caso y te orientamos sobre alcance, tiempos y prioridad de implementación.</p>
-          <Link href="/contacto" className="btn-secondary mt-6">Hablar con Mancar Software</Link>
         </div>
       </section>
     </main>

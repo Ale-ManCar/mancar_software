@@ -127,11 +127,11 @@ export default function HomeClient() {
                 En Mancar Software diseñamos presencia digital, sistemas a medida y tiendas virtuales para empresas que necesitan verse mejor y trabajar con más control.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#contacto" className="btn-primary" onClick={() => trackEvent('cta_hero_contact', { position: 'hero' })}>
-                  Solicitar diagnóstico gratuito
-                </a>
-                <a href="#servicios" className="btn-secondary">
+                <a href="#servicios" className="btn-primary">
                   Ver soluciones
+                </a>
+                <a href="#metodo" className="btn-secondary">
+                  Ver método de trabajo
                 </a>
               </div>
               <div className="mt-10 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
@@ -162,7 +162,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 md:py-20">
+      <section id="metodo" className="bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <p className="section-kicker mx-auto">Por qué importa</p>
@@ -278,13 +278,6 @@ export default function HomeClient() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#contacto"
-                  className={`mt-6 inline-flex font-extrabold ${index === 1 ? 'text-primary-700' : 'text-primary-200'}`}
-                  onClick={() => trackEvent('cta_plan_contact', { plan: plan.name })}
-                >
-                  Cotizar este plan
-                </a>
               </article>
             ))}
           </div>
@@ -388,17 +381,9 @@ export default function HomeClient() {
                 <p><strong className="text-white">WhatsApp:</strong> +593 98 695 1419</p>
                 <p><strong className="text-white">Email:</strong> contacto@mancarsoftware.com</p>
               </div>
-              <a
-                href="https://wa.me/593986951419?text=Hola%20quiero%20una%20asesoria"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary mt-8"
-              >
-                Escribir por WhatsApp
-              </a>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white p-6 text-gray-900 shadow-2xl shadow-black/25">
-              <h3 className="text-2xl font-bold">Solicita tu diagnóstico</h3>
+              <h3 className="text-2xl font-bold">Cuéntanos tu caso</h3>
               <p className="mt-2 text-sm leading-6 text-gray-600">
                 El formulario abre WhatsApp con tu solicitud organizada para responderte con mayor precisión.
               </p>
@@ -447,24 +432,11 @@ export default function HomeClient() {
               <p className="mb-6 text-gray-600">{serviceDetails[selectedService].fullDescription}</p>
               <h4 className="mb-2 font-semibold text-gray-950">Características destacadas</h4>
               <ul className="mb-6 list-disc space-y-1 pl-5 text-gray-600">{serviceDetails[selectedService].features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-              <div className="flex justify-end">
-                <a href="#contacto" onClick={() => setSelectedService(null)} className="btn-primary">Cotizar esta solución</a>
-              </div>
             </div>
           </div>
         </div>
       )}
 
-      <a
-        href="https://wa.me/593986951419?text=Hola%20quiero%20una%20asesoria"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Abrir WhatsApp"
-        onClick={() => trackEvent('cta_whatsapp_floating', { position: 'floating' })}
-        className="fixed bottom-6 right-6 z-40 rounded-full bg-gray-950 px-4 py-3 font-bold text-white shadow-lg md:hidden"
-      >
-        WhatsApp
-      </a>
     </main>
   );
 }

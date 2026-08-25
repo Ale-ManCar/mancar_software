@@ -31,14 +31,14 @@ const projectTypes = [
   "No estoy seguro",
 ];
 
-export default function LeadForm({ source, submitLabel = "Solicitar diagnóstico gratuito" }: LeadFormProps) {
+export default function LeadForm({ source, submitLabel = "Enviar mensaje por WhatsApp" }: LeadFormProps) {
   const [form, setForm] = useState<FormState>(initialState);
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
 
   const whatsappUrl = useMemo(() => {
     const text = [
-      "Hola Mancar Software, quiero solicitar un diagnóstico para mi proyecto.",
+      "Hola Mancar Software, quiero orientación para mi proyecto.",
       `Nombre: ${form.name || "-"}`,
       `Email: ${form.email || "-"}`,
       `Teléfono: ${form.phone || "-"}`,

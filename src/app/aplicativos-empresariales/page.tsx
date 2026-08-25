@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 const features = [
   ['Inventarios', 'Control de stock, movimientos, alertas de reposición y reportes para dejar atrás hojas sueltas.'],
@@ -28,10 +27,6 @@ export default function AplicativosPage() {
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Diseñamos software personalizado para que tu empresa reduzca trabajo manual, centralice información y tenga procesos más fáciles de seguir.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contacto" className="btn-primary">Solicitar diagnóstico</Link>
-              <Link href="/soluciones/desarrollo-sistemas" className="btn-secondary">Ver sistemas a medida</Link>
-            </div>
           </div>
           <div className="image-frame h-[340px] md:h-[480px]">
             <Image

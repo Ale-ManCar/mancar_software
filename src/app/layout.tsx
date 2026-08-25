@@ -37,17 +37,6 @@ export default function RootLayout({
         {children}
         <footer className="dark-section border-t border-white/10 pt-14 pb-8 text-white">
           <div className="container mx-auto px-4">
-            <div className="mb-10 rounded-2xl border border-white/10 bg-white/8 p-6 md:flex md:items-center md:justify-between md:gap-8">
-              <div>
-                <h2 className="text-2xl font-bold">¿Listo para mejorar tu presencia digital?</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-300">
-                  Agenda un diagnóstico y conversemos sobre la mejor ruta para tu web, sistema o tienda virtual.
-                </p>
-              </div>
-              <Link href="/contacto" className="mt-5 inline-flex rounded-full bg-white px-5 py-3 font-extrabold text-gray-950 transition hover:bg-primary-100 md:mt-0">
-                Solicitar diagnóstico
-              </Link>
-            </div>
             <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
               <div className="md:col-span-1">
                 <div className="flex items-center gap-2 text-xl font-extrabold tracking-tight">

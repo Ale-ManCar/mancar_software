@@ -83,7 +83,7 @@ export default function Header() {
 
           <Link href="/aplicativos-empresariales" className={linkClass}>Aplicativos</Link>
           <Link href="/soporte" className={linkClass}>Soporte</Link>
-          <Link href="/contacto" className="ml-2 rounded-full bg-gray-950 px-5 py-2 text-sm font-extrabold text-white shadow-lg shadow-gray-900/10 transition hover:bg-primary-700">Diagnóstico gratis</Link>
+          <Link href="/contacto" className={linkClass}>Contacto</Link>
         </nav>
 
         <button onClick={() => setIsMobileMenuOpen(true)} aria-label="Abrir menú" className="lg:hidden rounded-full border border-gray-200 p-2 text-gray-700">
@@ -129,7 +129,7 @@ export default function Header() {
               <div className="my-2 border-t border-gray-100"></div>
               <Link href="/aplicativos-empresariales" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Aplicativos Empresariales</Link>
               <Link href="/soporte" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Soporte</Link>
-              <Link href="/contacto" className="mt-3 rounded-full bg-gray-950 px-4 py-3 text-center font-extrabold text-white" onClick={closeMobileMenu}>Diagnóstico gratis</Link>
+              <Link href="/contacto" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Contacto</Link>
             </nav>
           </div>
         </>

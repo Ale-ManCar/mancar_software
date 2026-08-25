@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LeadForm from "../components/LeadForm";
 
 export const metadata: Metadata = {
-  title: "Contacto y diagnóstico gratuito",
+  title: "Contacto",
   description:
     "Agenda una orientación inicial con Mancar Software para desarrollo web, sistemas a medida, tiendas virtuales o soporte para pymes en Ecuador.",
 };
@@ -35,9 +35,6 @@ export default function ContactoPage() {
                 <p className="mt-1">contacto@mancarsoftware.com</p>
               </div>
             </div>
-            <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-white px-6 py-3 font-extrabold text-gray-950 transition hover:bg-primary-100">
-              Hablemos por WhatsApp
-            </a>
           </div>
           <div className="soft-card p-8">
             <h2 className="text-2xl font-bold text-gray-950">Solicita una orientación inicial</h2>

@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 const supportCards = [
   ['Sitio caído o lento', 'Revisamos disponibilidad, errores visibles, hosting y configuración básica.'],
   ['Errores en formularios', 'Validamos envíos, WhatsApp, correos y datos que llegan incompletos.'],
@@ -17,12 +15,6 @@ export default function SoportePage() {
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Si tu sitio, tienda o sistema necesita atención, te ayudamos a diagnosticar el problema y definir el siguiente paso con claridad.
           </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Escribir por WhatsApp
-            </a>
-            <Link href="/contacto" className="btn-secondary">Enviar solicitud</Link>
-          </div>
         </div>
       </section>
 
@@ -35,7 +27,7 @@ export default function SoportePage() {
           </div>
           <div className="soft-card p-6">
             <h2 className="text-xl font-bold text-gray-950">WhatsApp</h2>
-            <a href="https://wa.me/593986951419" className="mt-4 inline-flex font-bold text-primary-700 hover:underline">+593 98 695 1419</a>
+            <p className="mt-4 font-bold text-primary-700">+593 98 695 1419</p>
           </div>
           <div className="soft-card p-6">
             <h2 className="text-xl font-bold text-gray-950">Correo</h2>
