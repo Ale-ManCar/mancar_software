@@ -10,14 +10,14 @@ const items = [
 
 export default function AvisoLegalPage() {
   return (
-    <main className="min-h-screen bg-gray-50 py-16">
-      <section className="container mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-900/12">
+    <main className="min-h-screen bg-gray-50 py-16 md:py-20">
+      <section className="container mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[0.82fr_1.18fr]">
+        <div className="image-frame min-h-[320px] lg:min-h-[520px]">
           <Image src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=85" alt="Documento legal y acuerdos profesionales" fill className="object-cover" sizes="(min-width: 1024px) 40vw, 100vw" />
         </div>
-        <div className="soft-card p-8 md:p-10">
+        <div className="content-panel">
           <p className="section-kicker">Legal</p>
-          <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-950 md:text-5xl">Aviso legal</h1>
+          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-5xl">Aviso legal</h1>
           <div className="mt-8 space-y-4 text-gray-700">
             {items.map((item) => <p key={item} className="leading-7">{item}</p>)}
           </div>

@@ -35,7 +35,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-gray-50/90 backdrop-blur-xl">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="group flex items-center gap-2 text-xl font-extrabold tracking-tight text-gray-950">
           <Image
             src="/brand/mancar-mark.svg"
@@ -48,7 +48,7 @@ export default function Header() {
           <span className="font-display">Mancar<span className="text-primary-700">Software</span></span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden min-w-0 items-center gap-1 lg:flex">
           <div className="relative">
             <button onClick={() => toggleDropdown("nosotros")} className={`${linkClass} flex items-center gap-1`}>
               ¿Por qué nosotros?
@@ -81,7 +81,7 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/aplicativos-empresariales" className={linkClass}>Aplicativos Empresariales</Link>
+          <Link href="/aplicativos-empresariales" className={linkClass}>Aplicativos</Link>
           <Link href="/soporte" className={linkClass}>Soporte</Link>
           <Link href="/contacto" className="ml-2 rounded-full bg-gray-950 px-5 py-2 text-sm font-extrabold text-white shadow-lg shadow-gray-900/10 transition hover:bg-primary-700">Diagnóstico gratis</Link>
         </nav>

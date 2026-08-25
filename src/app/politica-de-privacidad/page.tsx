@@ -9,14 +9,14 @@ const sections = [
 
 export default function PoliticaPrivacidadPage() {
   return (
-    <main className="min-h-screen bg-gray-50 py-16">
-      <section className="container mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-900/12">
+    <main className="min-h-screen bg-gray-50 py-16 md:py-20">
+      <section className="container mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[0.82fr_1.18fr]">
+        <div className="image-frame min-h-[320px] lg:min-h-[520px]">
           <Image src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=85" alt="Privacidad y protección de información digital" fill className="object-cover" sizes="(min-width: 1024px) 40vw, 100vw" />
         </div>
-        <div className="soft-card p-8 md:p-10">
+        <div className="content-panel">
           <p className="section-kicker">Privacidad</p>
-          <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-950 md:text-5xl">Política de privacidad</h1>
+          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-5xl">Política de privacidad</h1>
           <p className="mt-5 leading-7 text-gray-600">En Mancar Software protegemos la información personal de usuarios y clientes con un enfoque responsable y transparente.</p>
           <div className="mt-8 space-y-6">
             {sections.map(([title, text]) => (

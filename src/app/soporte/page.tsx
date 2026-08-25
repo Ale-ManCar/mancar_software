@@ -1,37 +1,65 @@
+import Link from 'next/link';
+
+const supportCards = [
+  ['Sitio caído o lento', 'Revisamos disponibilidad, errores visibles, hosting y configuración básica.'],
+  ['Errores en formularios', 'Validamos envíos, WhatsApp, correos y datos que llegan incompletos.'],
+  ['Actualizaciones y seguridad', 'Aplicamos mejoras, copias de seguridad y prevención de incidencias.'],
+  ['Mejoras pequeñas', 'Ajustamos textos, secciones, estilos, contenido o funcionalidades puntuales.'],
+];
+
 export default function SoportePage() {
   return (
-    <main className="bg-gray-50 py-16">
-      <div className="container mx-auto px-4">
-        <section className="max-w-3xl">
-          <p className="section-kicker">Soporte</p>
-          <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">Soporte técnico claro y directo</h1>
+    <main className="bg-gray-50">
+      <section className="page-hero container mx-auto px-4">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="section-kicker mx-auto">Soporte</p>
+          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Soporte técnico claro y directo.</h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Si tu sitio, tienda o sistema necesita atención, te ayudamos a diagnosticar el problema y definir el siguiente paso con claridad.
           </p>
-        </section>
-        <section className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="soft-card p-7">
-            <h2 className="text-2xl font-bold text-gray-950">Teléfono</h2>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              Escribir por WhatsApp
+            </a>
+            <Link href="/contacto" className="btn-secondary">Enviar solicitud</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 pb-16 md:pb-20">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="soft-card p-6">
+            <h2 className="text-xl font-bold text-gray-950">Teléfono</h2>
             <p className="mt-4 text-gray-600">+593 98 695 1419</p>
             <p className="mt-1 text-sm text-gray-500">Lunes a viernes, 9:00 a 18:00</p>
           </div>
-          <div className="soft-card p-7">
-            <h2 className="text-2xl font-bold text-gray-950">WhatsApp</h2>
-            <a href="https://wa.me/593986951419" className="mt-4 inline-flex text-primary-700 hover:underline">+593 98 695 1419</a>
+          <div className="soft-card p-6">
+            <h2 className="text-xl font-bold text-gray-950">WhatsApp</h2>
+            <a href="https://wa.me/593986951419" className="mt-4 inline-flex font-bold text-primary-700 hover:underline">+593 98 695 1419</a>
           </div>
-          <div className="soft-card p-7">
-            <h2 className="text-2xl font-bold text-gray-950">Correo electrónico</h2>
+          <div className="soft-card p-6">
+            <h2 className="text-xl font-bold text-gray-950">Correo</h2>
             <p className="mt-4 text-gray-600">soporte@mancarsoftware.com</p>
           </div>
-          <div className="soft-card p-7">
-            <h2 className="text-2xl font-bold text-gray-950">Preguntas frecuentes</h2>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-gray-600">
-              <li><strong>¿Cuánto tarda un desarrollo web?</strong> Un sitio corporativo suele tomar entre 2 y 4 semanas.</li>
-              <li><strong>¿Ofrecen mantenimiento?</strong> Sí. Podemos acompañarte con mejoras, seguridad, respaldos y soporte continuo.</li>
-            </ul>
+          <div className="soft-card p-6">
+            <h2 className="text-xl font-bold text-gray-950">Respuesta</h2>
+            <p className="mt-4 text-gray-600">Priorizamos incidentes que afectan ventas, formularios o disponibilidad.</p>
           </div>
-        </section>
-      </div>
+        </div>
+
+        <div className="mt-12 mx-auto max-w-3xl text-center">
+          <p className="section-kicker mx-auto">Casos comunes</p>
+          <h2 className="section-title">Te ayudamos a recuperar estabilidad.</h2>
+        </div>
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {supportCards.map(([title, text]) => (
+            <article key={title} className="soft-card p-7">
+              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
+              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

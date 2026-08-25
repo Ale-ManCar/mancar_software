@@ -30,12 +30,12 @@ const teamMembers = [
 
 export default function SobreNosotrosPage() {
   return (
-    <main className="overflow-hidden bg-gray-50 py-16 md:py-20">
+    <main className="overflow-hidden bg-gray-50">
       <div className="container mx-auto px-4">
-        <section className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+        <section className="page-hero grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="section-kicker">Sobre nosotros</p>
-            <h1 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-6xl">
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">
               Tecnología con criterio, cercanía y responsabilidad.
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -46,7 +46,7 @@ export default function SobreNosotrosPage() {
             </p>
           </div>
           <div className="image-frame bg-gray-950">
-            <div className="relative h-72">
+            <div className="relative h-80 md:h-[420px]">
               <Image src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85" alt="Equipo colaborando en una planificación digital" fill className="object-cover opacity-80" sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
             <div className="p-7 text-white">
@@ -60,7 +60,7 @@ export default function SobreNosotrosPage() {
           </div>
         </section>
 
-        <section className="mt-16 grid gap-5 md:grid-cols-4">
+        <section className="grid gap-5 pb-16 md:grid-cols-4 md:pb-20">
           {[
             ['Cercanía', 'Escuchamos antes de proponer.'],
             ['Transparencia', 'Hablamos claro sobre alcance, tiempos y prioridades.'],
@@ -74,11 +74,11 @@ export default function SobreNosotrosPage() {
           ))}
         </section>
 
-        <section id="equipo" className="mt-16 scroll-mt-24 border-t border-gray-200 pt-12">
+        <section id="equipo" className="scroll-mt-24 border-t border-gray-200 py-16 md:py-20">
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <p className="section-kicker mx-auto">Equipo</p>
-            <h2 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-5xl">Nuestro equipo de desarrolladores</h2>
-            <p className="mt-4 text-gray-600">
+            <h2 className="section-title">Nuestro equipo de desarrolladores</h2>
+            <p className="section-copy">
               Personas cercanas, criterio técnico y comunicación clara para construir soluciones confiables desde el primer contacto.
             </p>
           </div>

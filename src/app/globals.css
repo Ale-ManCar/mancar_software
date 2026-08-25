@@ -108,6 +108,53 @@
     line-height: 1.8;
   }
 
+  .page-hero {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-hero {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  .content-panel {
+    border-radius: 1rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: white;
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .content-panel {
+      padding: 2rem;
+    }
+  }
+
+  .feature-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .feature-list li {
+    display: flex;
+    gap: 0.65rem;
+    color: var(--color-gray-600);
+    line-height: 1.65;
+  }
+
+  .feature-list li::before {
+    content: "";
+    margin-top: 0.62rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: var(--color-primary-500);
+  }
+
   .soft-card {
     border-radius: 1rem;
     border: 1px solid rgba(15, 23, 42, 0.08);
