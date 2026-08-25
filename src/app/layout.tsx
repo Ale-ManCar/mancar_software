@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import "./globals.css";
@@ -15,13 +15,95 @@ export const metadata: Metadata = {
     shortcut: "/brand/mancar-mark.svg",
     apple: "/brand/mancar-mark.svg",
   },
-  description: "Diseño web, sistemas a medida, tiendas virtuales y soporte para pymes de Ecuador.",
+  description:
+    "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador que quieren vender mejor y ordenar sus procesos.",
   keywords: [
     "desarrollo web Ecuador",
     "software para pymes",
     "sistemas a medida Guayaquil",
     "tiendas virtuales Ecuador",
     "soporte web Ecuador",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  authors: [{ name: "Mancar Software" }],
+  creator: "Mancar Software",
+  publisher: "Mancar Software",
+  category: "Technology",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_EC",
+    url: "https://mancarsoftware.com",
+    siteName: "Mancar Software",
+    title: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
+    description:
+      "Creamos sitios web, sistemas a medida, ecommerce y soporte técnico para pymes de Ecuador.",
+    images: [
+      {
+        url: "/brand/mancar-logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "Logo de Mancar Software",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
+    description:
+      "Soluciones digitales para vender mejor, ordenar procesos y crecer con confianza.",
+    images: ["/brand/mancar-logo.svg"],
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Mancar Software",
+  url: "https://mancarsoftware.com",
+  logo: "https://mancarsoftware.com/brand/mancar-logo.svg",
+  image: "https://mancarsoftware.com/brand/mancar-logo.svg",
+  description:
+    "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Guayaquil",
+    addressCountry: "EC",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Ecuador",
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+593986951419",
+      contactType: "sales",
+      areaServed: "EC",
+      availableLanguage: ["es"],
+    },
+  ],
+  sameAs: [
+    "https://github.com/MancarSoftware",
+    "https://www.instagram.com/mancarsoftware?igsh=ZmdvbGg3eDhzN2Jo",
+    "https://www.tiktok.com/@mancar_software?_r=1&_t=ZS-96f2U0kQRCn",
   ],
 };
 
@@ -33,6 +115,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Header />
         {children}
         <footer className="dark-section border-t border-white/10 pt-14 pb-8 text-white">

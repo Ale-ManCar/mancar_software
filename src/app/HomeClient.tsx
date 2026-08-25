@@ -51,9 +51,9 @@ const serviceDetails = [
 ];
 
 const stats = [
-  ['+15', 'proyectos entregados'],
-  ['+2', 'años con pymes'],
-  ['48h', 'orientación inicial'],
+  ['5', 'repositorios públicos'],
+  ['2', 'apps desktop Windows'],
+  ['3', 'verticales de negocio'],
   ['100%', 'trato directo'],
 ];
 
@@ -117,33 +117,33 @@ export default function HomeClient() {
     <main className="overflow-hidden">
       <section className="bg-white">
         <div className="container mx-auto px-4 py-14 md:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
-            <div>
+          <div className="grid min-w-0 items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
+            <div className="min-w-0">
               <p className="section-kicker">Software para pymes de Ecuador</p>
-              <h1 className="mt-5 max-w-4xl text-5xl font-extrabold leading-[1.02] text-gray-950 md:text-7xl">
+              <h1 className="mt-5 max-w-4xl break-words text-[2rem] font-extrabold leading-[1.08] text-gray-950 sm:text-5xl md:text-7xl">
                 Webs y sistemas que ayudan a vender, ordenar y crecer.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600">
                 En Mancar Software diseñamos presencia digital, sistemas a medida y tiendas virtuales para empresas que necesitan verse mejor y trabajar con más control.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#servicios" className="btn-primary">
+                <a href="#servicios" className="btn-primary w-full sm:w-auto">
                   Ver soluciones
                 </a>
-                <a href="#metodo" className="btn-secondary">
+                <a href="#metodo" className="btn-secondary w-full sm:w-auto">
                   Ver método de trabajo
                 </a>
               </div>
               <div className="mt-10 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
                 {stats.map(([value, label]) => (
-                  <div key={label} className="rounded-2xl border border-gray-100 bg-gray-50 p-4">
+                  <div key={label} className="min-w-0 rounded-2xl border border-gray-100 bg-gray-50 p-4">
                     <p className="font-display text-3xl font-extrabold text-gray-950">{value}</p>
-                    <p className="mt-1 text-xs font-semibold leading-5 text-gray-500">{label}</p>
+                    <p className="mt-1 break-words text-xs font-semibold leading-5 text-gray-500">{label}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="image-frame h-[360px] md:h-[520px]">
+            <div className="image-frame h-[360px] min-w-0 md:h-[520px]">
               <Image
                 src={images.hero}
                 alt="Equipo de desarrollo trabajando en una solución digital"
@@ -287,10 +287,10 @@ export default function HomeClient() {
       <section className="bg-white py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="section-kicker mx-auto">Casos</p>
-            <h2 className="section-title">Resultados explicados con contexto.</h2>
+            <p className="section-kicker mx-auto">Casos reales</p>
+            <h2 className="section-title">Proyectos públicos que muestran cómo trabajamos.</h2>
             <p className="section-copy">
-              Ejemplos de cómo abordamos proyectos frecuentes: webs comerciales, sistemas internos y soporte continuo.
+              En lugar de prometer con frases vacías, mostramos productos y plantillas reales publicados en GitHub: sistemas locales, webs comerciales y herramientas listas para adaptar a negocios de Ecuador.
             </p>
           </div>
           <div className="mt-8 flex justify-center">
@@ -310,8 +310,13 @@ export default function HomeClient() {
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {filteredCases.map((successCase) => (
               <article key={successCase.slug} className="soft-card p-6">
-                <p className="text-sm font-extrabold text-primary-700">{successCase.category}</p>
-                <h3 className="mt-3 text-xl font-bold text-gray-950">{successCase.title}</h3>
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-sm font-extrabold text-primary-700">{successCase.category}</p>
+                  <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-extrabold text-gray-500">
+                    GitHub
+                  </span>
+                </div>
+                <h3 className="mt-4 text-xl font-bold text-gray-950">{successCase.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-gray-600">{successCase.summary}</p>
                 <div className="mt-5 rounded-2xl bg-gray-50 p-4">
                   <p className="font-display text-3xl font-extrabold text-gray-950">{successCase.kpis[0].value}</p>
@@ -415,6 +420,17 @@ export default function HomeClient() {
                   <h4 className="font-semibold text-gray-950">Tecnologías y enfoque</h4>
                   <div className="mt-2 flex flex-wrap gap-2">{successCases[selectedCase].technologies.map((item) => <span key={item} className="rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-sm text-primary-700">{item}</span>)}</div>
                 </div>
+                {successCases[selectedCase].repositoryUrl && (
+                  <a
+                    href={successCases[selectedCase].repositoryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent('case_repository_open', { slug: successCases[selectedCase].slug })}
+                    className="inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+                  >
+                    Ver repositorio público
+                  </a>
+                )}
               </div>
             </div>
           </div>

@@ -7,9 +7,11 @@ import { successCases } from '../../cases';
 type Props = { params: Promise<{ slug: string }> };
 
 const caseImages: Record<string, string> = {
-  'diseno-web-corporativo': 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85',
-  'sistema-gestion-a-medida': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85',
-  'mantenimiento-soporte-continuo': 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=85',
+  odontocare: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=85',
+  'vetcare-pro-lan': 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=1200&q=85',
+  'casa-nativa': 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85',
+  'beauty-business-template': 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=85',
+  'alma-vet': 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=1200&q=85',
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -46,6 +48,16 @@ export default async function CasoPage({ params }: Props) {
             <p className="section-kicker">Caso de referencia · {currentCase.category}</p>
             <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">{currentCase.title}</h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">{currentCase.summary}</p>
+            {currentCase.repositoryUrl && (
+              <a
+                href={currentCase.repositoryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+              >
+                Ver repositorio público
+              </a>
+            )}
           </div>
           <div className="image-frame h-[320px] md:h-[420px]">
             <Image src={caseImages[currentCase.slug]} alt={`Imagen del caso ${currentCase.title}`} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />

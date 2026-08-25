@@ -13,6 +13,7 @@ type FormState = {
   phone: string;
   projectType: string;
   message: string;
+  consent: boolean;
 };
 
 const initialState: FormState = {
@@ -21,6 +22,7 @@ const initialState: FormState = {
   phone: "",
   projectType: "Sitio web",
   message: "",
+  consent: false,
 };
 
 const projectTypes = [
@@ -44,13 +46,14 @@ export default function LeadForm({ source, submitLabel = "Enviar mensaje por Wha
       `Teléfono: ${form.phone || "-"}`,
       `Tipo de proyecto: ${form.projectType}`,
       `Mensaje: ${form.message || "-"}`,
+      `Consentimiento de contacto: ${form.consent ? "Sí" : "No"}`,
       `Origen: ${source}`,
     ].join("\n");
 
     return `https://wa.me/593986951419?text=${encodeURIComponent(text)}`;
   }, [form, source]);
 
-  const updateField = (field: keyof FormState, value: string) => {
+  const updateField = (field: keyof FormState, value: string | boolean) => {
     setForm((current) => ({ ...current, [field]: value }));
     if (error) setError("");
     if (sent) setSent(false);
@@ -64,11 +67,20 @@ export default function LeadForm({ source, submitLabel = "Enviar mensaje por Wha
       return;
     }
 
+    if (!form.consent) {
+      setError("Acepta el uso de tus datos para que podamos responder tu solicitud.");
+      return;
+    }
+
     window.dispatchEvent(
       new CustomEvent("mancar:analytics", {
         detail: { event: "lead_form_submit", source, projectType: form.projectType },
       }),
     );
+    const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
+    if (Array.isArray(dataLayer)) {
+      dataLayer.push({ event: "lead_form_submit", source, projectType: form.projectType });
+    }
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     setSent(true);
@@ -154,14 +166,27 @@ export default function LeadForm({ source, submitLabel = "Enviar mensaje por Wha
         />
       </div>
 
+      <label className="flex gap-3 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm leading-6 text-gray-600">
+        <input
+          type="checkbox"
+          checked={form.consent}
+          onChange={(event) => updateField("consent", event.target.checked)}
+          className="mt-1 h-4 w-4 rounded border-gray-300 text-primary-700 focus:ring-primary-300"
+          required
+        />
+        <span>
+          Acepto que Mancar Software use estos datos únicamente para responder mi solicitud y dar seguimiento a esta conversación.
+        </span>
+      </label>
+
       {error && (
-        <p className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
+        <p aria-live="polite" className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
           {error}
         </p>
       )}
 
       {sent && (
-        <p className="rounded-2xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm font-medium text-primary-800">
+        <p aria-live="polite" className="rounded-2xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm font-medium text-primary-800">
           Abrimos WhatsApp con tu solicitud lista para enviar. Revisaremos tu caso y te responderemos con el siguiente paso.
         </p>
       )}

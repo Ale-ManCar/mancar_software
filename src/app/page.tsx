@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
-import { successCases } from './cases';
 
 export const metadata: Metadata = {
   title: 'Mancar Software | Desarrollo web y sistemas para pymes en Ecuador',
@@ -38,12 +37,18 @@ export default function Page() {
       areaServed: 'EC',
       availableLanguage: 'Spanish',
     },
-    makesOffer: successCases.map((c) => ({
+    makesOffer: [
+      'Diseño web profesional',
+      'Sistemas a medida',
+      'Tiendas virtuales',
+      'Soporte y mantenimiento',
+      'Consultoría tecnológica',
+    ].map((serviceName) => ({
       '@type': 'Offer',
       itemOffered: {
         '@type': 'Service',
-        name: c.title,
-        description: c.summary,
+        name: serviceName,
+        areaServed: 'Ecuador',
       },
     })),
   };
