@@ -16,6 +16,7 @@ Open `http://localhost:3000`.
 Configure these public variables in the website hosting provider before launch:
 
 ```bash
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 NEXT_PUBLIC_GA_ID=
 ```
 
@@ -25,6 +26,7 @@ Configure these private server variables in the website hosting provider:
 RESEND_API_KEY=
 RESEND_FROM="Mancar Software <onboarding@resend.dev>"
 LEAD_NOTIFICATION_EMAIL="mancarsoftwares@gmail.com"
+TURNSTILE_SECRET_KEY=
 ```
 
 `NEXT_PUBLIC_GA_ID` is optional. The contact form requires a deployment that supports Next.js API routes.
@@ -38,8 +40,18 @@ It includes:
 - Client-side validation.
 - Server-side validation.
 - Honeypot anti-spam field.
+- Cloudflare Turnstile verification.
+- In-memory IP/user-agent rate limiting.
+- Duplicate submission throttling.
+- Suspicious content rejection before email delivery.
 - Privacy consent before sending the request.
 - Email delivery through Resend.
+
+The rate limiter is process-local. For higher traffic or multi-region hosting, move the same rules to a shared store such as Redis, Upstash, or Cloudflare KV.
+
+## Cloudflare Turnstile
+
+Create a Turnstile widget in Cloudflare and allow the local/deployed hostnames that will render the form. Use the public site key as `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and the private secret key as `TURNSTILE_SECRET_KEY`.
 
 ## Validation
 

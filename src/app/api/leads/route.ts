@@ -9,6 +9,7 @@ type LeadPayload = {
   consent?: unknown;
   source?: unknown;
   website?: unknown;
+  turnstileToken?: unknown;
 };
 
 type ValidLead = {
@@ -20,7 +21,16 @@ type ValidLead = {
   source: string;
 };
 
+type RateRecord = {
+  count: number;
+  resetAt: number;
+  fingerprints: Map<string, number>;
+};
+
 const recipientEmail = process.env.LEAD_NOTIFICATION_EMAIL || "mancarsoftwares@gmail.com";
+const rateWindowMs = 15 * 60 * 1000;
+const duplicateWindowMs = 10 * 60 * 1000;
+const maxRequestsPerWindow = 4;
 const projectTypes = new Set([
   "Sitio web",
   "Sistema a medida",
@@ -28,6 +38,7 @@ const projectTypes = new Set([
   "Soporte o mantenimiento",
   "Necesito orientación",
 ]);
+const rateLimits = new Map<string, RateRecord>();
 
 function clean(value: unknown, maximum: number) {
   return typeof value === "string" ? value.trim().replace(/\s+/g, " ").slice(0, maximum) : "";
@@ -56,10 +67,74 @@ function validate(payload: LeadPayload): { data?: ValidLead; fields: Record<stri
   if (!/^(?:\+593\s?)?0?9\d{8}$/.test(phone.replace(/\s|-/g, ""))) fields.phone = "Ingresa un WhatsApp ecuatoriano válido.";
   if (!projectTypes.has(projectType)) fields.projectType = "Selecciona un tipo de proyecto válido.";
   if (message.length < 12) fields.message = "Describe brevemente qué necesitas resolver.";
+  if (message.length > 1200) fields.message = "El mensaje es demasiado largo.";
   if (payload.consent !== true) fields.consent = "Debes aceptar el uso de tus datos para responder la solicitud.";
+  if (looksSuspicious([name, email, phone, message])) fields.message = "La solicitud no cumple los criterios de seguridad.";
 
   if (Object.keys(fields).length) return { fields };
   return { data: { name, email, phone, projectType, message, source }, fields };
+}
+
+function getClientKey(request: NextRequest) {
+  const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const realIp = request.headers.get("x-real-ip")?.trim();
+  const fingerprint = request.headers.get("user-agent")?.slice(0, 120) || "unknown-agent";
+  return `${forwardedFor || realIp || "unknown-ip"}:${fingerprint}`;
+}
+
+function fingerprintLead(data: ValidLead) {
+  return [data.email, data.phone.replace(/\D/g, ""), data.message.toLowerCase().replace(/\s+/g, " ").slice(0, 160)].join("|");
+}
+
+function isRateLimited(key: string, fingerprint: string) {
+  const now = Date.now();
+  const current = rateLimits.get(key);
+  const record: RateRecord = current && current.resetAt > now
+    ? current
+    : { count: 0, resetAt: now + rateWindowMs, fingerprints: new Map() };
+
+  for (const [storedFingerprint, expiresAt] of record.fingerprints) {
+    if (expiresAt <= now) record.fingerprints.delete(storedFingerprint);
+  }
+
+  if (record.fingerprints.has(fingerprint)) {
+    rateLimits.set(key, record);
+    return "duplicate";
+  }
+
+  if (record.count >= maxRequestsPerWindow) {
+    rateLimits.set(key, record);
+    return "rate";
+  }
+
+  record.count += 1;
+  record.fingerprints.set(fingerprint, now + duplicateWindowMs);
+  rateLimits.set(key, record);
+  return null;
+}
+
+function looksSuspicious(values: string[]) {
+  const combined = values.join(" ").toLowerCase();
+  const urlCount = (combined.match(/https?:\/\/|www\.|\.ru|\.cn|\.xyz|\.top|bit\.ly|t\.me/g) || []).length;
+  const repeatedLinks = urlCount > 1;
+  const markupOrScript = /<[^>]+>|javascript:|data:text\/html|bcc:|cc:/i.test(combined);
+  const noisyLength = combined.length > 2200;
+  return repeatedLinks || markupOrScript || noisyLength;
+}
+
+async function verifyTurnstile(token: string, ip: string | undefined, secret: string) {
+  const formData = new URLSearchParams();
+  formData.set("secret", secret);
+  formData.set("response", token);
+  if (ip) formData.set("remoteip", ip);
+
+  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: formData,
+  });
+  const body = (await response.json().catch(() => ({}))) as { success?: boolean };
+  return body.success === true;
 }
 
 function buildEmail(data: ValidLead) {
@@ -124,6 +199,24 @@ export async function POST(request: NextRequest) {
   const { data, fields } = validate(payload);
   if (!data) {
     return NextResponse.json({ error: "Revisa los campos marcados.", fields }, { status: 400 });
+  }
+
+  const clientIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip")?.trim();
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  const turnstileToken = clean(payload.turnstileToken, 2048);
+  if (!turnstileSecret) {
+    return NextResponse.json({ error: "La verificación de seguridad todavía no está configurada." }, { status: 500 });
+  }
+  if (!turnstileToken || !await verifyTurnstile(turnstileToken, clientIp, turnstileSecret)) {
+    return NextResponse.json({ error: "No pudimos verificar la solicitud. Actualiza la página e inténtalo nuevamente.", fields: { turnstile: "Verificación inválida o vencida." } }, { status: 400 });
+  }
+
+  const rateResult = isRateLimited(getClientKey(request), fingerprintLead(data));
+  if (rateResult === "duplicate") {
+    return NextResponse.json({ error: "Ya recibimos una solicitud similar hace unos minutos." }, { status: 429 });
+  }
+  if (rateResult === "rate") {
+    return NextResponse.json({ error: "Recibimos demasiadas solicitudes desde este dispositivo. Inténtalo más tarde." }, { status: 429 });
   }
 
   const resendApiKey = process.env.RESEND_API_KEY;

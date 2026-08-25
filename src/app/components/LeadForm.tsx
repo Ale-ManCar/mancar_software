@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 import Link from "next/link";
+import TurnstileWidget from "./TurnstileWidget";
 
 type LeadFormProps = {
   source: string;
@@ -46,7 +47,19 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submission, setSubmission] = useState<SubmissionState>({ kind: "idle" });
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileReset, setTurnstileReset] = useState(0);
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
   const busy = submission.kind === "submitting";
+
+  const handleTurnstileToken = useCallback((token: string) => {
+    setTurnstileToken(token);
+    setErrors((current) => {
+      const next = { ...current };
+      delete next.turnstile;
+      return next;
+    });
+  }, []);
 
   const updateField = (field: keyof FormState, value: string | boolean) => {
     setForm((current) => ({ ...current, [field]: value }));
@@ -68,6 +81,8 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     if (!/^(?:\+593\s?)?0?9\d{8}$/.test(form.phone.replace(/\s|-/g, ""))) nextErrors.phone = "Ingresa un WhatsApp ecuatoriano válido.";
     if (form.message.trim().length < 12) nextErrors.message = "Describe brevemente qué necesitas resolver.";
     if (!form.consent) nextErrors.consent = "Acepta el uso de tus datos para responder la solicitud.";
+    if (!turnstileSiteKey) nextErrors.turnstile = "La verificación de seguridad todavía no está configurada.";
+    if (!turnstileToken) nextErrors.turnstile = "Completa la verificación de seguridad.";
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) return;
@@ -84,7 +99,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
       const response = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, source }),
+        body: JSON.stringify({ ...form, source, turnstileToken }),
       });
       const body = (await response.json().catch(() => ({}))) as { error?: string; fields?: Record<string, string> };
 
@@ -95,6 +110,8 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
 
       setForm(initialState);
       setErrors({});
+      setTurnstileToken("");
+      setTurnstileReset((value) => value + 1);
       setSubmission({
         kind: "success",
         message: "Recibimos tu solicitud. Te responderemos pronto por correo o WhatsApp.",
@@ -114,6 +131,8 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         kind: "error",
         message: error instanceof Error ? error.message : "No pudimos enviar la solicitud.",
       });
+      setTurnstileToken("");
+      setTurnstileReset((value) => value + 1);
     }
   };
 
@@ -242,6 +261,22 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
       </label>
       {errors.consent && <p className="text-sm font-medium text-secondary-700">{errors.consent}</p>}
 
+      {turnstileSiteKey ? (
+        <div className="max-w-full overflow-x-auto">
+          <TurnstileWidget
+            siteKey={turnstileSiteKey}
+            resetKey={turnstileReset}
+            onToken={handleTurnstileToken}
+            onExpire={() => setErrors((current) => ({ ...current, turnstile: "La verificación venció. Inténtalo nuevamente." }))}
+          />
+        </div>
+      ) : (
+        <p className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
+          La verificación de seguridad todavía no está configurada.
+        </p>
+      )}
+      {errors.turnstile && <p className="text-sm font-medium text-secondary-700">{errors.turnstile}</p>}
+
       {submission.kind === "success" && (
         <p aria-live="polite" className="rounded-2xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm font-medium text-primary-800">
           {submission.message}
@@ -256,7 +291,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
 
       <button
         type="submit"
-        disabled={busy}
+        disabled={busy || !turnstileSiteKey}
         className="w-full rounded-full bg-gray-950 px-5 py-3 font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
         {busy ? "Enviando..." : submitLabel}
