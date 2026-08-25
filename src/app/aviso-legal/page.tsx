@@ -5,7 +5,7 @@ const items = [
   'El contenido de esta web es informativo y puede actualizarse sin previo aviso.',
   'Se prohíbe la reproducción total o parcial del contenido sin autorización expresa.',
   'Mancar Software no se responsabiliza por daños derivados del uso indebido del sitio o de enlaces externos.',
-  'Contacto legal: contacto@mancarsoftware.com.',
+  'Contacto legal: mancarsoftwares@gmail.com.',
 ];
 
 export default function AvisoLegalPage() {

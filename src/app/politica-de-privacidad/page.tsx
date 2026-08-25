@@ -5,7 +5,7 @@ const sections = [
   ['Uso de la información', 'Usamos la información para responder consultas, mejorar servicios, brindar soporte, medir el rendimiento del sitio y realizar análisis estadísticos.'],
   ['Servicios externos', 'Podemos usar proveedores como Cloudflare Turnstile para verificación de seguridad, Supabase para almacenamiento de solicitudes, Resend para notificaciones por correo y herramientas de analítica configuradas por Mancar Software.'],
   ['Conservación y seguridad', 'Aplicamos medidas técnicas y organizativas razonables para proteger tus datos y conservarlos solo durante el tiempo necesario.'],
-  ['Tus derechos', 'Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a contacto@mancarsoftware.com.'],
+  ['Tus derechos', 'Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a mancarsoftwares@gmail.com.'],
 ];
 
 export default function PoliticaPrivacidadPage() {

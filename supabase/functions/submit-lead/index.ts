@@ -176,7 +176,7 @@ async function notifyTeam(id: string, data: ValidLead, apiKey: string) {
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       from: Deno.env.get('RESEND_FROM') || 'Mancar Software <onboarding@resend.dev>',
-      to: [Deno.env.get('LEAD_NOTIFICATION_EMAIL') || 'contacto@mancarsoftware.com'],
+      to: [Deno.env.get('LEAD_NOTIFICATION_EMAIL') || 'mancarsoftwares@gmail.com'],
       subject: `${id} · ${data.projectType} · ${data.name}`,
       text,
       html,

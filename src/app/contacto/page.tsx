@@ -32,7 +32,7 @@ export default function ContactoPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-white">Email</h3>
-                <p className="mt-1">contacto@mancarsoftware.com</p>
+                <p className="mt-1">mancarsoftwares@gmail.com</p>
               </div>
             </div>
           </div>

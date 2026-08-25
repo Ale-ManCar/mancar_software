@@ -27,8 +27,8 @@ Configure these secrets in Supabase Edge Functions:
 ALLOWED_ORIGINS="https://mancarsoftware.com,http://localhost:3000"
 TURNSTILE_SECRET_KEY=
 RESEND_API_KEY=
-RESEND_FROM="Mancar Software <contacto@mancarsoftware.com>"
-LEAD_NOTIFICATION_EMAIL="contacto@mancarsoftware.com"
+RESEND_FROM="Mancar Software <mancarsoftwares@gmail.com>"
+LEAD_NOTIFICATION_EMAIL="mancarsoftwares@gmail.com"
 SUPABASE_URL=
 SUPABASE_SERVICE_ROLE_KEY=
 RATE_LIMIT_SALT=

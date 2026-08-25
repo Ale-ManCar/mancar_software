@@ -31,7 +31,7 @@ export default function SoportePage() {
           </div>
           <div className="soft-card p-6">
             <h2 className="text-xl font-bold text-gray-950">Correo</h2>
-            <p className="mt-4 text-gray-600">soporte@mancarsoftware.com</p>
+            <p className="mt-4 text-gray-600">mancarsoftwares@gmail.com</p>
           </div>
           <div className="soft-card p-6">
             <h2 className="text-xl font-bold text-gray-950">Respuesta</h2>

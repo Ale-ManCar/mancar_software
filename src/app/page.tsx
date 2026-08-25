@@ -19,7 +19,7 @@ export default function Page() {
     '@type': 'Organization',
     name: 'Mancar Software',
     url: 'https://mancarsoftware.com',
-    email: 'contacto@mancarsoftware.com',
+    email: 'mancarsoftwares@gmail.com',
     telephone: '+593986951419',
     areaServed: {
       '@type': 'Country',

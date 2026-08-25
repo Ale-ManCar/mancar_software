@@ -360,7 +360,7 @@ export default function HomeClient() {
               </p>
               <div className="mt-8 space-y-3 text-gray-300">
                 <p><strong className="text-white">WhatsApp:</strong> +593 98 695 1419</p>
-                <p><strong className="text-white">Email:</strong> contacto@mancarsoftware.com</p>
+                <p><strong className="text-white">Email:</strong> mancarsoftwares@gmail.com</p>
               </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white p-6 text-gray-900 shadow-2xl shadow-black/25">
