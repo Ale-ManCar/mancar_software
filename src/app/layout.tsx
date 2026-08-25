@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import "./globals.css";
 import Header from "./components/Header";
+import Analytics from "./components/Analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mancarsoftware.com"),
@@ -119,6 +120,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <Analytics />
         <Header />
         {children}
         <footer className="dark-section border-t border-white/10 pt-14 pb-8 text-white">

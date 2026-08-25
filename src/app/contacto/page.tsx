@@ -39,9 +39,9 @@ export default function ContactoPage() {
           <div className="soft-card p-8">
             <h2 className="text-2xl font-bold text-gray-950">Solicita una orientación inicial</h2>
             <p className="mt-2 text-sm leading-6 text-gray-600">
-              Enviaremos tu solicitud por WhatsApp con el contexto necesario para darte una respuesta clara.
+              Enviaremos tu solicitud al equipo comercial con el contexto necesario para darte una respuesta clara.
             </p>
-            <LeadForm source="pagina-contacto" submitLabel="Enviar solicitud por WhatsApp" />
+            <LeadForm source="pagina-contacto" />
           </div>
         </section>
       </div>

@@ -366,7 +366,7 @@ export default function HomeClient() {
             <div className="rounded-2xl border border-white/10 bg-white p-6 text-gray-900 shadow-2xl shadow-black/25">
               <h3 className="text-2xl font-bold">Cuéntanos tu caso</h3>
               <p className="mt-2 text-sm leading-6 text-gray-600">
-                El formulario abre WhatsApp con tu solicitud organizada para responderte con mayor precisión.
+                Recibiremos tu solicitud con el contexto necesario para responderte con una orientación clara.
               </p>
               <LeadForm source="home-contacto" />
             </div>

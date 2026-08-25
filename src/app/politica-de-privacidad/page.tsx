@@ -1,8 +1,9 @@
 import Image from 'next/image';
 
 const sections = [
-  ['Datos que recopilamos', 'Podemos recopilar datos de contacto, información de navegación y mensajes enviados mediante formularios.'],
-  ['Uso de la información', 'Usamos la información para responder consultas, mejorar servicios, brindar soporte y realizar análisis estadísticos.'],
+  ['Datos que recopilamos', 'Podemos recopilar datos de contacto, información de navegación, mensajes enviados mediante formularios y datos técnicos necesarios para prevenir spam o abuso.'],
+  ['Uso de la información', 'Usamos la información para responder consultas, mejorar servicios, brindar soporte, medir el rendimiento del sitio y realizar análisis estadísticos.'],
+  ['Servicios externos', 'Podemos usar proveedores como Cloudflare Turnstile para verificación de seguridad, Supabase para almacenamiento de solicitudes, Resend para notificaciones por correo y herramientas de analítica configuradas por Mancar Software.'],
   ['Conservación y seguridad', 'Aplicamos medidas técnicas y organizativas razonables para proteger tus datos y conservarlos solo durante el tiempo necesario.'],
   ['Tus derechos', 'Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a contacto@mancarsoftware.com.'],
 ];

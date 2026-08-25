@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mancar Software
 
-## Getting Started
+Corporate website for Mancar Software, built with Next.js.
 
-First, run the development server:
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Configure these variables in the hosting provider before launch:
 
-## Learn More
+```bash
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+RESEND_API_KEY=
+RESEND_FROM="Mancar Software <contacto@mancarsoftware.com>"
+LEAD_NOTIFICATION_EMAIL="contacto@mancarsoftware.com"
+NEXT_PUBLIC_GA_ID=
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+```
 
-To learn more about Next.js, take a look at the following resources:
+`NEXT_PUBLIC_GA_ID` is optional. `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are optional but recommended so leads are stored before email notification. The lead form requires Turnstile plus at least Supabase storage or Resend email to submit successfully.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Apply the Supabase migration in `supabase/migrations/202608250001_create_lead_requests.sql` before enabling Supabase storage.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Lead Form Flow
 
-## Deploy on Vercel
+The contact form submits to `POST /api/leads`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+It includes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Client and server validation.
+- Honeypot anti-spam field.
+- Cloudflare Turnstile verification.
+- Basic rate limiting.
+- Optional Supabase storage in `lead_requests`.
+- Email notification through Resend.
+- A generated reference ID for each valid request.
+- WhatsApp fallback link for users who prefer direct contact.
+
+## Validation
+
+```bash
+npm run lint -- --max-warnings=0
+npm run build
+```
+
+## Security Notes
+
+Never commit real credentials. Keep `.env*` files ignored and configure production secrets only in the deployment platform.
