@@ -28,7 +28,7 @@ const projectTypes = [
   "Sistema a medida",
   "Tienda virtual",
   "Soporte o mantenimiento",
-  "No estoy seguro",
+  "Necesito orientación",
 ];
 
 export default function LeadForm({ source, submitLabel = "Enviar mensaje por WhatsApp" }: LeadFormProps) {
@@ -87,7 +87,6 @@ export default function LeadForm({ source, submitLabel = "Enviar mensaje por Wha
             value={form.name}
             onChange={(event) => updateField("name", event.target.value)}
             className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
-            placeholder="Tu nombre"
             autoComplete="name"
             required
           />
@@ -102,7 +101,6 @@ export default function LeadForm({ source, submitLabel = "Enviar mensaje por Wha
             value={form.email}
             onChange={(event) => updateField("email", event.target.value)}
             className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
-            placeholder="tu@email.com"
             autoComplete="email"
             required
           />
@@ -120,7 +118,6 @@ export default function LeadForm({ source, submitLabel = "Enviar mensaje por Wha
             value={form.phone}
             onChange={(event) => updateField("phone", event.target.value)}
             className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
-            placeholder="+593 98 695 1419"
             autoComplete="tel"
           />
         </div>
@@ -153,7 +150,6 @@ export default function LeadForm({ source, submitLabel = "Enviar mensaje por Wha
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
           className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
-          placeholder="Ejemplo: necesito una web para captar clientes o un sistema para controlar pedidos."
           required
         />
       </div>

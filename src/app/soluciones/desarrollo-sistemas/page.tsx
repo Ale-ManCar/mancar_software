@@ -9,7 +9,32 @@ export default function DesarrolloSistemasPage() {
       secondary="Analizamos tu operación, diseñamos módulos útiles y entregamos una solución que tu equipo pueda adoptar sin fricción."
       image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=85"
       imageAlt="Código y desarrollo de software a medida"
-      features={['Aplicaciones web', 'Automatización de procesos', 'Bases de datos a medida', 'Reportes y dashboards', 'Roles de usuario', 'Capacitación al equipo']}
+      features={[
+        {
+          title: 'Aplicaciones web',
+          description: 'Construimos módulos accesibles desde navegador para que tu equipo pueda operar sin instalaciones complejas.',
+        },
+        {
+          title: 'Automatización de procesos',
+          description: 'Reducimos tareas repetitivas como registros manuales, cálculos, estados, avisos o consolidación de información.',
+        },
+        {
+          title: 'Bases de datos a medida',
+          description: 'Diseñamos estructuras de datos alineadas a clientes, productos, pedidos, inventario, usuarios o el flujo propio de tu negocio.',
+        },
+        {
+          title: 'Reportes y dashboards',
+          description: 'Convertimos la operación diaria en indicadores claros para revisar ventas, stock, productividad o puntos de mejora.',
+        },
+        {
+          title: 'Roles de usuario',
+          description: 'Definimos accesos por responsabilidad para proteger información y mantener orden en las acciones del sistema.',
+        },
+        {
+          title: 'Capacitación al equipo',
+          description: 'Acompañamos la adopción con explicación práctica para que el personal entienda cómo usar la herramienta.',
+        },
+      ]}
     />
   );
 }

@@ -9,7 +9,32 @@ export default function MantenimientoSoportePage() {
       secondary="Atendemos errores, mejoras y revisiones preventivas con comunicación clara y respuesta directa."
       image="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=85"
       imageAlt="Equipo revisando soporte y mantenimiento técnico"
-      features={['Actualizaciones de seguridad', 'Corrección de errores', 'Monitoreo preventivo', 'Copias de seguridad', 'Soporte por WhatsApp', 'Mejoras continuas']}
+      features={[
+        {
+          title: 'Actualizaciones de seguridad',
+          description: 'Revisamos dependencias, configuración y ajustes necesarios para reducir riesgos técnicos conocidos.',
+        },
+        {
+          title: 'Corrección de errores',
+          description: 'Atendemos fallos visibles, formularios que no envían, problemas de visualización o comportamientos inesperados.',
+        },
+        {
+          title: 'Monitoreo preventivo',
+          description: 'Observamos señales básicas de disponibilidad, rendimiento y estabilidad para actuar antes de que el problema crezca.',
+        },
+        {
+          title: 'Copias de seguridad',
+          description: 'Definimos respaldos según el tipo de proyecto para proteger contenido, configuración e información operativa.',
+        },
+        {
+          title: 'Soporte por WhatsApp',
+          description: 'Mantenemos un canal directo para reportes, coordinación de prioridades y seguimiento de incidencias.',
+        },
+        {
+          title: 'Mejoras continuas',
+          description: 'Implementamos ajustes pequeños y medibles para mejorar experiencia, contenido, velocidad o mantenimiento.',
+        },
+      ]}
     />
   );
 }

@@ -7,7 +7,10 @@ type SolutionPageProps = {
   secondary: string;
   image: string;
   imageAlt: string;
-  features: string[];
+  features: {
+    title: string;
+    description: string;
+  }[];
 };
 
 export default function SolutionPage({ kicker, title, description, secondary, image, imageAlt, features }: SolutionPageProps) {
@@ -30,14 +33,14 @@ export default function SolutionPage({ kicker, title, description, secondary, im
       <section className="container mx-auto px-4 pb-16 md:pb-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="section-kicker">{kicker}</p>
-          <h2 className="section-title">Qué incluye esta solución</h2>
-          <p className="section-copy">Pensamos cada entrega para que tu negocio pueda usarla con claridad desde el primer lanzamiento.</p>
+          <h2 className="section-title">Alcance de trabajo</h2>
+          <p className="section-copy">Estos son los componentes que trabajamos según el tipo de proyecto, siempre ajustados al contexto real de tu empresa.</p>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <article key={feature} className="soft-card p-6">
-              <h2 className="text-lg font-bold text-gray-950">{feature}</h2>
-              <p className="mt-3 text-sm leading-6 text-gray-600">Aplicado con una estructura simple, mantenible y pensada para usuarios reales.</p>
+            <article key={feature.title} className="soft-card p-6">
+              <h2 className="text-lg font-bold text-gray-950">{feature.title}</h2>
+              <p className="mt-3 text-sm leading-6 text-gray-600">{feature.description}</p>
             </article>
           ))}
         </div>
