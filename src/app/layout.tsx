@@ -5,13 +5,24 @@ import "./globals.css";
 import Header from "./components/Header";
 
 export const metadata: Metadata = {
-  title: "Mancar Software | Soluciones Digitales",
+  metadataBase: new URL("https://mancarsoftware.com"),
+  title: {
+    default: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
+    template: "%s | Mancar Software",
+  },
   icons: {
     icon: "/brand/mancar-mark.svg",
     shortcut: "/brand/mancar-mark.svg",
     apple: "/brand/mancar-mark.svg",
   },
   description: "Diseño web, sistemas a medida, tiendas virtuales y soporte para pymes de Ecuador.",
+  keywords: [
+    "desarrollo web Ecuador",
+    "software para pymes",
+    "sistemas a medida Guayaquil",
+    "tiendas virtuales Ecuador",
+    "soporte web Ecuador",
+  ],
 };
 
 export default function RootLayout({

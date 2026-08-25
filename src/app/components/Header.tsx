@@ -57,6 +57,7 @@ export default function Header() {
             {openDropdown === "nosotros" && (
               <div className="absolute top-full left-0 mt-3 w-56 rounded-2xl border border-gray-100 bg-white p-2 shadow-2xl shadow-gray-900/10">
                 <Link href="/sobre-nosotros" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Sobre nosotros</Link>
+                <Link href="/sobre-nosotros#equipo" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Equipo</Link>
                 <Link href="/etica-y-conducta" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Ética y conducta</Link>
                 <Link href="/politica-de-seguridad" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Política de seguridad</Link>
               </div>
@@ -82,7 +83,7 @@ export default function Header() {
 
           <Link href="/aplicativos-empresariales" className={linkClass}>Aplicativos Empresariales</Link>
           <Link href="/soporte" className={linkClass}>Soporte</Link>
-          <Link href="/contacto" className="ml-2 rounded-full bg-gray-950 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-gray-900/10 transition hover:bg-primary-800">Contacto</Link>
+          <Link href="/contacto" className="ml-2 rounded-full bg-gray-950 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-gray-900/10 transition hover:bg-primary-800">Diagnóstico gratis</Link>
         </nav>
 
         <button onClick={() => setIsMobileMenuOpen(true)} className="lg:hidden rounded-full border border-gray-200 p-2 text-gray-700">
@@ -115,6 +116,7 @@ export default function Header() {
             </div>
             <nav className="flex flex-col gap-1 p-4">
               <Link href="/sobre-nosotros" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Sobre nosotros</Link>
+              <Link href="/sobre-nosotros#equipo" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Equipo</Link>
               <Link href="/etica-y-conducta" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Ética y conducta</Link>
               <Link href="/politica-de-seguridad" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Política de seguridad</Link>
               <div className="my-2 border-t border-gray-100"></div>
@@ -127,7 +129,7 @@ export default function Header() {
               <div className="my-2 border-t border-gray-100"></div>
               <Link href="/aplicativos-empresariales" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Aplicativos Empresariales</Link>
               <Link href="/soporte" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Soporte</Link>
-              <Link href="/contacto" className="mt-3 rounded-full bg-gray-950 px-4 py-3 text-center font-semibold text-white" onClick={closeMobileMenu}>Contacto</Link>
+              <Link href="/contacto" className="mt-3 rounded-full bg-gray-950 px-4 py-3 text-center font-semibold text-white" onClick={closeMobileMenu}>Diagnóstico gratis</Link>
             </nav>
           </div>
         </>

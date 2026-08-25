@@ -1,8 +1,9 @@
 "use client";
 
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { caseCategories, successCases } from './cases';
+import LeadForm from './components/LeadForm';
 
 const heroImage = 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=85';
 
@@ -72,6 +73,21 @@ const trustItems = [
   { value: '100%', label: 'comunicación directa' },
 ];
 
+const trustSignals = [
+  {
+    title: 'Diagnóstico antes de cotizar',
+    text: 'Revisamos objetivos, operación y prioridad comercial para proponer solo lo que realmente aporta valor.',
+  },
+  {
+    title: 'Entregas por etapas',
+    text: 'Trabajamos con hitos claros para que puedas revisar avances, ajustar decisiones y mantener control del presupuesto.',
+  },
+  {
+    title: 'Soporte posterior',
+    text: 'Después del lanzamiento seguimos disponibles para mantenimiento, mejoras, seguridad y capacitación básica.',
+  },
+];
+
 export default function HomeClient() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const [selectedCase, setSelectedCase] = useState<number | null>(null);
@@ -89,6 +105,25 @@ export default function HomeClient() {
       if (Array.isArray(dataLayer)) dataLayer.push({ event, ...payload });
     }
   };
+
+  useEffect(() => {
+    const hasOpenModal = selectedCase !== null || selectedService !== null;
+    document.body.style.overflow = hasOpenModal ? 'hidden' : '';
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedCase(null);
+        setSelectedService(null);
+      }
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [selectedCase, selectedService]);
 
   return (
     <main className="overflow-hidden">
@@ -116,7 +151,7 @@ export default function HomeClient() {
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a href="#contacto" className="rounded-full bg-white px-7 py-3 text-center font-semibold text-gray-950 shadow-2xl shadow-black/20 transition hover:bg-primary-100">
-                  Quiero una asesoría
+                  Solicitar diagnóstico gratuito
                 </a>
                 <a href="#servicios" className="rounded-full border border-white/20 px-7 py-3 text-center font-semibold text-white transition hover:bg-white/10">
                   Explorar servicios
@@ -158,27 +193,15 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <section className="border-y border-gray-100 bg-white py-10">
+      <section className="border-y border-gray-100 bg-white py-12">
         <div className="container mx-auto px-4">
-          <p className="text-center text-sm font-semibold text-gray-500">Empresas que confían en nuestras soluciones</p>
-          <div className="mt-7 overflow-hidden">
-            <div className="flex w-max animate-scroll items-center gap-12 pr-12">
-              {[...Array(2)].map((_, group) => (
-                <div key={group} className="flex items-center gap-12">
-                  {[
-                    ['/logos/orion.jpg', 'Orion'],
-                    ['/logos/quantix.png', 'Quantix'],
-                    ['/logos/vertex.png', 'Vertex'],
-                    ['/logos/orion.jpg', 'Orion'],
-                    ['/logos/quantix.png', 'Quantix'],
-                  ].map(([src, alt], index) => (
-                    <div key={`${group}-${alt}-${index}`} className="flex h-16 w-32 shrink-0 items-center justify-center rounded-2xl border border-gray-100 bg-white p-4 grayscale opacity-70 shadow-sm">
-                      <Image src={src} alt={alt} width={120} height={48} className="h-10 w-auto object-contain" />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {trustSignals.map((item) => (
+              <article key={item.title} className="rounded-3xl border border-gray-100 bg-gray-50 p-6">
+                <h2 className="text-lg font-bold text-gray-950">{item.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-gray-600">{item.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -282,7 +305,7 @@ export default function HomeClient() {
                 <ul className="space-y-3 text-sm text-gray-600">
                   {plan.items.map((item) => <li key={item}>• {item}</li>)}
                 </ul>
-                <a href="#contacto" className="mt-6 inline-flex font-semibold text-primary-700 hover:text-primary-900" onClick={() => trackEvent('cta_plan_contact', { plan: plan.name })}>Solicitar propuesta</a>
+                <a href="#contacto" className="mt-6 inline-flex font-semibold text-primary-700 hover:text-primary-900" onClick={() => trackEvent('cta_plan_contact', { plan: plan.name })}>Cotizar este plan</a>
               </article>
             ))}
           </div>
@@ -293,8 +316,11 @@ export default function HomeClient() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <p className="section-kicker">Casos</p>
-              <h2 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-5xl">Resultados que se entienden.</h2>
+              <p className="section-kicker">Casos de referencia</p>
+              <h2 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-5xl">Resultados explicados con contexto.</h2>
+              <p className="mt-4 max-w-2xl text-gray-600">
+                Ejemplos de cómo abordamos proyectos frecuentes en pymes: desde el problema operativo hasta el impacto esperado.
+              </p>
             </div>
             <div className="flex flex-wrap gap-3">
               {caseCategories.map((category) => (
@@ -320,8 +346,11 @@ export default function HomeClient() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-950">{successCase.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-gray-600">{successCase.summary}</p>
+                  <p className="mt-4 rounded-full bg-gray-50 px-3 py-2 text-xs font-semibold text-gray-600">
+                    Tiempo típico: {successCase.timeline}
+                  </p>
                   <button type="button" onClick={() => { setSelectedCase(successCases.findIndex((item) => item.slug === successCase.slug)); trackEvent('case_preview_open', { slug: successCase.slug }); }} className="mt-5 font-semibold text-primary-700 hover:text-primary-900">
-                    Ver caso
+                    Ver desglose
                   </button>
                 </div>
               </article>
@@ -355,6 +384,8 @@ export default function HomeClient() {
             <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿En cuánto tiempo entregan un proyecto?</summary><p className="mt-3 text-gray-600">Depende del alcance, pero un sitio web corporativo suele tomar entre 2 y 4 semanas.</p></details>
             <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿Trabajan con adelantos y entregas parciales?</summary><p className="mt-3 text-gray-600">Sí. Definimos hitos y entregables para que tengas visibilidad desde el inicio.</p></details>
             <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿Incluyen soporte después del lanzamiento?</summary><p className="mt-3 text-gray-600">Sí. Podemos acompañarte con ajustes, mejoras, seguridad y mantenimiento continuo.</p></details>
+            <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿La empresa queda como dueña del sitio o sistema?</summary><p className="mt-3 text-gray-600">Sí. Dejamos claro desde la propuesta qué entregables recibes, accesos, dominio, hosting y condiciones de mantenimiento.</p></details>
+            <details className="soft-card p-5"><summary className="cursor-pointer font-bold text-gray-950">¿Pueden orientar si aún no tengo claro qué necesito?</summary><p className="mt-3 text-gray-600">Sí. Empezamos con un diagnóstico breve para entender el problema, priorizar lo importante y evitar desarrollar funciones innecesarias.</p></details>
           </div>
         </div>
       </section>
@@ -377,23 +408,11 @@ export default function HomeClient() {
               </a>
             </div>
             <div className="rounded-[2rem] border border-white/10 bg-white p-6 text-gray-900 shadow-2xl shadow-black/25">
-              <h3 className="text-xl font-bold">Envíanos un mensaje</h3>
-              <form className="mt-5 space-y-4">
-                <div>
-                  <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700">Nombre</label>
-                  <input type="text" id="nombre" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Tu nombre" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700">Email</label>
-                  <input type="email" id="email" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="tu@email.com" />
-                </div>
-                <div>
-                  <label htmlFor="mensaje" className="block text-sm font-semibold text-gray-700">Mensaje</label>
-                  <textarea id="mensaje" rows={4} className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Cuéntanos qué quieres construir o mejorar"></textarea>
-                </div>
-                <button type="submit" className="w-full rounded-full bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-primary-800">Enviar mensaje</button>
-              </form>
-              <p className="mt-4 text-center text-xs text-gray-500">También puedes escribirnos por WhatsApp si prefieres una respuesta más directa.</p>
+              <h3 className="text-xl font-bold">Cuéntanos tu caso</h3>
+              <p className="mt-2 text-sm leading-6 text-gray-600">
+                El formulario abre WhatsApp con tu solicitud organizada para responderte con mayor precisión.
+              </p>
+              <LeadForm source="home-contacto" />
             </div>
           </div>
         </div>
@@ -401,17 +420,18 @@ export default function HomeClient() {
 
       {selectedCase !== null && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCase(null)}>
-          <div role="dialog" aria-modal="true" className="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div role="dialog" aria-modal="true" aria-labelledby="case-dialog-title" className="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-2xl font-bold text-gray-950">{successCases[selectedCase].title}</h3>
-                <button onClick={() => setSelectedCase(null)} className="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                <h3 id="case-dialog-title" className="text-2xl font-bold text-gray-950">{successCases[selectedCase].title}</h3>
+                <button type="button" aria-label="Cerrar caso" onClick={() => setSelectedCase(null)} className="text-gray-400 hover:text-gray-600 text-2xl">×</button>
               </div>
               <p className="text-gray-600 mb-5">{successCases[selectedCase].summary}</p>
               <div className="space-y-4 text-gray-700">
                 <div><h4 className="font-semibold text-gray-950">Perfil del cliente</h4><p>{successCases[selectedCase].clientProfile}</p></div>
                 <div><h4 className="font-semibold text-gray-950">Desafío</h4><p>{successCases[selectedCase].challenge}</p></div>
                 <div><h4 className="font-semibold text-gray-950">Solución implementada</h4><p>{successCases[selectedCase].solution}</p></div>
+                <div><h4 className="font-semibold text-gray-950">Tiempo estimado</h4><p>{successCases[selectedCase].timeline}</p></div>
                 <div>
                   <h4 className="font-semibold text-gray-950">Resultados</h4>
                   <ul className="list-disc pl-5 space-y-1">{successCases[selectedCase].results.map((result, idx) => <li key={idx}>{result}</li>)}</ul>
@@ -428,17 +448,17 @@ export default function HomeClient() {
 
       {selectedService !== null && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setSelectedService(null)}>
-          <div role="dialog" aria-modal="true" className="bg-white rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div role="dialog" aria-modal="true" aria-labelledby="service-dialog-title" className="bg-white rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-2xl font-bold text-gray-950">{serviceDetails[selectedService].title}</h3>
-                <button onClick={() => setSelectedService(null)} className="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                <h3 id="service-dialog-title" className="text-2xl font-bold text-gray-950">{serviceDetails[selectedService].title}</h3>
+                <button type="button" aria-label="Cerrar servicio" onClick={() => setSelectedService(null)} className="text-gray-400 hover:text-gray-600 text-2xl">×</button>
               </div>
               <p className="text-gray-600 mb-6">{serviceDetails[selectedService].fullDescription}</p>
               <h4 className="font-semibold text-gray-950 mb-2">Características destacadas</h4>
               <ul className="list-disc pl-5 mb-6 space-y-1 text-gray-600">{serviceDetails[selectedService].features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
               <div className="flex justify-end">
-                <a href="#contacto" onClick={() => setSelectedService(null)} className="bg-gray-950 hover:bg-primary-800 text-white font-medium py-2 px-5 rounded-full transition">Quiero esta solución</a>
+                <a href="#contacto" onClick={() => setSelectedService(null)} className="bg-gray-950 hover:bg-primary-800 text-white font-medium py-2 px-5 rounded-full transition">Cotizar esta solución</a>
               </div>
             </div>
           </div>

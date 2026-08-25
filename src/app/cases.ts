@@ -9,6 +9,7 @@ export type SuccessCase = {
   results: string[];
   technologies: string[];
   kpis: { label: string; value: string }[];
+  timeline: string;
   category: 'Web' | 'Sistema' | 'Soporte';
 };
 
@@ -19,7 +20,7 @@ export const successCases: SuccessCase[] = [
     icon: '🌐',
     category: 'Web',
     summary:
-      'Creamos un sitio web moderno y responsive para una empresa local, aumentando su visibilidad y generando un 40% más de consultas en los primeros 3 meses.',
+      'Diseñamos una web corporativa orientada a consultas comerciales, con estructura clara, SEO base y canales de contacto visibles desde el primer recorrido.',
     clientProfile: 'Empresa local de servicios profesionales con presencia digital limitada.',
     challenge:
       'Dependían de recomendaciones boca a boca y no contaban con un canal digital efectivo para captar nuevos clientes.',
@@ -36,6 +37,7 @@ export const successCases: SuccessCase[] = [
       { label: 'Tiempo de carga', value: '-35%' },
       { label: 'Conversión', value: '+22%' },
     ],
+    timeline: '2 a 4 semanas',
   },
   {
     slug: 'sistema-gestion-a-medida',
@@ -43,7 +45,7 @@ export const successCases: SuccessCase[] = [
     icon: '📋',
     category: 'Sistema',
     summary:
-      'Desarrollamos un software personalizado para automatizar la gestión de inventarios y pedidos, reduciendo errores manuales en un 70% y ahorrando 15 horas semanales.',
+      'Creamos un sistema web para centralizar inventario, pedidos y reportes, reduciendo trabajo manual y mejorando el control operativo diario.',
     clientProfile: 'Negocio comercial con alto volumen de pedidos y control manual de inventario.',
     challenge:
       'Procesos manuales en hojas de cálculo, errores frecuentes y retrasos operativos en inventario y despacho.',
@@ -60,6 +62,7 @@ export const successCases: SuccessCase[] = [
       { label: 'Tiempo ahorrado', value: '15h/sem' },
       { label: 'Precisión de stock', value: '+48%' },
     ],
+    timeline: '6 a 10 semanas',
   },
   {
     slug: 'mantenimiento-soporte-continuo',
@@ -67,7 +70,7 @@ export const successCases: SuccessCase[] = [
     icon: '🔧',
     category: 'Soporte',
     summary:
-      'Brindamos soporte técnico y actualizaciones periódicas para una plataforma educativa, logrando un 99.9% de disponibilidad y reducción de incidencias críticas a cero.',
+      'Organizamos mantenimiento preventivo, actualizaciones y respuesta a incidencias para una operación digital que necesitaba estabilidad continua.',
     clientProfile: 'Plataforma educativa con usuarios activos diarios y requerimientos de alta disponibilidad.',
     challenge: 'Incidencias técnicas recurrentes y falta de un plan de mantenimiento preventivo.',
     solution:
@@ -83,6 +86,7 @@ export const successCases: SuccessCase[] = [
       { label: 'Incidencias críticas', value: '0' },
       { label: 'Tiempo de respuesta', value: '<20min' },
     ],
+    timeline: 'Acompañamiento mensual',
   },
 ];
 

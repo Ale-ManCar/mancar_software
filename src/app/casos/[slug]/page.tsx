@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!currentCase) return { title: 'Caso no encontrado | Mancar Software' };
 
   return {
-    title: `${currentCase.title} | Caso de éxito | Mancar Software`,
+    title: `${currentCase.title} | Caso de referencia | Mancar Software`,
     description: currentCase.summary,
     openGraph: {
-      title: `${currentCase.title} | Caso de éxito`,
+      title: `${currentCase.title} | Caso de referencia`,
       description: currentCase.summary,
       type: 'article',
     },
@@ -43,7 +43,7 @@ export default async function CasoPage({ params }: Props) {
         <Link href="/" className="font-semibold text-primary-700 hover:text-primary-900">Volver al inicio</Link>
         <div className="mt-8 grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="section-kicker">{currentCase.category}</p>
+            <p className="section-kicker">Caso de referencia · {currentCase.category}</p>
             <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">{currentCase.title}</h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">{currentCase.summary}</p>
           </div>
@@ -52,13 +52,17 @@ export default async function CasoPage({ params }: Props) {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {currentCase.kpis.map((kpi) => (
             <div key={kpi.label} className="soft-card p-6 text-center">
               <div className="text-3xl font-extrabold text-primary-700">{kpi.value}</div>
               <div className="mt-1 text-sm text-gray-500">{kpi.label}</div>
             </div>
           ))}
+          <div className="soft-card p-6 text-center">
+            <div className="text-3xl font-extrabold text-primary-700">{currentCase.timeline}</div>
+            <div className="mt-1 text-sm text-gray-500">Tiempo típico</div>
+          </div>
         </div>
 
         <section className="mt-10 grid gap-6 lg:grid-cols-2">

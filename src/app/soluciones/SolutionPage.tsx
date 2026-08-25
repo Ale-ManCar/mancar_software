@@ -21,7 +21,7 @@ export default function SolutionPage({ kicker, title, description, secondary, im
           <p className="mt-6 text-lg leading-8 text-gray-600">{description}</p>
           <p className="mt-4 text-lg leading-8 text-gray-600">{secondary}</p>
           <Link href="/contacto" className="mt-8 inline-flex rounded-full bg-gray-950 px-7 py-3 font-semibold text-white transition hover:bg-primary-800">
-            Solicitar propuesta
+            Solicitar diagnóstico gratuito
           </Link>
         </div>
         <div className="relative h-[470px] overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-900/12">

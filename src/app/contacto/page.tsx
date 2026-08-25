@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+import LeadForm from "../components/LeadForm";
+
+export const metadata: Metadata = {
+  title: "Contacto y diagnóstico gratuito",
+  description:
+    "Agenda una orientación inicial con Mancar Software para desarrollo web, sistemas a medida, tiendas virtuales o soporte para pymes en Ecuador.",
+};
+
 export default function ContactoPage() {
   return (
     <main className="bg-gray-50 py-16">
@@ -31,22 +40,11 @@ export default function ContactoPage() {
             </a>
           </div>
           <div className="soft-card p-8">
-            <h2 className="text-2xl font-bold text-gray-950">Envíanos un mensaje</h2>
-            <form className="mt-6 space-y-4">
-              <div>
-                <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700">Nombre</label>
-                <input type="text" id="nombre" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Tu nombre" />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700">Email</label>
-                <input type="email" id="email" className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="tu@email.com" />
-              </div>
-              <div>
-                <label htmlFor="mensaje" className="block text-sm font-semibold text-gray-700">Mensaje</label>
-                <textarea id="mensaje" rows={4} className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Cuéntanos qué quieres construir o mejorar"></textarea>
-              </div>
-              <button type="submit" className="w-full rounded-full bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-primary-800">Enviar mensaje</button>
-            </form>
+            <h2 className="text-2xl font-bold text-gray-950">Solicita una orientación inicial</h2>
+            <p className="mt-2 text-sm leading-6 text-gray-600">
+              Enviaremos tu solicitud por WhatsApp con el contexto necesario para darte una respuesta clara.
+            </p>
+            <LeadForm source="pagina-contacto" submitLabel="Enviar solicitud por WhatsApp" />
           </div>
         </section>
       </div>
