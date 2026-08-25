@@ -9,17 +9,17 @@ export const metadata: Metadata = {
 
 export default function ContactoPage() {
   return (
-    <main className="bg-gray-50 py-16">
+    <main className="bg-gray-50 py-16 md:py-20">
       <div className="container mx-auto px-4">
         <section className="mx-auto max-w-3xl text-center">
           <p className="section-kicker mx-auto">Contacto</p>
-          <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">Conversemos sobre tu proyecto</h1>
+          <h1 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-6xl">Conversemos sobre tu proyecto</h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Cuéntanos qué necesitas mejorar, automatizar o vender mejor. Te responderemos con una orientación clara y aterrizada para tu negocio en Ecuador.
           </p>
         </section>
         <section className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="soft-card bg-gray-950 p-8 text-white">
+          <div className="soft-card dark-section p-8 text-white">
             <h2 className="text-2xl font-bold">Canales directos</h2>
             <div className="mt-8 space-y-6 text-gray-300">
               <div>
@@ -35,7 +35,7 @@ export default function ContactoPage() {
                 <p className="mt-1">contacto@mancarsoftware.com</p>
               </div>
             </div>
-            <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-gray-950 transition hover:bg-primary-100">
+            <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex rounded-full bg-white px-6 py-3 font-extrabold text-gray-950 transition hover:bg-primary-100">
               Hablemos por WhatsApp
             </a>
           </div>

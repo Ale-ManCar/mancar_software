@@ -30,12 +30,12 @@ const teamMembers = [
 
 export default function SobreNosotrosPage() {
   return (
-    <main className="bg-gray-50 py-16">
+    <main className="overflow-hidden bg-gray-50 py-16 md:py-20">
       <div className="container mx-auto px-4">
         <section className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="section-kicker">Sobre nosotros</p>
-            <h1 className="mt-5 text-5xl font-extrabold tracking-tight text-gray-950 md:text-6xl">
+            <h1 className="mt-5 text-4xl font-extrabold text-gray-950 md:text-6xl">
               Tecnología con criterio, cercanía y responsabilidad.
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -45,7 +45,7 @@ export default function SobreNosotrosPage() {
               Trabajamos con comunicación directa, entregas por etapas y decisiones técnicas explicadas sin complicar lo necesario.
             </p>
           </div>
-          <div className="overflow-hidden rounded-[2rem] bg-gray-950 shadow-2xl shadow-gray-900/15">
+          <div className="image-frame bg-gray-950">
             <div className="relative h-72">
               <Image src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85" alt="Equipo colaborando en una planificación digital" fill className="object-cover opacity-80" sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
@@ -67,9 +67,9 @@ export default function SobreNosotrosPage() {
             ['Compromiso', 'Nos involucramos como aliados del proyecto.'],
             ['Calidad', 'Cuidamos diseño, rendimiento, seguridad y mantenimiento.'],
           ].map(([title, text]) => (
-            <article key={title} className="soft-card p-6">
-              <h2 className="text-lg font-bold text-gray-950">{title}</h2>
-              <p className="mt-3 text-sm leading-6 text-gray-600">{text}</p>
+              <article key={title} className="soft-card p-6">
+                <h2 className="text-lg font-bold text-gray-950">{title}</h2>
+                <p className="mt-3 text-sm leading-6 text-gray-600">{text}</p>
             </article>
           ))}
         </section>

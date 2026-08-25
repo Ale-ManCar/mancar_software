@@ -86,7 +86,7 @@ export default function LeadForm({ source, submitLabel = "Solicitar diagnóstico
             id={`${source}-nombre`}
             value={form.name}
             onChange={(event) => updateField("name", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
             placeholder="Tu nombre"
             autoComplete="name"
             required
@@ -101,7 +101,7 @@ export default function LeadForm({ source, submitLabel = "Solicitar diagnóstico
             id={`${source}-email`}
             value={form.email}
             onChange={(event) => updateField("email", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
             placeholder="tu@email.com"
             autoComplete="email"
             required
@@ -119,7 +119,7 @@ export default function LeadForm({ source, submitLabel = "Solicitar diagnóstico
             id={`${source}-telefono`}
             value={form.phone}
             onChange={(event) => updateField("phone", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
             placeholder="+593 98 695 1419"
             autoComplete="tel"
           />
@@ -132,7 +132,7 @@ export default function LeadForm({ source, submitLabel = "Solicitar diagnóstico
             id={`${source}-tipo`}
             value={form.projectType}
             onChange={(event) => updateField("projectType", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300"
+            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
           >
             {projectTypes.map((type) => (
               <option key={type} value={type}>
@@ -152,7 +152,7 @@ export default function LeadForm({ source, submitLabel = "Solicitar diagnóstico
           rows={4}
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
-          className="mt-1 w-full rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300"
+          className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
           placeholder="Ejemplo: necesito una web para captar clientes o un sistema para controlar pedidos."
           required
         />
@@ -172,7 +172,7 @@ export default function LeadForm({ source, submitLabel = "Solicitar diagnóstico
 
       <button
         type="submit"
-        className="w-full rounded-full bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+        className="w-full rounded-full bg-gray-950 px-5 py-3 font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
       >
         {submitLabel}
       </button>

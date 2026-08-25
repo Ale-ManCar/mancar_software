@@ -31,10 +31,10 @@ export default function Header() {
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const linkClass = "rounded-full px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-white hover:text-primary-700";
+  const linkClass = "rounded-full px-3 py-2 text-sm font-extrabold text-gray-600 transition hover:bg-gray-100 hover:text-gray-950";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/82 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-gray-50/90 backdrop-blur-xl">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="group flex items-center gap-2 text-xl font-extrabold tracking-tight text-gray-950">
           <Image
@@ -45,7 +45,7 @@ export default function Header() {
             priority
             className="h-9 w-9 rounded-xl shadow-sm transition duration-300 group-hover:scale-105"
           />
-          Mancar<span className="text-primary-700">Software</span>
+          <span className="font-display">Mancar<span className="text-primary-700">Software</span></span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -83,10 +83,10 @@ export default function Header() {
 
           <Link href="/aplicativos-empresariales" className={linkClass}>Aplicativos Empresariales</Link>
           <Link href="/soporte" className={linkClass}>Soporte</Link>
-          <Link href="/contacto" className="ml-2 rounded-full bg-gray-950 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-gray-900/10 transition hover:bg-primary-800">Diagnóstico gratis</Link>
+          <Link href="/contacto" className="ml-2 rounded-full bg-gray-950 px-5 py-2 text-sm font-extrabold text-white shadow-lg shadow-gray-900/10 transition hover:bg-primary-700">Diagnóstico gratis</Link>
         </nav>
 
-        <button onClick={() => setIsMobileMenuOpen(true)} className="lg:hidden rounded-full border border-gray-200 p-2 text-gray-700">
+        <button onClick={() => setIsMobileMenuOpen(true)} aria-label="Abrir menú" className="lg:hidden rounded-full border border-gray-200 p-2 text-gray-700">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -108,7 +108,7 @@ export default function Header() {
                 />
                 <span className="font-bold text-gray-950">Mancar Software</span>
               </div>
-              <button onClick={closeMobileMenu} className="rounded-full border border-gray-200 p-2 text-gray-600">
+              <button onClick={closeMobileMenu} aria-label="Cerrar menú" className="rounded-full border border-gray-200 p-2 text-gray-600">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -129,7 +129,7 @@ export default function Header() {
               <div className="my-2 border-t border-gray-100"></div>
               <Link href="/aplicativos-empresariales" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Aplicativos Empresariales</Link>
               <Link href="/soporte" className="rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Soporte</Link>
-              <Link href="/contacto" className="mt-3 rounded-full bg-gray-950 px-4 py-3 text-center font-semibold text-white" onClick={closeMobileMenu}>Diagnóstico gratis</Link>
+              <Link href="/contacto" className="mt-3 rounded-full bg-gray-950 px-4 py-3 text-center font-extrabold text-white" onClick={closeMobileMenu}>Diagnóstico gratis</Link>
             </nav>
           </div>
         </>
