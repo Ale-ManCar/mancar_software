@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
-import { caseCategories, successCases } from './cases';
+import { useEffect, useState } from 'react';
+import { successCases } from './cases';
 import LeadForm from './components/LeadForm';
 
 const images = {
@@ -79,13 +79,6 @@ const plans = [
 
 export default function HomeClient() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
-  const [selectedCase, setSelectedCase] = useState<number | null>(null);
-  const [activeCategory, setActiveCategory] = useState<(typeof caseCategories)[number]>('Todos');
-
-  const filteredCases = useMemo(() => {
-    if (activeCategory === 'Todos') return successCases;
-    return successCases.filter((successCase) => successCase.category === activeCategory);
-  }, [activeCategory]);
 
   const trackEvent = (event: string, payload: Record<string, string>) => {
     if (typeof window !== 'undefined') {
@@ -96,12 +89,11 @@ export default function HomeClient() {
   };
 
   useEffect(() => {
-    const hasOpenModal = selectedCase !== null || selectedService !== null;
+    const hasOpenModal = selectedService !== null;
     document.body.style.overflow = hasOpenModal ? 'hidden' : '';
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setSelectedCase(null);
         setSelectedService(null);
       }
     };
@@ -112,7 +104,7 @@ export default function HomeClient() {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', closeOnEscape);
     };
-  }, [selectedCase, selectedService]);
+  }, [selectedService]);
 
   return (
     <main className="overflow-hidden">
@@ -287,54 +279,37 @@ export default function HomeClient() {
 
       <section className="bg-white py-16 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="section-kicker mx-auto">Casos reales</p>
-            <h2 className="section-title">Proyectos públicos que muestran cómo trabajamos.</h2>
-            <p className="section-copy">
-              En lugar de prometer con frases vacías, mostramos productos y plantillas reales: sistemas locales, webs comerciales y herramientas listas para adaptar a negocios de Ecuador.
-            </p>
-          </div>
-          <div className="mt-8 flex justify-center">
-            <div className="flex max-w-full gap-2 overflow-x-auto rounded-full bg-gray-50 p-2 no-scrollbar">
-              {caseCategories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setActiveCategory(category)}
-                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-extrabold transition ${activeCategory === category ? 'bg-gray-950 text-white' : 'text-gray-600 hover:bg-white'}`}
-                >
-                  {category}
-                </button>
-              ))}
+          <div className="grid items-center gap-8 rounded-[2rem] border border-gray-100 bg-gray-50 p-6 md:grid-cols-[0.9fr_1.1fr] md:p-10">
+            <div>
+              <p className="section-kicker">Portafolio</p>
+              <h2 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950 md:text-5xl">
+                Soluciones reales para negocios que necesitan avanzar.
+              </h2>
+              <p className="mt-5 leading-8 text-gray-600">
+                Explora proyectos donde aplicamos estrategia, diseño y desarrollo para crear sistemas, sitios web y herramientas digitales pensadas para operar mejor y captar más oportunidades.
+              </p>
+              <Link
+                href="/casos"
+                onClick={() => trackEvent('portfolio_page_open', { source: 'home-portfolio-teaser' })}
+                className="mt-7 inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+              >
+                Ver portafolio
+              </Link>
             </div>
-          </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {filteredCases.map((successCase) => (
-              <article key={successCase.slug} className="soft-card p-6">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-sm font-extrabold text-primary-700">{successCase.category}</p>
-                  <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-extrabold text-gray-500">
-                    {successCase.liveUrl ? 'Demo' : 'Caso'}
-                  </span>
-                </div>
-                <h3 className="mt-4 text-xl font-bold text-gray-950">{successCase.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-gray-600">{successCase.summary}</p>
-                <div className="mt-5 rounded-2xl bg-gray-50 p-4">
-                  <p className="font-display text-3xl font-extrabold text-gray-950">{successCase.kpis[0].value}</p>
-                  <p className="text-xs font-bold text-gray-500">{successCase.kpis[0].label}</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCase(successCases.findIndex((item) => item.slug === successCase.slug));
-                    trackEvent('case_preview_open', { slug: successCase.slug });
-                  }}
-                  className="mt-5 font-extrabold text-primary-700 transition hover:text-primary-900"
-                >
-                  Ver desglose
-                </button>
-              </article>
-            ))}
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="soft-card p-5">
+                <p className="font-display text-3xl font-extrabold text-gray-950">{successCases.length}</p>
+                <p className="mt-1 text-sm font-semibold text-gray-500">casos documentados</p>
+              </div>
+              <div className="soft-card p-5">
+                <p className="font-display text-3xl font-extrabold text-gray-950">2</p>
+                <p className="mt-1 text-sm font-semibold text-gray-500">demos verificadas</p>
+              </div>
+              <div className="soft-card p-5">
+                <p className="font-display text-3xl font-extrabold text-gray-950">100%</p>
+                <p className="mt-1 text-sm font-semibold text-gray-500">enfoque comercial</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -398,54 +373,6 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
-
-      {selectedCase !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setSelectedCase(null)}>
-          <div role="dialog" aria-modal="true" aria-labelledby="case-dialog-title" className="max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-3xl bg-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
-            <div className="p-6">
-              <div className="mb-4 flex items-center justify-between gap-4">
-                <h3 id="case-dialog-title" className="text-2xl font-bold text-gray-950">{successCases[selectedCase].title}</h3>
-                <button type="button" aria-label="Cerrar caso" onClick={() => setSelectedCase(null)} className="text-2xl text-gray-400 transition hover:text-gray-600">×</button>
-              </div>
-              <p className="mb-5 text-gray-600">{successCases[selectedCase].summary}</p>
-              <div className="space-y-4 text-gray-700">
-                <div><h4 className="font-semibold text-gray-950">Perfil del cliente</h4><p>{successCases[selectedCase].clientProfile}</p></div>
-                <div><h4 className="font-semibold text-gray-950">Desafío</h4><p>{successCases[selectedCase].challenge}</p></div>
-                <div><h4 className="font-semibold text-gray-950">Solución implementada</h4><p>{successCases[selectedCase].solution}</p></div>
-                <div><h4 className="font-semibold text-gray-950">Tiempo estimado</h4><p>{successCases[selectedCase].timeline}</p></div>
-                <div>
-                  <h4 className="font-semibold text-gray-950">Resultados</h4>
-                  <ul className="list-disc space-y-1 pl-5">{successCases[selectedCase].results.map((result, idx) => <li key={idx}>{result}</li>)}</ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-950">Tecnologías y enfoque</h4>
-                  <div className="mt-2 flex flex-wrap gap-2">{successCases[selectedCase].technologies.map((item) => <span key={item} className="rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-sm text-primary-700">{item}</span>)}</div>
-                </div>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <Link
-                    href={`/casos/${successCases[selectedCase].slug}`}
-                    onClick={() => trackEvent('case_detail_open', { slug: successCases[selectedCase].slug })}
-                    className="inline-flex justify-center rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
-                  >
-                    Ver caso completo
-                  </Link>
-                  {successCases[selectedCase].liveUrl && (
-                    <a
-                      href={successCases[selectedCase].liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => trackEvent('case_demo_open', { slug: successCases[selectedCase].slug })}
-                      className="inline-flex justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-extrabold text-gray-950 transition hover:border-primary-200 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
-                    >
-                      Ver demo online
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {selectedService !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setSelectedService(null)}>

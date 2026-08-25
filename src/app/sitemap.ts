@@ -16,7 +16,7 @@ const routes = [
   "/casos/odontocare",
   "/casos/vetcare-pro-lan",
   "/casos/casa-nativa",
-  "/casos/beauty-business-template",
+  "/casos/nova-store",
   "/casos/alma-vet",
   "/etica-y-conducta",
   "/politica-de-privacidad",
