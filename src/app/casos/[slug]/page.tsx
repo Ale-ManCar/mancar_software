@@ -48,14 +48,14 @@ export default async function CasoPage({ params }: Props) {
             <p className="section-kicker">Caso de referencia · {currentCase.category}</p>
             <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">{currentCase.title}</h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">{currentCase.summary}</p>
-            {currentCase.repositoryUrl && (
+            {currentCase.liveUrl && (
               <a
-                href={currentCase.repositoryUrl}
+                href={currentCase.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-7 inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
               >
-                Ver repositorio público
+                Ver demo online
               </a>
             )}
           </div>

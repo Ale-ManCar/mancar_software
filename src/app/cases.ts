@@ -11,7 +11,7 @@ export type SuccessCase = {
   kpis: { label: string; value: string }[];
   timeline: string;
   category: 'Web' | 'Sistema' | 'Soporte';
-  repositoryUrl?: string;
+  liveUrl?: string;
 };
 
 export const successCases: SuccessCase[] = [
@@ -20,7 +20,6 @@ export const successCases: SuccessCase[] = [
     title: 'OdontoCare',
     icon: 'OC',
     category: 'Sistema',
-    repositoryUrl: 'https://github.com/MancarSoftware/odonto_care',
     summary:
       'Sistema odontológico desktop para clínicas que necesitan operar en Windows con datos locales, roles, pacientes, agenda, tratamientos, pagos y respaldos.',
     clientProfile: 'Clínicas odontológicas que requieren una herramienta instalable, privada y preparada para trabajo diario sin depender de una web pública.',
@@ -46,7 +45,6 @@ export const successCases: SuccessCase[] = [
     title: 'VetCare Pro LAN',
     icon: 'VP',
     category: 'Sistema',
-    repositoryUrl: 'https://github.com/MancarSoftware/vetCarePro',
     summary:
       'Sistema veterinario local para Windows con modo servidor LAN y clientes conectados dentro de la misma red de la clínica.',
     clientProfile: 'Clínicas veterinarias que trabajan con dos o más equipos y necesitan operar sin depender de internet o servicios en la nube.',
@@ -72,7 +70,7 @@ export const successCases: SuccessCase[] = [
     title: 'Casa Nativa',
     icon: 'CN',
     category: 'Web',
-    repositoryUrl: 'https://github.com/MancarSoftware/muebleria',
+    liveUrl: 'https://mancarsoftware.github.io/muebleria/',
     summary:
       'Sitio comercial premium para una mueblería, con catálogo administrable, leads, analítica interna y asesoría de producto asistida por IA.',
     clientProfile: 'Negocio de muebles que necesita mostrar productos con una experiencia visual cuidada y captar oportunidades comerciales.',
@@ -98,7 +96,6 @@ export const successCases: SuccessCase[] = [
     title: 'Beauty Business Template',
     icon: 'BB',
     category: 'Web',
-    repositoryUrl: 'https://github.com/MancarSoftware/beauty-business-template',
     summary:
       'Plantilla web reutilizable para negocios de belleza, barberías, spas, peluquerías y centros estéticos locales.',
     clientProfile: 'Negocios de servicios personales que necesitan una presencia web profesional, rápida de adaptar y orientada a reservas.',
@@ -124,7 +121,7 @@ export const successCases: SuccessCase[] = [
     title: 'Alma Vet',
     icon: 'AV',
     category: 'Web',
-    repositoryUrl: 'https://github.com/MancarSoftware/veterinaria',
+    liveUrl: 'https://mancarsoftware.github.io/veterinaria/',
     summary:
       'Sitio web estático para veterinaria con backend ligero para recibir y validar solicitudes de citas.',
     clientProfile: 'Clínica veterinaria que necesita comunicar confianza, servicios y canales de atención de forma simple.',

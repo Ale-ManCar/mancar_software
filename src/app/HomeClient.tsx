@@ -51,7 +51,7 @@ const serviceDetails = [
 ];
 
 const stats = [
-  ['5', 'repositorios públicos'],
+  ['5', 'proyectos reales'],
   ['2', 'apps desktop Windows'],
   ['3', 'verticales de negocio'],
   ['100%', 'trato directo'],
@@ -290,7 +290,7 @@ export default function HomeClient() {
             <p className="section-kicker mx-auto">Casos reales</p>
             <h2 className="section-title">Proyectos públicos que muestran cómo trabajamos.</h2>
             <p className="section-copy">
-              En lugar de prometer con frases vacías, mostramos productos y plantillas reales publicados en GitHub: sistemas locales, webs comerciales y herramientas listas para adaptar a negocios de Ecuador.
+              En lugar de prometer con frases vacías, mostramos productos y plantillas reales: sistemas locales, webs comerciales y herramientas listas para adaptar a negocios de Ecuador.
             </p>
           </div>
           <div className="mt-8 flex justify-center">
@@ -312,9 +312,11 @@ export default function HomeClient() {
               <article key={successCase.slug} className="soft-card p-6">
                 <div className="flex items-center justify-between gap-4">
                   <p className="text-sm font-extrabold text-primary-700">{successCase.category}</p>
-                  <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-extrabold text-gray-500">
-                    GitHub
-                  </span>
+                  {successCase.liveUrl && (
+                    <span className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-extrabold text-gray-500">
+                      Demo
+                    </span>
+                  )}
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-950">{successCase.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-gray-600">{successCase.summary}</p>
@@ -420,15 +422,15 @@ export default function HomeClient() {
                   <h4 className="font-semibold text-gray-950">Tecnologías y enfoque</h4>
                   <div className="mt-2 flex flex-wrap gap-2">{successCases[selectedCase].technologies.map((item) => <span key={item} className="rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-sm text-primary-700">{item}</span>)}</div>
                 </div>
-                {successCases[selectedCase].repositoryUrl && (
+                {successCases[selectedCase].liveUrl && (
                   <a
-                    href={successCases[selectedCase].repositoryUrl}
+                    href={successCases[selectedCase].liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => trackEvent('case_repository_open', { slug: successCases[selectedCase].slug })}
+                    onClick={() => trackEvent('case_demo_open', { slug: successCases[selectedCase].slug })}
                     className="inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
                   >
-                    Ver repositorio público
+                    Ver demo online
                   </a>
                 )}
               </div>
