@@ -1,8 +1,7 @@
 "use client";
 
-import { FormEvent, useCallback, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
 import Link from "next/link";
-import TurnstileWidget from "./TurnstileWidget";
 
 type LeadFormProps = {
   source: string;
@@ -22,8 +21,9 @@ type FormState = {
 type SubmissionState =
   | { kind: "idle" }
   | { kind: "submitting" }
-  | { kind: "success"; reference: string; message: string }
-  | { kind: "error"; message: string };
+  | { kind: "success"; message: string };
+
+const recipientEmail = "mancarsoftwares@gmail.com";
 
 const initialState: FormState = {
   name: "",
@@ -43,45 +43,11 @@ const projectTypes = [
   "Necesito orientación",
 ];
 
-type LeadResponse = {
-  id?: string;
-  error?: string;
-  fields?: Record<string, string>;
-};
-
 export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: LeadFormProps) {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submission, setSubmission] = useState<SubmissionState>({ kind: "idle" });
-  const [turnstileToken, setTurnstileToken] = useState("");
-  const [turnstileReset, setTurnstileReset] = useState(0);
-  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
-  const leadFunctionUrl = process.env.NEXT_PUBLIC_SUPABASE_LEAD_FUNCTION_URL || "";
   const busy = submission.kind === "submitting";
-
-  const handleTurnstileToken = useCallback((token: string) => {
-    setTurnstileToken(token);
-    setErrors((current) => {
-      const next = { ...current };
-      delete next.turnstile;
-      return next;
-    });
-  }, []);
-
-  const whatsappUrl = useMemo(() => {
-    const text = [
-      "Hola Mancar Software, quiero orientación para mi proyecto.",
-      `Nombre: ${form.name || "-"}`,
-      `Email: ${form.email || "-"}`,
-      `Teléfono: ${form.phone || "-"}`,
-      `Tipo de proyecto: ${form.projectType}`,
-      `Mensaje: ${form.message || "-"}`,
-      `Consentimiento de contacto: ${form.consent ? "Sí" : "No"}`,
-      `Origen: ${source}`,
-    ].join("\n");
-
-    return `https://wa.me/593986951419?text=${encodeURIComponent(text)}`;
-  }, [form, source]);
 
   const updateField = (field: keyof FormState, value: string | boolean) => {
     setForm((current) => ({ ...current, [field]: value }));
@@ -94,7 +60,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     if (submission.kind !== "idle") setSubmission({ kind: "idle" });
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const nextErrors: Record<string, string> = {};
 
@@ -103,51 +69,50 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     if (!/^(?:\+593\s?)?0?9\d{8}$/.test(form.phone.replace(/\s|-/g, ""))) nextErrors.phone = "Ingresa un WhatsApp ecuatoriano válido.";
     if (form.message.trim().length < 12) nextErrors.message = "Describe brevemente qué necesitas resolver.";
     if (!form.consent) nextErrors.consent = "Acepta el uso de tus datos para responder la solicitud.";
-    if (!leadFunctionUrl) nextErrors.form = "El formulario todavía no está conectado al servidor de producción.";
-    if (!turnstileSiteKey) nextErrors.turnstile = "La verificación de seguridad todavía no está configurada.";
-    if (!turnstileToken) nextErrors.turnstile = "Completa la verificación de seguridad.";
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) return;
 
+    if (form.website.trim()) {
+      setForm(initialState);
+      setSubmission({ kind: "success", message: "Gracias. Tu solicitud fue recibida para revisión." });
+      return;
+    }
+
     setSubmission({ kind: "submitting" });
 
-    try {
-      const response = await fetch(leadFunctionUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, source, turnstileToken }),
-      });
-      const body = (await response.json().catch(() => ({}))) as LeadResponse;
+    const subject = `Nueva solicitud web - ${form.projectType}`;
+    const body = [
+      "Hola Mancar Software, quiero solicitar información para mi proyecto.",
+      "",
+      `Nombre: ${form.name.trim()}`,
+      `Email: ${form.email.trim()}`,
+      `Teléfono: ${form.phone.trim()}`,
+      `Tipo de proyecto: ${form.projectType}`,
+      `Origen: ${source}`,
+      "",
+      "Mensaje:",
+      form.message.trim(),
+      "",
+      "Acepto que mis datos se utilicen para gestionar esta solicitud conforme a la Política de privacidad.",
+    ].join("\n");
 
-      if (!response.ok) {
-        if (body.fields) setErrors(body.fields);
-        throw new Error(body.error || "No pudimos enviar la solicitud. Inténtalo nuevamente.");
-      }
+    window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setForm(initialState);
+    setErrors({});
+    setSubmission({
+      kind: "success",
+      message: "Se abrió tu aplicación de correo con la solicitud lista para enviar a Mancar Software.",
+    });
 
-      setForm(initialState);
-      setErrors({});
-      setTurnstileToken("");
-      setTurnstileReset((value) => value + 1);
-      setSubmission({
-        kind: "success",
-        reference: body.id || "MS",
-        message: "Recibimos tu solicitud. Revisaremos el contexto y te responderemos con el siguiente paso.",
-      });
-
-      window.dispatchEvent(
-        new CustomEvent("mancar:analytics", {
-          detail: { event: "lead_form_submit", source, projectType: form.projectType },
-        }),
-      );
-      const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
-      if (Array.isArray(dataLayer)) {
-        dataLayer.push({ event: "lead_form_submit", source, projectType: form.projectType });
-      }
-    } catch (error) {
-      setTurnstileToken("");
-      setTurnstileReset((value) => value + 1);
-      setSubmission({ kind: "error", message: error instanceof Error ? error.message : "No pudimos enviar la solicitud." });
+    window.dispatchEvent(
+      new CustomEvent("mancar:analytics", {
+        detail: { event: "lead_form_email_start", source, projectType: form.projectType },
+      }),
+    );
+    const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
+    if (Array.isArray(dataLayer)) {
+      dataLayer.push({ event: "lead_form_email_start", source, projectType: form.projectType });
     }
   };
 
@@ -218,7 +183,6 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             value={form.projectType}
             onChange={(event) => updateField("projectType", event.target.value)}
             className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
-            aria-invalid={!!errors.projectType}
           >
             {projectTypes.map((type) => (
               <option key={type} value={type}>
@@ -277,54 +241,19 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
       </label>
       {errors.consent && <p className="text-sm font-medium text-secondary-700">{errors.consent}</p>}
 
-      {turnstileSiteKey ? (
-        <div className="max-w-full overflow-x-auto">
-          <TurnstileWidget
-            siteKey={turnstileSiteKey}
-            resetKey={turnstileReset}
-            onToken={handleTurnstileToken}
-            onExpire={() => setErrors((current) => ({ ...current, turnstile: "La verificación venció. Inténtalo nuevamente." }))}
-          />
-        </div>
-      ) : (
-        <p className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
-          La verificación de seguridad todavía no está configurada.
-        </p>
-      )}
-      {errors.turnstile && <p className="text-sm font-medium text-secondary-700">{errors.turnstile}</p>}
-      {errors.form && (
-        <p className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
-          {errors.form}
-        </p>
-      )}
-
-      {submission.kind === "error" && (
-        <p aria-live="polite" className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
-          {submission.message}
-        </p>
-      )}
-
       {submission.kind === "success" && (
         <p aria-live="polite" className="rounded-2xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm font-medium text-primary-800">
-          {submission.message} <strong>Referencia: {submission.reference}</strong>
+          {submission.message}
         </p>
       )}
 
       <button
         type="submit"
-        disabled={busy || !turnstileSiteKey || !leadFunctionUrl}
+        disabled={busy}
         className="w-full rounded-full bg-gray-950 px-5 py-3 font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
-        {busy ? "Enviando..." : submitLabel}
+        {busy ? "Preparando correo..." : submitLabel}
       </button>
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block text-center text-sm font-extrabold text-primary-700 transition hover:text-primary-900"
-      >
-        Prefiero escribir por WhatsApp
-      </a>
     </form>
   );
 }
