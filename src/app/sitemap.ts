@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const routes = [
   "",
   "/sobre-nosotros",
@@ -25,7 +27,9 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = "https://mancarsoftware.com";
+  const siteUrl = process.env.GITHUB_PAGES === "true"
+    ? "https://ale-mancar.github.io/mancar_software"
+    : "https://mancarsoftware.com";
 
   return routes.map((route) => ({
     url: `${siteUrl}${route}`,

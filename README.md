@@ -31,6 +31,12 @@ TURNSTILE_SECRET_KEY=
 
 `NEXT_PUBLIC_GA_ID` is optional. The contact form requires a deployment that supports Next.js API routes.
 
+## GitHub Pages Preview
+
+The GitHub Actions workflow in `.github/workflows/deploy-pages.yml` builds a static preview for `https://ale-mancar.github.io/mancar_software/`.
+
+The preview is for reviewing the website design and navigation. GitHub Pages cannot run `/api/leads`, so the contact form shows a preview notice instead of sending email. The automatic Resend + Turnstile form works on hosting that supports Next.js API routes, such as Vercel.
+
 ## Lead Form Flow
 
 The contact form validates the fields in the browser, submits to `/api/leads`, and sends an automatic email notification to `mancarsoftwares@gmail.com`.

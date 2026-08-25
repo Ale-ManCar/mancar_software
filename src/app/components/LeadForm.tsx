@@ -50,6 +50,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileReset, setTurnstileReset] = useState(0);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
+  const staticPreview = process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true";
   const busy = submission.kind === "submitting";
 
   const handleTurnstileToken = useCallback((token: string) => {
@@ -81,8 +82,8 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     if (!/^(?:\+593\s?)?0?9\d{8}$/.test(form.phone.replace(/\s|-/g, ""))) nextErrors.phone = "Ingresa un WhatsApp ecuatoriano válido.";
     if (form.message.trim().length < 12) nextErrors.message = "Describe brevemente qué necesitas resolver.";
     if (!form.consent) nextErrors.consent = "Acepta el uso de tus datos para responder la solicitud.";
-    if (!turnstileSiteKey) nextErrors.turnstile = "La verificación de seguridad todavía no está configurada.";
-    if (!turnstileToken) nextErrors.turnstile = "Completa la verificación de seguridad.";
+    if (!staticPreview && !turnstileSiteKey) nextErrors.turnstile = "La verificación de seguridad todavía no está configurada.";
+    if (!staticPreview && !turnstileToken) nextErrors.turnstile = "Completa la verificación de seguridad.";
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) return;
@@ -90,6 +91,14 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     if (form.website.trim()) {
       setForm(initialState);
       setSubmission({ kind: "success", message: "Gracias. Tu solicitud fue recibida para revisión." });
+      return;
+    }
+
+    if (staticPreview) {
+      setSubmission({
+        kind: "success",
+        message: "Vista previa activa: el envío automático se habilitará en el hosting final con servidor.",
+      });
       return;
     }
 
@@ -261,7 +270,11 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
       </label>
       {errors.consent && <p className="text-sm font-medium text-secondary-700">{errors.consent}</p>}
 
-      {turnstileSiteKey ? (
+      {staticPreview ? (
+        <p className="rounded-2xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm font-medium text-primary-800">
+          Vista previa: la verificación y el envío automático se activarán en el hosting final.
+        </p>
+      ) : turnstileSiteKey ? (
         <div className="max-w-full overflow-x-auto">
           <TurnstileWidget
             siteKey={turnstileSiteKey}
@@ -291,7 +304,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
 
       <button
         type="submit"
-        disabled={busy || !turnstileSiteKey}
+        disabled={busy || (!staticPreview && !turnstileSiteKey)}
         className="w-full rounded-full bg-gray-950 px-5 py-3 font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
         {busy ? "Enviando..." : submitLabel}
