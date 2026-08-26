@@ -47,16 +47,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-gray-50/90 backdrop-blur-xl">
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="group flex min-h-11 items-center gap-2 text-xl font-extrabold tracking-tight text-gray-950">
+        <Link href="/" className="group flex min-h-11 items-center">
           <Image
-            src="/brand/mancar-mark.svg"
+            src="/brand/mancar-logo.png"
             alt="Logo de Mancar Software"
-            width={38}
-            height={38}
+            width={230}
+            height={64}
             priority
-            className="h-9 w-9 rounded-xl shadow-sm transition duration-300 group-hover:scale-105"
+            className="h-10 w-auto object-contain transition duration-300 group-hover:scale-[1.02] sm:h-11"
           />
-          <span className="font-display">Mancar<span className="text-primary-700">Software</span></span>
         </Link>
 
         <nav className="hidden min-w-0 items-center gap-1 lg:flex">
@@ -111,11 +110,11 @@ export default function Header() {
             <div className="flex items-center justify-between border-b border-gray-100 p-4">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/brand/mancar-mark.svg"
+                  src="/brand/mancar-mark.png"
                   alt="Logo de Mancar Software"
                   width={34}
                   height={34}
-                  className="h-8 w-8 rounded-xl"
+                  className="h-8 w-8 object-contain"
                 />
                 <span className="font-bold text-gray-950">Mancar Software</span>
               </div>

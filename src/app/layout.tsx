@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     template: "%s | Mancar Software",
   },
   icons: {
-    icon: "/brand/mancar-mark.svg",
-    shortcut: "/brand/mancar-mark.svg",
-    apple: "/brand/mancar-mark.svg",
+    icon: "/brand/mancar-mark.png",
+    shortcut: "/brand/mancar-mark.png",
+    apple: "/brand/mancar-mark.png",
   },
   description:
     "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador que quieren vender mejor y ordenar sus procesos.",
@@ -74,7 +74,7 @@ const organizationJsonLd = {
   "@type": "ProfessionalService",
   name: "Mancar Software",
   url: siteUrl,
-  logo: `${siteUrl}/brand/mancar-logo.svg`,
+  logo: `${siteUrl}/brand/mancar-logo.png`,
   image: `${siteUrl}/brand/og-image.png`,
   description:
     "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador.",
@@ -122,15 +122,14 @@ export default function RootLayout({
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
               <div className="md:col-span-1">
-                <div className="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+                <div className="flex items-center">
                   <Image
-                    src="/brand/mancar-mark.svg"
+                    src="/brand/mancar-logo-light.png"
                     alt="Logo de Mancar Software"
-                    width={38}
-                    height={38}
-                    className="h-9 w-9 rounded-xl"
+                    width={230}
+                    height={64}
+                    className="h-12 w-auto object-contain"
                   />
-                  <span className="font-display">Mancar<span className="text-primary-200">Software</span></span>
                 </div>
                 <p className="mt-4 max-w-xs text-sm leading-6 text-gray-400">
                   Soluciones digitales claras, cercanas y diseñadas para que las pymes vendan mejor, ordenen procesos y crezcan con confianza.
