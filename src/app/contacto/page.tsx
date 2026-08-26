@@ -18,21 +18,28 @@ export default function ContactoPage() {
             Cuéntanos qué necesitas mejorar, automatizar o vender mejor. Te responderemos con una orientación clara y aterrizada para tu negocio en Ecuador.
           </p>
         </section>
-        <section className="grid gap-8 pb-16 md:pb-20 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="soft-card dark-section p-8 text-white">
-            <h2 className="text-2xl font-bold">Canales directos</h2>
-            <div className="mt-8 space-y-6 text-gray-300">
-              <div>
-                <h3 className="font-semibold text-white">Atención</h3>
-                <p className="mt-1">Atención remota para pymes en Ecuador, con coordinación directa desde Guayaquil.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-white">Teléfono y WhatsApp</h3>
-                <p className="mt-1">+593 98 695 1419</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-white">Email</h3>
-                <p className="mt-1">mancarsoftwares@gmail.com</p>
+        <section className="grid items-start gap-8 pb-16 md:pb-20 lg:grid-cols-[0.82fr_1.18fr]">
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-gray-950/5 md:p-7">
+            <p className="section-kicker">Canales directos</p>
+            <h2 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950">Hablemos sin vueltas.</h2>
+            <p className="mt-4 leading-7 text-gray-600">
+              Recibimos solicitudes de pymes en Ecuador y coordinamos la primera orientación desde Guayaquil.
+            </p>
+
+            <div className="mt-7 grid gap-3">
+              <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Teléfono y WhatsApp</span>
+                <span className="mt-1 block text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800">+593 98 695 1419</span>
+              </a>
+              <a href="mailto:mancarsoftwares@gmail.com" className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Email</span>
+                <span className="mt-1 block break-words text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800">mancarsoftwares@gmail.com</span>
+              </a>
+              <div className="rounded-2xl border border-gray-200 bg-gray-950 p-4 text-white">
+                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-200">Siguiente paso</span>
+                <p className="mt-2 text-sm leading-6 text-gray-200">
+                  Revisamos tu caso y te respondemos con una ruta clara: web, sistema, tienda virtual o soporte.
+                </p>
               </div>
             </div>
           </div>
