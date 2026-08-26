@@ -4,6 +4,7 @@ import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Ética y conducta',
+  browserTitle: 'Ética',
   description:
     'Principios de integridad, confidencialidad, responsabilidad y respeto que guían cada proyecto desarrollado por Mancar Software.',
   path: '/etica-y-conducta',

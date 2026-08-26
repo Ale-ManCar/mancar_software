@@ -5,6 +5,7 @@ import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Contacto para desarrollo web y sistemas en Ecuador",
+  browserTitle: "Contacto",
   description:
     "Agenda una orientación inicial con Mancar Software para desarrollo web, sistemas a medida, tiendas virtuales o soporte para pymes en Ecuador.",
   path: "/contacto",

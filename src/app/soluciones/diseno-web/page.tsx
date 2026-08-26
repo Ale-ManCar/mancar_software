@@ -4,6 +4,7 @@ import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Diseño web profesional para pymes en Ecuador',
+  browserTitle: 'Diseño web',
   description:
     'Sitios web rápidos, responsive y orientados a conversión para pymes que necesitan explicar su oferta, generar contactos y verse profesionales.',
   path: '/soluciones/diseno-web',

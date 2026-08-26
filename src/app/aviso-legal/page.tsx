@@ -4,6 +4,7 @@ import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Aviso legal',
+  browserTitle: 'Aviso legal',
   description:
     'Información legal del sitio web de Mancar Software, condiciones de uso, responsabilidad del contenido y contacto legal.',
   path: '/aviso-legal',

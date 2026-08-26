@@ -4,6 +4,7 @@ import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Tiendas virtuales para vender online en Ecuador',
+  browserTitle: 'Tiendas virtuales',
   description:
     'Diseñamos tiendas online con catálogo, carrito, pagos, inventario y una experiencia clara para que tus clientes compren sin complicaciones.',
   path: '/soluciones/tiendas-virtuales',

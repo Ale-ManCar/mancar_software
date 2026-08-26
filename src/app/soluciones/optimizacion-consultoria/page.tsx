@@ -4,6 +4,7 @@ import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Optimización web y consultoría digital',
+  browserTitle: 'Optimización web',
   description:
     'Auditamos sitios y sistemas para mejorar velocidad, SEO, claridad comercial, experiencia de usuario y conversión.',
   path: '/soluciones/optimizacion-consultoria',

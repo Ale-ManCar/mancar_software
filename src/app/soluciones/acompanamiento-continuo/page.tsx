@@ -4,6 +4,7 @@ import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Acompañamiento técnico continuo para pymes',
+  browserTitle: 'Acompañamiento continuo',
   description:
     'Acompañamiento post-lanzamiento para mejorar, mantener y evolucionar tu sitio web, tienda virtual o sistema con criterio técnico.',
   path: '/soluciones/acompanamiento-continuo',

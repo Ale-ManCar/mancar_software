@@ -62,6 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return createPageMetadata({
     title: `${currentCase.title} | Caso de referencia`,
+    browserTitle: currentCase.title,
     description: currentCase.summary,
     path: `/casos/${currentCase.slug}`,
     type: 'article',

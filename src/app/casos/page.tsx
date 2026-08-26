@@ -5,6 +5,7 @@ import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Portafolio de proyectos",
+  browserTitle: "Portafolio",
   description:
     "Casos reales de Mancar Software: sistemas locales, sitios web comerciales, plantillas y soluciones digitales para negocios de Ecuador.",
   path: "/casos",

@@ -4,6 +4,7 @@ import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Política de privacidad',
+  browserTitle: 'Privacidad',
   description:
     'Consulta cómo Mancar Software recopila, usa, protege y conserva los datos personales enviados mediante el sitio web.',
   path: '/politica-de-privacidad',

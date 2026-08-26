@@ -4,6 +4,7 @@ import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Desarrollo de sistemas a medida para pymes',
+  browserTitle: 'Sistemas a medida',
   description:
     'Creamos sistemas web personalizados para centralizar información, automatizar procesos y reducir errores operativos en empresas de Ecuador.',
   path: '/soluciones/desarrollo-sistemas',

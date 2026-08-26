@@ -4,6 +4,7 @@ import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Política de seguridad',
+  browserTitle: 'Seguridad',
   description:
     'Conoce el enfoque de seguridad de Mancar Software para proteger información, accesos y continuidad operativa en proyectos digitales.',
   path: '/politica-de-seguridad',

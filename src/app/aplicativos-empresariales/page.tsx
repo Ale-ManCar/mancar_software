@@ -5,6 +5,7 @@ import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Aplicativos empresariales para pymes en Ecuador',
+  browserTitle: 'Aplicativos empresariales',
   description:
     'Desarrollamos sistemas internos, inventarios, CRM, dashboards y aplicaciones empresariales a medida para que las pymes operen con más control.',
   path: '/aplicativos-empresariales',

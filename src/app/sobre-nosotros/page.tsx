@@ -5,6 +5,7 @@ import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Sobre nosotros | Equipo y valores',
+  browserTitle: 'Sobre nosotros',
   description:
     'Conoce al equipo de Mancar Software, nuestra forma de trabajo y los valores con los que desarrollamos sitios web, sistemas y soporte para pymes en Ecuador.',
   path: '/sobre-nosotros',

@@ -30,10 +30,15 @@ export function createPageMetadata({
   const socialTitle = title.includes("Mancar Software")
     ? title
     : `${title} | Mancar Software`;
+  const pageTitle = browserTitle
+    ? browserTitle.includes("Mancar Software")
+      ? browserTitle
+      : `${browserTitle} | Mancar Software`
+    : socialTitle;
 
   return {
     title: {
-      absolute: browserTitle ?? socialTitle,
+      absolute: pageTitle,
     },
     description,
     alternates: {

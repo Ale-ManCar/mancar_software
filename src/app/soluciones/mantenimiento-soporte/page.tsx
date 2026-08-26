@@ -4,6 +4,7 @@ import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Mantenimiento y soporte para sitios y sistemas',
+  browserTitle: 'Mantenimiento y soporte',
   description:
     'Mantenimiento técnico para sitios web, tiendas y sistemas: actualizaciones, seguridad, errores, rendimiento y mejoras continuas.',
   path: '/soluciones/mantenimiento-soporte',
