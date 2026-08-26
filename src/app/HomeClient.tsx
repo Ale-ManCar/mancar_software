@@ -341,33 +341,36 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <section id="contacto" className="relative overflow-hidden dark-section py-16 text-white md:py-20">
-        <Image
-          src={images.contact}
-          alt="Reunión para conversar sobre un proyecto digital"
-          fill
-          className="object-cover opacity-16"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gray-950/82" />
-        <div className="relative container mx-auto px-4">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <section id="contacto" className="bg-gray-50 py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
             <div>
-              <p className="section-kicker border-white/10 bg-white/10 text-white">Contacto</p>
-              <h2 className="mt-5 text-4xl font-extrabold text-white md:text-5xl">Cuéntanos qué quieres mejorar.</h2>
-              <p className="mt-5 text-lg leading-8 text-gray-300">
+              <p className="section-kicker">Contacto</p>
+              <h2 className="mt-5 max-w-xl text-4xl font-extrabold leading-tight text-gray-950 md:text-5xl">Cuéntanos qué quieres mejorar.</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-gray-600">
                 Te responderemos con una orientación clara para decidir si necesitas una web, un sistema, una tienda virtual o soporte técnico.
               </p>
-              <div className="mt-8 space-y-3 text-gray-300">
-                <p><strong className="text-white">WhatsApp:</strong> +593 98 695 1419</p>
-                <p><strong className="text-white">Email:</strong> mancarsoftwares@gmail.com</p>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                  <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">WhatsApp</span>
+                  <span className="mt-1 block font-bold text-gray-950">+593 98 695 1419</span>
+                </a>
+                <a href="mailto:mancarsoftwares@gmail.com" className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                  <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Email</span>
+                  <span className="mt-1 block break-words font-bold text-gray-950">mancarsoftwares@gmail.com</span>
+                </a>
               </div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white p-6 text-gray-900 shadow-2xl shadow-black/25">
-              <h3 className="text-2xl font-bold">Cuéntanos tu caso</h3>
-              <p className="mt-2 text-sm leading-6 text-gray-600">
-                Recibiremos tu solicitud con el contexto necesario para responderte con una orientación clara.
-              </p>
+            <div className="rounded-2xl border border-gray-200 bg-white p-5 text-gray-900 shadow-xl shadow-gray-950/5 md:p-6 lg:p-7">
+              <div className="flex flex-col gap-2 border-b border-gray-100 pb-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold leading-tight text-gray-950">Cuéntanos tu caso</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-600">
+                    Recibiremos tu solicitud con el contexto necesario para responderte con una orientación clara.
+                  </p>
+                </div>
+                <span className="w-fit rounded-full bg-primary-50 px-3 py-1 text-xs font-extrabold text-primary-800">Respuesta directa</span>
+              </div>
               <LeadForm source="home-contacto" />
             </div>
           </div>

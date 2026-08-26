@@ -146,8 +146,8 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
   };
 
   return (
-    <form className="mt-5 space-y-4" onSubmit={handleSubmit} noValidate>
-      <div className="grid gap-4 sm:grid-cols-2">
+    <form className="mt-4 space-y-3.5" onSubmit={handleSubmit} noValidate>
+      <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
           <label htmlFor={`${source}-nombre`} className="block text-sm font-semibold text-gray-700">
             Nombre
@@ -157,7 +157,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             id={`${source}-nombre`}
             value={form.name}
             onChange={(event) => updateField("name", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
+            className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
             autoComplete="name"
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? `${source}-nombre-error` : undefined}
@@ -174,7 +174,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             id={`${source}-email`}
             value={form.email}
             onChange={(event) => updateField("email", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
+            className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
             autoComplete="email"
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? `${source}-email-error` : undefined}
@@ -184,7 +184,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
           <label htmlFor={`${source}-telefono`} className="block text-sm font-semibold text-gray-700">
             Teléfono o WhatsApp
@@ -194,7 +194,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             id={`${source}-telefono`}
             value={form.phone}
             onChange={(event) => updateField("phone", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
+            className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
             autoComplete="tel"
             inputMode="tel"
             aria-invalid={!!errors.phone}
@@ -211,7 +211,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             id={`${source}-tipo`}
             value={form.projectType}
             onChange={(event) => updateField("projectType", event.target.value)}
-            className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
+            className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
           >
             {projectTypes.map((type) => (
               <option key={type} value={type}>
@@ -228,10 +228,10 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         </label>
         <textarea
           id={`${source}-mensaje`}
-          rows={4}
+          rows={3}
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
-          className="mt-1 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
+          className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
           maxLength={1200}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? `${source}-mensaje-error` : undefined}
@@ -251,12 +251,12 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         />
       </label>
 
-      <label className="flex items-start gap-4 text-base leading-6 text-gray-700">
+      <label className="flex items-start gap-3 text-sm leading-6 text-gray-700">
         <input
           type="checkbox"
           checked={form.consent}
           onChange={(event) => updateField("consent", event.target.checked)}
-          className="mt-0.5 h-6 w-6 shrink-0 rounded border-gray-300 text-primary-700 focus:ring-primary-300"
+          className="mt-1 h-5 w-5 shrink-0 rounded border-gray-300 text-primary-700 focus:ring-primary-300"
           aria-invalid={!!errors.consent}
           required
         />
@@ -270,11 +270,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
       </label>
       {errors.consent && <p className="text-sm font-medium text-secondary-700">{errors.consent}</p>}
 
-      {staticPreview ? (
-        <p className="rounded-2xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm font-medium text-primary-800">
-          Vista previa: la verificación y el envío automático se activarán en el hosting final.
-        </p>
-      ) : turnstileSiteKey ? (
+      {!staticPreview && turnstileSiteKey ? (
         <div className="max-w-full overflow-x-auto">
           <TurnstileWidget
             siteKey={turnstileSiteKey}
@@ -283,21 +279,21 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             onExpire={() => setErrors((current) => ({ ...current, turnstile: "La verificación venció. Inténtalo nuevamente." }))}
           />
         </div>
-      ) : (
-        <p className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
+      ) : !staticPreview ? (
+        <p className="rounded-xl border border-secondary-200 bg-secondary-50 px-4 py-2.5 text-sm font-medium text-secondary-800">
           La verificación de seguridad todavía no está configurada.
         </p>
-      )}
+      ) : null}
       {errors.turnstile && <p className="text-sm font-medium text-secondary-700">{errors.turnstile}</p>}
 
       {submission.kind === "success" && (
-        <p aria-live="polite" className="rounded-2xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm font-medium text-primary-800">
+        <p aria-live="polite" className="rounded-xl border border-primary-100 bg-primary-50 px-4 py-2.5 text-sm font-medium text-primary-800">
           {submission.message}
         </p>
       )}
 
       {submission.kind === "error" && (
-        <p aria-live="polite" className="rounded-2xl border border-secondary-200 bg-secondary-50 px-4 py-3 text-sm font-medium text-secondary-800">
+        <p aria-live="polite" className="rounded-xl border border-secondary-200 bg-secondary-50 px-4 py-2.5 text-sm font-medium text-secondary-800">
           {submission.message}
         </p>
       )}
