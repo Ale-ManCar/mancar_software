@@ -129,10 +129,22 @@ export default async function CasoPage({ params }: Props) {
             </article>
           ))}
           <article className="soft-card p-7 lg:col-span-2">
-            <h2 className="text-2xl font-bold text-gray-950">Resultados</h2>
-            <ul className="mt-4 grid gap-3 md:grid-cols-3">
-              {currentCase.results.map((result) => <li key={result} className="rounded-2xl bg-primary-50 p-4 font-medium text-primary-900">{result}</li>)}
-            </ul>
+            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div>
+                <p className="section-kicker">Evidencia</p>
+                <h2 className="mt-4 text-2xl font-bold text-gray-950">Qué demuestra este proyecto</h2>
+                <p className="mt-4 leading-7 text-gray-600">
+                  Este caso resume decisiones de diseño, arquitectura y operación aplicadas a un contexto real de negocio.
+                </p>
+              </div>
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {currentCase.results.map((result) => (
+                  <li key={result} className="rounded-2xl border border-primary-100 bg-primary-50 p-4 text-sm font-semibold leading-6 text-primary-900">
+                    {result}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </article>
           <article className="rounded-3xl bg-gray-950 p-7 text-white lg:col-span-2">
             <p className="text-sm font-extrabold uppercase tracking-wide text-primary-200">Siguiente paso</p>
@@ -149,7 +161,7 @@ export default async function CasoPage({ params }: Props) {
                 eventPayload={{ location: "case-detail", case: currentCase.slug }}
                 className="inline-flex justify-center rounded-full bg-white px-5 py-3 text-sm font-extrabold text-gray-950 transition hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-gray-950"
               >
-                Solicitar orientación
+                Cotizar una solución similar
               </TrackedLink>
             </div>
           </article>

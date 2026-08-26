@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import FaqSection from '../components/FaqSection';
+import TrackedLink from '../components/TrackedLink';
 
 type TextItem = {
   title: string;
@@ -45,9 +46,14 @@ export default function SolutionPage({
             <p className="mt-6 text-lg leading-8 text-gray-600">{description}</p>
             <p className="mt-4 text-lg leading-8 text-gray-600">{secondary}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contacto" className="btn-primary w-full sm:w-auto">
-                Solicitar orientación
-              </Link>
+              <TrackedLink
+                href="/contacto"
+                eventName="contact_cta_click"
+                eventPayload={{ location: 'solution-hero', solution: kicker }}
+                className="btn-primary w-full sm:w-auto"
+              >
+                Cotizar mi proyecto
+              </TrackedLink>
               <Link href="/casos" className="btn-secondary w-full sm:w-auto">
                 Ver proyectos
               </Link>

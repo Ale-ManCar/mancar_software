@@ -54,9 +54,22 @@ It includes:
 - Suspicious content rejection before email delivery.
 - Privacy consent before sending the request.
 - Email delivery through Resend.
-- Analytics events for form starts, successful submissions, contact clicks, social clicks, portfolio opens and demo opens when `NEXT_PUBLIC_GA_ID` is configured.
+- Analytics events for form starts, submit attempts, validation errors, successful submissions, send errors, contact clicks, CTA clicks, social clicks, portfolio opens and demo opens when `NEXT_PUBLIC_GA_ID` is configured.
 
 The rate limiter is process-local. For higher traffic or multi-region hosting, move the same rules to a shared store such as Redis, Upstash, or Cloudflare KV.
+
+## Launch QA
+
+Before publishing a final production launch, verify:
+
+- The lead form sends an email to `mancarsoftwares@gmail.com`.
+- Cloudflare Turnstile renders once, completes correctly, and blocks invalid submissions.
+- Phone links open the dialer with `+593 98 695 1419`.
+- Email links open a message to `mancarsoftwares@gmail.com`.
+- Portfolio cards open the right case pages and public demos when available.
+- Browser titles remain concise, for example `Diseño web | Mancar Software`.
+- Social previews use `/brand/og-image.png`.
+- Analytics receives the conversion events listed above.
 
 ## Cloudflare Turnstile
 

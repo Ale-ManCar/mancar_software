@@ -31,7 +31,7 @@ export default function AvisoLegalPage() {
           <div className="mt-8 space-y-4 text-gray-700">
             {items.map((item) => <p key={item} className="leading-7">{item}</p>)}
           </div>
-          <p className="mt-8 text-sm text-gray-500">Última actualización: 25 de mayo de 2026.</p>
+          <p className="mt-8 text-sm text-gray-500">Última actualización: 26 de agosto de 2026.</p>
         </div>
       </section>
     </main>

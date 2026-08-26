@@ -68,6 +68,14 @@ export default function CasesPage() {
               </div>
               <h2 className="mt-4 text-2xl font-bold text-gray-950">{successCase.title}</h2>
               <p className="mt-3 flex-1 text-sm leading-6 text-gray-600">{successCase.summary}</p>
+              <ul className="mt-5 space-y-2 border-t border-gray-100 pt-5" aria-label={`Evidencia del caso ${successCase.title}`}>
+                {successCase.results.slice(0, 2).map((result) => (
+                  <li key={result} className="flex gap-2 text-sm leading-6 text-gray-600">
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary-400" />
+                    <span>{result}</span>
+                  </li>
+                ))}
+              </ul>
               <div className="mt-5 flex flex-wrap gap-2">
                 {successCase.technologies.slice(0, 4).map((technology) => (
                   <span key={technology} className="rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-xs font-bold text-primary-700">

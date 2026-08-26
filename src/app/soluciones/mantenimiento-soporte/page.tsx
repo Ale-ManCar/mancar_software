@@ -47,8 +47,8 @@ export default function MantenimientoSoportePage() {
           description: 'Definimos respaldos según el tipo de proyecto para proteger contenido, configuración e información operativa.',
         },
         {
-          title: 'Soporte por WhatsApp',
-          description: 'Mantenemos un canal directo para reportes, coordinación de prioridades y seguimiento de incidencias.',
+          title: 'Soporte técnico',
+          description: 'Mantenemos comunicación directa para reportes, coordinación de prioridades y seguimiento de incidencias.',
         },
         {
           title: 'Mejoras continuas',

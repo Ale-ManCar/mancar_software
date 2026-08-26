@@ -52,7 +52,7 @@ export default function ContactoPage() {
             <p className="mt-2 text-sm leading-6 text-gray-600">
               Enviaremos tu solicitud al equipo comercial con el contexto necesario para darte una respuesta clara.
             </p>
-            <LeadForm source="pagina-contacto" />
+            <LeadForm source="pagina-contacto" submitLabel="Solicitar orientación inicial" />
           </div>
         </section>
       </div>

@@ -81,22 +81,30 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    trackConversion("lead_form_attempt", { source, projectType: form.projectType });
     const nextErrors: Record<string, string> = {};
 
     if (form.name.trim().length < 2) nextErrors.name = "Ingresa tu nombre.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) nextErrors.email = "Ingresa un email válido.";
-    if (!/^(?:\+593\s?)?0?9\d{8}$/.test(form.phone.replace(/\s|-/g, ""))) nextErrors.phone = "Ingresa un WhatsApp ecuatoriano válido.";
+    if (!/^(?:\+593\s?)?0?9\d{8}$/.test(form.phone.replace(/\s|-/g, ""))) nextErrors.phone = "Ingresa un teléfono ecuatoriano válido.";
     if (form.message.trim().length < 12) nextErrors.message = "Describe brevemente qué necesitas resolver.";
     if (!form.consent) nextErrors.consent = "Acepta el uso de tus datos para responder la solicitud.";
     if (!staticPreview && !turnstileSiteKey) nextErrors.turnstile = "La verificación de seguridad todavía no está configurada.";
     if (!staticPreview && !turnstileToken) nextErrors.turnstile = "Completa la verificación de seguridad.";
 
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length) return;
+    if (Object.keys(nextErrors).length) {
+      trackConversion("lead_form_validation_error", {
+        source,
+        fields: Object.keys(nextErrors).join(","),
+      });
+      return;
+    }
 
     if (form.website.trim()) {
       setForm(initialState);
       setSubmission({ kind: "success", message: "Gracias. Tu solicitud fue recibida para revisión." });
+      trackConversion("lead_form_honeypot", { source });
       return;
     }
 
@@ -105,6 +113,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         kind: "success",
         message: "Vista previa activa: el envío automático se habilitará en el hosting final con servidor.",
       });
+      trackConversion("lead_form_preview_success", { source, projectType: form.projectType });
       return;
     }
 
@@ -129,15 +138,18 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
       setTurnstileReset((value) => value + 1);
       setSubmission({
         kind: "success",
-        message: "Recibimos tu solicitud. Te responderemos pronto por correo o WhatsApp.",
+        message: "Recibimos tu solicitud. Te responderemos pronto por correo o teléfono.",
       });
 
       trackConversion("lead_form_submit", { source, projectType: form.projectType });
+      trackConversion("lead_form_success", { source, projectType: form.projectType });
     } catch (error) {
+      const message = error instanceof Error ? error.message : "No pudimos enviar la solicitud.";
       setSubmission({
         kind: "error",
-        message: error instanceof Error ? error.message : "No pudimos enviar la solicitud.",
+        message,
       });
+      trackConversion("lead_form_error", { source, message });
       setTurnstileToken("");
       setTurnstileReset((value) => value + 1);
     }
@@ -185,7 +197,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
       <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
           <label htmlFor={`${source}-telefono`} className="block text-sm font-semibold text-gray-700">
-            Teléfono o WhatsApp
+            Teléfono
           </label>
           <input
             type="tel"

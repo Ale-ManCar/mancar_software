@@ -13,7 +13,7 @@ export const metadata: Metadata = createPageMetadata({
 
 const supportCards = [
   ['Sitio caído o lento', 'Revisamos disponibilidad, errores visibles, hosting y configuración básica.'],
-  ['Errores en formularios', 'Validamos envíos, WhatsApp, correos y datos que llegan incompletos.'],
+  ['Errores en formularios', 'Validamos envíos, correos y datos que llegan incompletos.'],
   ['Actualizaciones y seguridad', 'Aplicamos mejoras, copias de seguridad y prevención de incidencias.'],
   ['Mejoras pequeñas', 'Ajustamos textos, secciones, estilos, contenido o funcionalidades puntuales.'],
 ];

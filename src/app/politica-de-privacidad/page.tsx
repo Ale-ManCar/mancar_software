@@ -13,7 +13,7 @@ export const metadata: Metadata = createPageMetadata({
 const sections = [
   ['Datos que recopilamos', 'Podemos recopilar datos de contacto, información de navegación y mensajes enviados mediante el formulario de contacto.'],
   ['Uso de la información', 'Usamos la información para responder consultas, mejorar servicios, brindar soporte, medir el rendimiento del sitio y realizar análisis estadísticos.'],
-  ['Servicios externos', 'Podemos usar proveedores como Resend para enviar solicitudes de contacto, Cloudflare Turnstile para prevenir spam y herramientas de analítica configuradas por Mancar Software.'],
+  ['Servicios externos', 'Podemos usar proveedores como Resend para enviar solicitudes de contacto, Cloudflare Turnstile para prevenir spam y herramientas de analítica configuradas por Mancar Software. Estos servicios procesan únicamente la información necesaria para cumplir esa finalidad.'],
   ['Medición del sitio', 'Podemos medir visitas, clics en canales de contacto, apertura de casos y uso del formulario para mejorar la experiencia y entender qué información resulta más útil.'],
   ['Conservación y seguridad', 'Aplicamos medidas técnicas y organizativas razonables para proteger tus datos y conservarlos solo durante el tiempo necesario.'],
   ['Tus derechos', 'Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a mancarsoftwares@gmail.com.'],
@@ -38,7 +38,7 @@ export default function PoliticaPrivacidadPage() {
               </section>
             ))}
           </div>
-          <p className="mt-8 text-sm text-gray-500">Última actualización: 25 de mayo de 2026.</p>
+          <p className="mt-8 text-sm text-gray-500">Última actualización: 26 de agosto de 2026.</p>
         </div>
       </section>
     </main>

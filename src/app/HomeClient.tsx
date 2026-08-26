@@ -25,7 +25,7 @@ const serviceDetails = [
     image: images.web,
     fullDescription:
       'Creamos sitios rápidos, modernos y claros para que tu empresa proyecte confianza y convierta visitas en contactos reales.',
-    features: ['Diseño responsive', 'SEO técnico base', 'Formulario y WhatsApp', 'Contenido editable', 'Optimización de carga'],
+    features: ['Diseño responsive', 'SEO técnico base', 'Formulario de contacto', 'Contenido editable', 'Optimización de carga'],
   },
   {
     title: 'Sistemas a medida',
@@ -49,7 +49,7 @@ const serviceDetails = [
     image: images.support,
     fullDescription:
       'Mantenemos tu sitio o sistema seguro, actualizado y listo para seguir creciendo después del lanzamiento.',
-    features: ['Actualizaciones', 'Backups', 'Corrección de errores', 'Monitoreo', 'Soporte por WhatsApp'],
+    features: ['Actualizaciones', 'Backups', 'Corrección de errores', 'Monitoreo', 'Soporte técnico'],
   },
 ];
 
@@ -66,6 +66,24 @@ const benefits = [
   ['Mejor seguimiento', 'Trabajamos por etapas, con avances claros y decisiones explicadas sin tecnicismos innecesarios.'],
 ];
 
+const trustProof = [
+  {
+    title: 'Sistemas con operación real',
+    text: 'Hemos trabajado soluciones desktop y LAN para clínicas que necesitan continuidad, control local y flujos diarios bien definidos.',
+    metric: 'Windows + LAN',
+  },
+  {
+    title: 'Webs pensadas para captar',
+    text: 'Creamos sitios y tiendas con estructura comercial, llamados a la acción claros, formularios y demos públicas cuando el proyecto lo permite.',
+    metric: 'Web + leads',
+  },
+  {
+    title: 'Arquitectura proporcional',
+    text: 'Elegimos tecnología según el alcance: páginas estáticas, APIs, bases de datos o paneles administrativos sin sumar complejidad innecesaria.',
+    metric: 'Escalable',
+  },
+];
+
 const steps = [
   ['01', 'Diagnóstico', 'Revisamos tu negocio, objetivos, procesos y prioridad comercial.'],
   ['02', 'Propuesta clara', 'Definimos alcance, entregables, tiempos y ruta de implementación.'],
@@ -74,7 +92,7 @@ const steps = [
 ];
 
 const plans = [
-  { name: 'Web inicial', price: 'Desde $590', items: ['Sitio corporativo', 'Hasta 5 secciones', 'Formulario + WhatsApp'] },
+  { name: 'Web inicial', price: 'Desde $590', items: ['Sitio corporativo', 'Hasta 5 secciones', 'Formulario de contacto'] },
   { name: 'Web estratégica', price: 'Desde $1,290', items: ['Estructura comercial', 'SEO técnico base', 'Soporte inicial'] },
   { name: 'Sistema o ecommerce', price: 'Desde $2,490', items: ['Panel administrativo', 'Integraciones', 'Acompañamiento técnico'] },
 ];
@@ -136,11 +154,11 @@ export default function HomeClient() {
                 En Mancar Software diseñamos presencia digital, sistemas a medida y tiendas virtuales para empresas que necesitan verse mejor y trabajar con más control.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#servicios" onClick={() => trackConversion('cta_click', { label: 'Ver soluciones', location: 'hero' })} className="btn-primary w-full sm:w-auto">
+                <Link href="/contacto" onClick={() => trackConversion('cta_click', { label: 'Solicitar orientación inicial', location: 'hero' })} className="btn-primary w-full sm:w-auto">
+                  Solicitar orientación inicial
+                </Link>
+                <a href="#servicios" onClick={() => trackConversion('cta_click', { label: 'Ver soluciones', location: 'hero' })} className="btn-secondary w-full sm:w-auto">
                   Ver soluciones
-                </a>
-                <a href="#metodo" onClick={() => trackConversion('cta_click', { label: 'Ver método de trabajo', location: 'hero' })} className="btn-secondary w-full sm:w-auto">
-                  Ver método de trabajo
                 </a>
               </div>
               <div className="mt-10 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
@@ -187,6 +205,28 @@ export default function HomeClient() {
                 <p className="mt-3 leading-7 text-gray-600">{text}</p>
               </article>
             ))}
+          </div>
+          <div className="mt-10 rounded-[2rem] border border-gray-200 bg-white p-6 shadow-xl shadow-gray-950/5 md:p-8">
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+              <div>
+                <p className="section-kicker">Confianza</p>
+                <h3 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950 md:text-4xl">
+                  Evidencia concreta antes de pedirte una decisión.
+                </h3>
+                <p className="mt-4 leading-7 text-gray-600">
+                  Mostramos cómo resolvemos problemas reales: operación local, presencia comercial, formularios, paneles y despliegues preparados para crecer.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {trustProof.map((proof) => (
+                  <article key={proof.title} className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
+                    <p className="font-display text-2xl font-extrabold text-primary-700">{proof.metric}</p>
+                    <h4 className="mt-3 text-lg font-bold text-gray-950">{proof.title}</h4>
+                    <p className="mt-2 text-sm leading-6 text-gray-600">{proof.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -369,7 +409,7 @@ export default function HomeClient() {
                 </div>
                 <span className="w-fit rounded-full bg-primary-50 px-3 py-1 text-xs font-extrabold text-primary-800">Respuesta directa</span>
               </div>
-              <LeadForm source="home-contacto" />
+              <LeadForm source="home-contacto" submitLabel="Solicitar orientación inicial" />
             </div>
           </div>
         </div>

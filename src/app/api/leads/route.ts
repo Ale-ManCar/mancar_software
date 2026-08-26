@@ -64,7 +64,7 @@ function validate(payload: LeadPayload): { data?: ValidLead; fields: Record<stri
 
   if (name.length < 2) fields.name = "Ingresa tu nombre.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) fields.email = "Ingresa un email válido.";
-  if (!/^(?:\+593\s?)?0?9\d{8}$/.test(phone.replace(/\s|-/g, ""))) fields.phone = "Ingresa un WhatsApp ecuatoriano válido.";
+  if (!/^(?:\+593\s?)?0?9\d{8}$/.test(phone.replace(/\s|-/g, ""))) fields.phone = "Ingresa un teléfono ecuatoriano válido.";
   if (!projectTypes.has(projectType)) fields.projectType = "Selecciona un tipo de proyecto válido.";
   if (message.length < 12) fields.message = "Describe brevemente qué necesitas resolver.";
   if (message.length > 1200) fields.message = "El mensaje es demasiado largo.";
@@ -155,6 +155,7 @@ function buildEmail(data: ValidLead) {
 
   const text = [
     "Nueva solicitud desde la web de Mancar Software",
+    "Responder por correo o teléfono según el dato más conveniente para el cliente.",
     "",
     ...rows.map(([label, value]) => `${label}: ${value}`),
     "",
@@ -236,7 +237,7 @@ export async function POST(request: NextRequest) {
       from,
       to: [recipientEmail],
       reply_to: data.email,
-      subject: `Nueva solicitud web - ${data.projectType}`,
+    subject: `Nueva solicitud web - ${data.projectType}`,
       text,
       html,
     }),
