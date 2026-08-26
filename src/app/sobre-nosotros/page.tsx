@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import FaqSection from '../components/FaqSection';
+import { publicAsset } from '../asset-paths';
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -15,7 +16,7 @@ const teamMembers = [
   {
     name: 'Alejandro Mantilla',
     role: 'Desarrollador Full Stack',
-    image: '/desarrolladores/alejandro-mantilla.jpeg',
+    image: publicAsset('/desarrolladores/alejandro-mantilla.jpeg'),
     imagePosition: 'object-top',
     initials: 'AM',
     description: 'Lidera la construcción de soluciones web completas, cuidando tanto la arquitectura técnica como la experiencia de uso.',
@@ -24,7 +25,7 @@ const teamMembers = [
   {
     name: 'Jeremy Macias',
     role: 'Desarrollador Frontend',
-    image: '/desarrolladores/jeremy-macias.jpeg',
+    image: publicAsset('/desarrolladores/jeremy-macias.jpeg'),
     imagePosition: 'object-center',
     initials: 'JM',
     description: 'Transforma ideas y flujos de negocio en interfaces claras, accesibles y adaptadas a cualquier dispositivo.',

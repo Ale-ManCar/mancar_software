@@ -4,6 +4,9 @@ const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const githubPagesBasePath = "/mancar_software";
 
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGitHubPages ? githubPagesBasePath : "",
+  },
   ...(isGitHubPages
     ? {
         output: "export" as const,

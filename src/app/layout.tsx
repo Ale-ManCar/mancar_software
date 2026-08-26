@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Analytics from "./components/Analytics";
 import TrackedLink from "./components/TrackedLink";
+import { publicAsset } from "./asset-paths";
 import { defaultOgImage, siteUrl } from "./seo";
 
 export const metadata: Metadata = {
@@ -14,9 +15,9 @@ export const metadata: Metadata = {
     template: "%s | Mancar Software",
   },
   icons: {
-    icon: "/brand/mancar-mark.png",
-    shortcut: "/brand/mancar-mark.png",
-    apple: "/brand/mancar-mark.png",
+    icon: publicAsset("/brand/mancar-mark.png"),
+    shortcut: publicAsset("/brand/mancar-mark.png"),
+    apple: publicAsset("/brand/mancar-mark.png"),
   },
   description:
     "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador que quieren vender mejor y ordenar sus procesos.",
@@ -124,7 +125,7 @@ export default function RootLayout({
               <div className="md:col-span-1">
                 <div className="flex items-center">
                   <Image
-                    src="/brand/mancar-logo-light.png"
+                    src={publicAsset("/brand/mancar-logo-light.png")}
                     alt="Logo de Mancar Software"
                     width={230}
                     height={64}

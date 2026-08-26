@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { publicAsset } from "../asset-paths";
 
 type ChevronIconProps = { isOpen: boolean };
 
@@ -49,7 +50,7 @@ export default function Header() {
       <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="group flex min-h-11 items-center">
           <Image
-            src="/brand/mancar-logo.png"
+            src={publicAsset("/brand/mancar-logo.png")}
             alt="Logo de Mancar Software"
             width={230}
             height={64}
@@ -110,7 +111,7 @@ export default function Header() {
             <div className="flex items-center justify-between border-b border-gray-100 p-4">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/brand/mancar-mark.png"
+                  src={publicAsset("/brand/mancar-mark.png")}
                   alt="Logo de Mancar Software"
                   width={34}
                   height={34}
