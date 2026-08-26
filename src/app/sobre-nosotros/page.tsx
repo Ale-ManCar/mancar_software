@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import FaqSection from '../components/FaqSection';
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -35,6 +36,24 @@ const teamMembers = [
     description: 'Construye servicios confiables para que cada sistema sea seguro, ordenado y fácil de mantener a largo plazo.',
     strengths: ['APIs', 'Bases de datos', 'Seguridad', 'Automatización']
   }
+];
+
+const aboutFaqs = [
+  {
+    question: '¿Quién atiende mi proyecto?',
+    answer:
+      'Trabajas con un equipo técnico pequeño y directo. Esto facilita decisiones rápidas, comunicación clara y seguimiento cercano.',
+  },
+  {
+    question: '¿Cómo manejan la confidencialidad?',
+    answer:
+      'Tratamos información, accesos y procesos del cliente con responsabilidad. Solo solicitamos lo necesario para ejecutar el trabajo.',
+  },
+  {
+    question: '¿Qué diferencia a Mancar Software?',
+    answer:
+      'Combinamos diseño, desarrollo y criterio comercial para crear soluciones útiles para pymes, evitando funciones innecesarias y explicando cada decisión importante.',
+  },
 ];
 
 export default function SobreNosotrosPage() {
@@ -122,6 +141,12 @@ export default function SobreNosotrosPage() {
           </div>
         </section>
       </div>
+      <FaqSection
+        kicker="Confianza"
+        title="Preguntas frecuentes sobre nuestro equipo."
+        description="Una relación clara desde el inicio hace que el proyecto avance con menos fricción."
+        items={aboutFaqs}
+      />
     </main>
   );
 }

@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { trackConversion } from './analytics';
 import { successCases } from './cases';
 import LeadForm from './components/LeadForm';
+import FaqSection from './components/FaqSection';
 
 const images = {
   hero: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=85',
@@ -77,17 +79,31 @@ const plans = [
   { name: 'Sistema o ecommerce', price: 'Desde $2,490', items: ['Panel administrativo', 'Integraciones', 'Acompañamiento técnico'] },
 ];
 
+const homeFaqs = [
+  {
+    question: '¿Qué información necesitan para cotizar?',
+    answer:
+      'Necesitamos entender qué vende tu negocio, qué problema quieres resolver, qué secciones o módulos necesitas y si ya tienes marca, contenido, dominio o referencias visuales.',
+  },
+  {
+    question: '¿Pueden trabajar por fases?',
+    answer:
+      'Sí. Para pymes suele ser mejor lanzar una primera versión útil y luego mejorar con datos reales, nuevas funciones o ajustes comerciales.',
+  },
+  {
+    question: '¿El proyecto queda preparado para crecer?',
+    answer:
+      'Diseñamos la estructura pensando en mantenimiento, rendimiento, seguridad y futuras mejoras, sin complicar el proyecto con tecnología innecesaria.',
+  },
+  {
+    question: '¿Incluyen soporte después de publicar?',
+    answer:
+      'Sí. Podemos dar soporte, mantenimiento, ajustes de contenido, mejoras de rendimiento, revisión de formularios y acompañamiento técnico continuo.',
+  },
+];
+
 export default function HomeClient() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
-
-  const trackEvent = (event: string, payload: Record<string, string>) => {
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('mancar:analytics', { detail: { event, ...payload } }));
-      const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
-      if (Array.isArray(dataLayer)) dataLayer.push({ event, ...payload });
-    }
-  };
-
   useEffect(() => {
     const hasOpenModal = selectedService !== null;
     document.body.style.overflow = hasOpenModal ? 'hidden' : '';
@@ -120,10 +136,10 @@ export default function HomeClient() {
                 En Mancar Software diseñamos presencia digital, sistemas a medida y tiendas virtuales para empresas que necesitan verse mejor y trabajar con más control.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#servicios" className="btn-primary w-full sm:w-auto">
+                <a href="#servicios" onClick={() => trackConversion('cta_click', { label: 'Ver soluciones', location: 'hero' })} className="btn-primary w-full sm:w-auto">
                   Ver soluciones
                 </a>
-                <a href="#metodo" className="btn-secondary w-full sm:w-auto">
+                <a href="#metodo" onClick={() => trackConversion('cta_click', { label: 'Ver método de trabajo', location: 'hero' })} className="btn-secondary w-full sm:w-auto">
                   Ver método de trabajo
                 </a>
               </div>
@@ -203,7 +219,10 @@ export default function HomeClient() {
                     <p className="mt-3 text-sm leading-6 text-gray-600">{service.fullDescription}</p>
                     <button
                       type="button"
-                      onClick={() => setSelectedService(index)}
+                      onClick={() => {
+                        setSelectedService(index);
+                        trackConversion('service_detail_open', { service: service.title });
+                      }}
                       className="mt-5 font-extrabold text-primary-700 transition hover:text-primary-900"
                     >
                       Ver detalles
@@ -290,7 +309,7 @@ export default function HomeClient() {
               </p>
               <Link
                 href="/casos"
-                onClick={() => trackEvent('portfolio_page_open', { source: 'home-portfolio-teaser' })}
+                onClick={() => trackConversion('portfolio_page_open', { source: 'home-portfolio-teaser' })}
                 className="mt-7 inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
               >
                 Ver portafolio
@@ -314,32 +333,11 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 md:py-20">
-        <div className="container mx-auto max-w-4xl px-4">
-          <div className="text-center">
-            <p className="section-kicker mx-auto">Preguntas frecuentes</p>
-            <h2 className="section-title">Lo que necesitas saber antes de empezar.</h2>
-          </div>
-          <div className="mt-10 space-y-4">
-            <details className="soft-card p-5">
-              <summary className="cursor-pointer font-bold text-gray-950">¿En cuánto tiempo entregan un proyecto?</summary>
-              <p className="mt-3 text-gray-600">Depende del alcance, pero un sitio web corporativo suele tomar entre 2 y 4 semanas.</p>
-            </details>
-            <details className="soft-card p-5">
-              <summary className="cursor-pointer font-bold text-gray-950">¿Trabajan con adelantos y entregas parciales?</summary>
-              <p className="mt-3 text-gray-600">Sí. Definimos hitos y entregables para que tengas visibilidad desde el inicio.</p>
-            </details>
-            <details className="soft-card p-5">
-              <summary className="cursor-pointer font-bold text-gray-950">¿Incluyen soporte después del lanzamiento?</summary>
-              <p className="mt-3 text-gray-600">Sí. Podemos acompañarte con ajustes, mejoras, seguridad y mantenimiento continuo.</p>
-            </details>
-            <details className="soft-card p-5">
-              <summary className="cursor-pointer font-bold text-gray-950">¿La empresa queda como dueña del sitio o sistema?</summary>
-              <p className="mt-3 text-gray-600">Sí. Dejamos claro desde la propuesta qué entregables recibes, accesos, dominio, hosting y condiciones de mantenimiento.</p>
-            </details>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        title="Lo que necesitas saber antes de empezar."
+        description="Resolvemos las dudas más comunes antes de pedirte información técnica o avanzar con una propuesta."
+        items={homeFaqs}
+      />
 
       <section id="contacto" className="bg-gray-50 py-16 md:py-20">
         <div className="container mx-auto px-4">
@@ -351,11 +349,11 @@ export default function HomeClient() {
                 Te responderemos con una orientación clara para decidir si necesitas una web, un sistema, una tienda virtual o soporte técnico.
               </p>
               <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                <a href="tel:+593986951419" className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                <a href="tel:+593986951419" onClick={() => trackConversion('phone_click', { location: 'home-contact' })} className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
                   <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Teléfono</span>
                   <span className="mt-1 block font-bold text-gray-950">+593 98 695 1419</span>
                 </a>
-                <a href="mailto:mancarsoftwares@gmail.com" className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                <a href="mailto:mancarsoftwares@gmail.com" onClick={() => trackConversion('email_click', { location: 'home-contact' })} className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
                   <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Email</span>
                   <span className="mt-1 block break-words font-bold text-gray-950">mancarsoftwares@gmail.com</span>
                 </a>

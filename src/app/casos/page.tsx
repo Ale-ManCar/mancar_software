@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import TrackedLink from "../components/TrackedLink";
 import { type SuccessCase, successCases } from "../cases";
 import { createPageMetadata } from "../seo";
 
@@ -75,21 +75,25 @@ export default function CasesPage() {
                 ))}
               </div>
               <div className="mt-6 flex flex-col gap-3">
-                <Link
+                <TrackedLink
                   href={`/casos/${successCase.slug}`}
+                  eventName="case_open"
+                  eventPayload={{ case: successCase.slug, location: "portfolio-grid" }}
                   className="inline-flex justify-center rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
                 >
                   Ver caso completo
-                </Link>
+                </TrackedLink>
                 {successCase.liveUrl && (
-                  <a
+                  <TrackedLink
                     href={successCase.liveUrl}
+                    eventName="case_demo_open"
+                    eventPayload={{ case: successCase.slug, location: "portfolio-grid" }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-extrabold text-gray-950 transition hover:border-primary-200 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
                   >
                     Ver demo online
-                  </a>
+                  </TrackedLink>
                 )}
               </div>
             </article>

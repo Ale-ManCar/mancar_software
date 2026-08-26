@@ -18,6 +18,16 @@ export default function MantenimientoSoportePage() {
       secondary="Atendemos errores, mejoras y revisiones preventivas con comunicación clara y respuesta directa."
       image="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=85"
       imageAlt="Equipo revisando soporte y mantenimiento técnico"
+      problems={[
+        'Tu sitio o sistema presenta errores, enlaces rotos, formularios fallando o problemas visibles que afectan la confianza.',
+        'No sabes si el proyecto está actualizado, protegido o preparado para cambios pequeños sin romper otras partes.',
+        'Cada ajuste depende de improvisar con proveedores distintos y no existe una ruta clara para mantener la operación estable.',
+      ]}
+      deliverables={[
+        'Revisión técnica inicial con prioridades claras: errores críticos, seguridad, rendimiento y mejoras recomendadas.',
+        'Corrección de incidencias y ajustes puntuales acordados según impacto y urgencia.',
+        'Plan de mantenimiento para actualizaciones, respaldos, monitoreo básico y soporte post-lanzamiento.',
+      ]}
       features={[
         {
           title: 'Actualizaciones de seguridad',
@@ -42,6 +52,20 @@ export default function MantenimientoSoportePage() {
         {
           title: 'Mejoras continuas',
           description: 'Implementamos ajustes pequeños y medibles para mejorar experiencia, contenido, velocidad o mantenimiento.',
+        },
+      ]}
+      faqs={[
+        {
+          question: '¿Pueden revisar un sitio que no fue hecho por ustedes?',
+          answer: 'Sí. Primero hacemos un diagnóstico para entender tecnología, accesos, riesgos y alcance antes de prometer cambios.',
+        },
+        {
+          question: '¿Atienden urgencias?',
+          answer: 'Priorizamos incidentes que afectan disponibilidad, formularios, ventas o información crítica del negocio.',
+        },
+        {
+          question: '¿El mantenimiento incluye rediseños completos?',
+          answer: 'No necesariamente. El mantenimiento cubre estabilidad y mejoras puntuales; un rediseño completo se cotiza como proyecto separado.',
         },
       ]}
     />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LeadForm from "../components/LeadForm";
+import TrackedLink from "../components/TrackedLink";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -29,14 +30,14 @@ export default function ContactoPage() {
             </p>
 
             <div className="mt-7 grid gap-3">
-              <a href="tel:+593986951419" className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
+              <TrackedLink href="tel:+593986951419" eventName="phone_click" eventPayload={{ location: "contact-page" }} className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
                 <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Teléfono</span>
                 <span className="mt-1 block text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800">+593 98 695 1419</span>
-              </a>
-              <a href="mailto:mancarsoftwares@gmail.com" className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
+              </TrackedLink>
+              <TrackedLink href="mailto:mancarsoftwares@gmail.com" eventName="email_click" eventPayload={{ location: "contact-page" }} className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
                 <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Email</span>
                 <span className="mt-1 block break-words text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800">mancarsoftwares@gmail.com</span>
-              </a>
+              </TrackedLink>
               <div className="rounded-2xl border border-gray-200 bg-gray-950 p-4 text-white">
                 <span className="text-xs font-extrabold uppercase tracking-wide text-primary-200">Siguiente paso</span>
                 <p className="mt-2 text-sm leading-6 text-gray-200">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import TrackedLink from '../../components/TrackedLink';
 import { type SuccessCase, successCases } from '../../cases';
 import { createPageMetadata } from '../../seo';
 
@@ -86,14 +87,16 @@ export default async function CasoPage({ params }: Props) {
             <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">{currentCase.title}</h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">{currentCase.summary}</p>
             {currentCase.liveUrl && (
-              <a
+              <TrackedLink
                 href={currentCase.liveUrl}
+                eventName="case_demo_open"
+                eventPayload={{ case: currentCase.slug, location: "case-detail" }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-7 inline-flex rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
               >
                 Ver demo online
-              </a>
+              </TrackedLink>
             )}
           </div>
           <CaseLogoHero currentCase={currentCase} />
@@ -117,6 +120,7 @@ export default async function CasoPage({ params }: Props) {
             ['Perfil del cliente', currentCase.clientProfile],
             ['Desafío', currentCase.challenge],
             ['Solución implementada', currentCase.solution],
+            ['Impacto para el negocio', currentCase.businessImpact],
           ].map(([title, text]) => (
             <article key={title} className="soft-card p-7">
               <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
@@ -128,6 +132,25 @@ export default async function CasoPage({ params }: Props) {
             <ul className="mt-4 grid gap-3 md:grid-cols-3">
               {currentCase.results.map((result) => <li key={result} className="rounded-2xl bg-primary-50 p-4 font-medium text-primary-900">{result}</li>)}
             </ul>
+          </article>
+          <article className="rounded-3xl bg-gray-950 p-7 text-white lg:col-span-2">
+            <p className="text-sm font-extrabold uppercase tracking-wide text-primary-200">Siguiente paso</p>
+            <div className="mt-4 grid gap-5 md:grid-cols-[1fr_auto] md:items-center">
+              <div>
+                <h2 className="text-2xl font-bold">¿Quieres una solución con este nivel de claridad?</h2>
+                <p className="mt-3 leading-7 text-gray-300">
+                  Cuéntanos qué proceso quieres mejorar y te ayudamos a definir alcance, prioridades y una ruta realista de implementación.
+                </p>
+              </div>
+              <TrackedLink
+                href="/contacto"
+                eventName="contact_cta_click"
+                eventPayload={{ location: "case-detail", case: currentCase.slug }}
+                className="inline-flex justify-center rounded-full bg-white px-5 py-3 text-sm font-extrabold text-gray-950 transition hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-gray-950"
+              >
+                Solicitar orientación
+              </TrackedLink>
+            </div>
           </article>
         </section>
       </section>

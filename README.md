@@ -29,13 +29,15 @@ LEAD_NOTIFICATION_EMAIL="mancarsoftwares@gmail.com"
 TURNSTILE_SECRET_KEY=
 ```
 
-`NEXT_PUBLIC_GA_ID` is optional. The contact form requires a deployment that supports Next.js API routes.
+`NEXT_PUBLIC_GA_ID` is optional. The contact form requires a deployment environment that supports Next.js API routes.
+
+Use `.env.example` as the reference for local or deployment configuration. Keep real values in ignored local files or secure environment settings only.
 
 ## GitHub Pages Preview
 
 The GitHub Actions workflow in `.github/workflows/deploy-pages.yml` builds a static preview for `https://ale-mancar.github.io/mancar_software/`.
 
-The preview is for reviewing the website design and navigation. GitHub Pages cannot run `/api/leads`, so the contact form shows a preview notice instead of sending email. The automatic Resend + Turnstile form works on hosting that supports Next.js API routes, such as Vercel.
+The preview is for reviewing the website design and navigation. GitHub Pages cannot run `/api/leads`, so the contact form shows a preview notice instead of sending email. The automatic Resend + Turnstile form works on a runtime that supports Next.js API routes.
 
 ## Lead Form Flow
 
@@ -52,6 +54,7 @@ It includes:
 - Suspicious content rejection before email delivery.
 - Privacy consent before sending the request.
 - Email delivery through Resend.
+- Analytics events for form starts, successful submissions, contact clicks, social clicks, portfolio opens and demo opens when `NEXT_PUBLIC_GA_ID` is configured.
 
 The rate limiter is process-local. For higher traffic or multi-region hosting, move the same rules to a shared store such as Redis, Upstash, or Cloudflare KV.
 

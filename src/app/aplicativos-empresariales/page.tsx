@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import FaqSection from '../components/FaqSection';
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -21,6 +22,24 @@ const outcomes = [
   'Más control de información',
   'Procesos visibles para el equipo',
   'Reportes para tomar decisiones',
+];
+
+const appFaqs = [
+  {
+    question: '¿Qué tipo de aplicativo puede necesitar una pyme?',
+    answer:
+      'Puede ser un inventario, CRM, panel de pedidos, dashboard, sistema de turnos, control interno o una herramienta conectada a procesos propios del negocio.',
+  },
+  {
+    question: '¿Se puede reemplazar una hoja de cálculo por un sistema?',
+    answer:
+      'Sí, cuando la hoja ya genera errores, duplicidad o falta de control. Primero revisamos el flujo actual y luego definimos los módulos necesarios.',
+  },
+  {
+    question: '¿El equipo necesita conocimientos técnicos para usarlo?',
+    answer:
+      'No debería. Diseñamos interfaces claras y capacitamos al equipo para que la adopción sea ordenada y práctica.',
+  },
 ];
 
 export default function AplicativosPage() {
@@ -72,6 +91,12 @@ export default function AplicativosPage() {
           </ul>
         </div>
       </section>
+      <FaqSection
+        kicker="Aplicativos empresariales"
+        title="Preguntas frecuentes sobre sistemas internos."
+        description="Aclaramos dudas frecuentes antes de transformar procesos manuales en herramientas digitales."
+        items={appFaqs}
+      />
     </main>
   );
 }

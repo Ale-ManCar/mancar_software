@@ -18,6 +18,16 @@ export default function DisenoWebPage() {
       secondary="Incluimos estructura estratégica, responsive, SEO técnico base y formularios conectados al flujo comercial del negocio."
       image="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85"
       imageAlt="Composición visual de arquitectura y diseño web"
+      problems={[
+        'Tu negocio se ve activo en redes, pero no tiene una página clara para explicar servicios, precios referenciales o canales de contacto.',
+        'Los clientes preguntan lo mismo una y otra vez porque no encuentran información ordenada antes de escribirte.',
+        'La página actual carga lento, se ve antigua en celular o no transmite suficiente confianza para cerrar oportunidades.',
+      ]}
+      deliverables={[
+        'Sitio web responsive con estructura comercial, secciones claras y llamadas a la acción ubicadas con intención.',
+        'Configuración SEO base: títulos, descripciones, semántica, sitemap, robots y rendimiento inicial.',
+        'Formulario o canal de contacto conectado al flujo comercial para recibir solicitudes con contexto útil.',
+      ]}
       features={[
         {
           title: 'Diseño responsive',
@@ -42,6 +52,20 @@ export default function DisenoWebPage() {
         {
           title: 'Experiencia orientada a conversión',
           description: 'Diseñamos recorridos con mensajes claros, beneficios visibles y llamadas a la acción ubicadas donde tienen sentido.',
+        },
+      ]}
+      faqs={[
+        {
+          question: '¿Necesito tener textos e imágenes antes de empezar?',
+          answer: 'Ayuda tener material inicial, pero también podemos ordenar el copy, proponer estructura y recomendar imágenes adecuadas según tu rubro.',
+        },
+        {
+          question: '¿La página se verá bien en celulares?',
+          answer: 'Sí. Diseñamos primero pensando en lectura, velocidad y navegación móvil, y luego ajustamos tablet y escritorio.',
+        },
+        {
+          question: '¿Incluye posicionamiento en Google?',
+          answer: 'Incluye SEO técnico base. El posicionamiento orgánico requiere contenido, medición y mejoras continuas después del lanzamiento.',
         },
       ]}
     />

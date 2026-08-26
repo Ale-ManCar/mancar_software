@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import FaqSection from '../components/FaqSection';
+import TrackedLink from '../components/TrackedLink';
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -15,6 +17,24 @@ const supportCards = [
   ['Mejoras pequeñas', 'Ajustamos textos, secciones, estilos, contenido o funcionalidades puntuales.'],
 ];
 
+const supportFaqs = [
+  {
+    question: '¿Pueden atender fallos urgentes?',
+    answer:
+      'Sí. Priorizamos problemas que afectan ventas, formularios, disponibilidad o acceso a información importante del negocio.',
+  },
+  {
+    question: '¿Qué necesitan para revisar un problema?',
+    answer:
+      'Necesitamos una descripción del error, capturas si existen, cuándo empezó, qué parte afecta y los accesos necesarios para diagnosticarlo de forma segura.',
+  },
+  {
+    question: '¿El soporte incluye cambios de diseño?',
+    answer:
+      'Incluye ajustes puntuales. Cambios grandes, rediseños o nuevas funcionalidades se cotizan como una mejora o fase adicional.',
+  },
+];
+
 export default function SoportePage() {
   return (
     <main className="bg-gray-50">
@@ -29,19 +49,19 @@ export default function SoportePage() {
       </section>
 
       <section className="container mx-auto px-4 pb-16 md:pb-20">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-3">
           <div className="soft-card p-6">
             <h2 className="text-xl font-bold text-gray-950">Teléfono</h2>
-            <p className="mt-4 text-gray-600">+593 98 695 1419</p>
+            <TrackedLink href="tel:+593986951419" eventName="phone_click" eventPayload={{ location: "support-page" }} className="mt-4 block font-bold text-primary-700">
+              +593 98 695 1419
+            </TrackedLink>
             <p className="mt-1 text-sm text-gray-500">Lunes a viernes, 9:00 a 18:00</p>
           </div>
           <div className="soft-card p-6">
-            <h2 className="text-xl font-bold text-gray-950">WhatsApp</h2>
-            <p className="mt-4 font-bold text-primary-700">+593 98 695 1419</p>
-          </div>
-          <div className="soft-card p-6">
             <h2 className="text-xl font-bold text-gray-950">Correo</h2>
-            <p className="mt-4 text-gray-600">mancarsoftwares@gmail.com</p>
+            <TrackedLink href="mailto:mancarsoftwares@gmail.com" eventName="email_click" eventPayload={{ location: "support-page" }} className="mt-4 block break-words font-bold text-primary-700">
+              mancarsoftwares@gmail.com
+            </TrackedLink>
           </div>
           <div className="soft-card p-6">
             <h2 className="text-xl font-bold text-gray-950">Respuesta</h2>
@@ -62,6 +82,12 @@ export default function SoportePage() {
           ))}
         </div>
       </section>
+      <FaqSection
+        kicker="Soporte técnico"
+        title="Preguntas frecuentes sobre soporte."
+        description="Antes de intervenir, confirmamos el contexto para priorizar bien y evitar cambios riesgosos."
+        items={supportFaqs}
+      />
     </main>
   );
 }

@@ -13,6 +13,13 @@ export default function Analytics() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${gaId}', { anonymize_ip: true });
+          window.addEventListener('mancar:analytics', function(event) {
+            if (!event.detail || !event.detail.event) return;
+            var payload = Object.assign({}, event.detail);
+            var eventName = payload.event;
+            delete payload.event;
+            gtag('event', eventName, payload);
+          });
         `}
       </Script>
     </>

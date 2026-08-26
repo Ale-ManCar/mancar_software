@@ -2,6 +2,7 @@
 
 import { FormEvent, useCallback, useState } from "react";
 import Link from "next/link";
+import { trackConversion } from "../analytics";
 import TurnstileWidget from "./TurnstileWidget";
 
 type LeadFormProps = {
@@ -49,6 +50,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
   const [submission, setSubmission] = useState<SubmissionState>({ kind: "idle" });
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileReset, setTurnstileReset] = useState(0);
+  const [formStarted, setFormStarted] = useState(false);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
   const staticPreview = process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true";
   const busy = submission.kind === "submitting";
@@ -63,6 +65,10 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
   }, []);
 
   const updateField = (field: keyof FormState, value: string | boolean) => {
+    if (!formStarted && field !== "website") {
+      setFormStarted(true);
+      trackConversion("lead_form_start", { source });
+    }
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => {
       if (!current[field]) return current;
@@ -126,15 +132,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         message: "Recibimos tu solicitud. Te responderemos pronto por correo o WhatsApp.",
       });
 
-      window.dispatchEvent(
-        new CustomEvent("mancar:analytics", {
-          detail: { event: "lead_form_submit", source, projectType: form.projectType },
-        }),
-      );
-      const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
-      if (Array.isArray(dataLayer)) {
-        dataLayer.push({ event: "lead_form_submit", source, projectType: form.projectType });
-      }
+      trackConversion("lead_form_submit", { source, projectType: form.projectType });
     } catch (error) {
       setSubmission({
         kind: "error",
