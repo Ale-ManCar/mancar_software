@@ -1,3 +1,13 @@
+import type { Metadata } from 'next';
+import { createPageMetadata } from '../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Soporte técnico web para pymes en Ecuador',
+  description:
+    'Soporte técnico para sitios web, tiendas virtuales y sistemas: errores, formularios, rendimiento, mantenimiento y mejoras puntuales.',
+  path: '/soporte',
+});
+
 const supportCards = [
   ['Sitio caído o lento', 'Revisamos disponibilidad, errores visibles, hosting y configuración básica.'],
   ['Errores en formularios', 'Validamos envíos, WhatsApp, correos y datos que llegan incompletos.'],

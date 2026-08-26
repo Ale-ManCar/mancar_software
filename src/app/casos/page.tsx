@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { type SuccessCase, successCases } from "../cases";
+import { createPageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Portafolio de proyectos | Mancar Software",
+export const metadata: Metadata = createPageMetadata({
+  title: "Portafolio de proyectos",
   description:
     "Casos reales de Mancar Software: sistemas locales, sitios web comerciales, plantillas y soluciones digitales para negocios de Ecuador.",
-  openGraph: {
-    title: "Portafolio de proyectos | Mancar Software",
-    description:
-      "Explora proyectos desarrollados por Mancar Software para negocios que necesitan presencia digital, automatización y sistemas a medida.",
-    type: "website",
-  },
-};
+  path: "/casos",
+});
 
 function CaseLogoPanel({ successCase }: { successCase: SuccessCase }) {
   return (

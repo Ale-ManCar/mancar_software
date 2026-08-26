@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import SolutionPage from '../SolutionPage';
+import { createPageMetadata } from '../../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Mantenimiento y soporte para sitios y sistemas',
+  description:
+    'Mantenimiento técnico para sitios web, tiendas y sistemas: actualizaciones, seguridad, errores, rendimiento y mejoras continuas.',
+  path: '/soluciones/mantenimiento-soporte',
+});
 
 export default function MantenimientoSoportePage() {
   return (

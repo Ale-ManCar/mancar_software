@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import SolutionPage from '../SolutionPage';
+import { createPageMetadata } from '../../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Desarrollo de sistemas a medida para pymes',
+  description:
+    'Creamos sistemas web personalizados para centralizar información, automatizar procesos y reducir errores operativos en empresas de Ecuador.',
+  path: '/soluciones/desarrollo-sistemas',
+});
 
 export default function DesarrolloSistemasPage() {
   return (

@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import SolutionPage from '../SolutionPage';
+import { createPageMetadata } from '../../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Optimización web y consultoría digital',
+  description:
+    'Auditamos sitios y sistemas para mejorar velocidad, SEO, claridad comercial, experiencia de usuario y conversión.',
+  path: '/soluciones/optimizacion-consultoria',
+});
 
 export default function OptimizacionConsultoriaPage() {
   return (

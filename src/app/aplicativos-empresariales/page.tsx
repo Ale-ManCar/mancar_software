@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import { createPageMetadata } from '../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Aplicativos empresariales para pymes en Ecuador',
+  description:
+    'Desarrollamos sistemas internos, inventarios, CRM, dashboards y aplicaciones empresariales a medida para que las pymes operen con más control.',
+  path: '/aplicativos-empresariales',
+});
 
 const features = [
   ['Inventarios', 'Control de stock, movimientos, alertas de reposición y reportes para dejar atrás hojas sueltas.'],

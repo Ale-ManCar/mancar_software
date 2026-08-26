@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import { createPageMetadata } from '../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Ética y conducta',
+  description:
+    'Principios de integridad, confidencialidad, responsabilidad y respeto que guían cada proyecto desarrollado por Mancar Software.',
+  path: '/etica-y-conducta',
+});
 
 const commitments = [
   ['Integridad', 'Actuamos con honestidad en cada conversación, propuesta y entrega.'],

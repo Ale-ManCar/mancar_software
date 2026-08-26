@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import { createPageMetadata } from '../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Aviso legal',
+  description:
+    'Información legal del sitio web de Mancar Software, condiciones de uso, responsabilidad del contenido y contacto legal.',
+  path: '/aviso-legal',
+});
 
 const items = [
   'Este sitio web es operado por Mancar Software para informar sobre sus servicios tecnológicos.',

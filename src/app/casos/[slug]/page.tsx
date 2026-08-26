@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { type SuccessCase, successCases } from '../../cases';
+import { createPageMetadata } from '../../seo';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -58,15 +59,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const currentCase = successCases.find((c) => c.slug === slug);
   if (!currentCase) return { title: 'Caso no encontrado | Mancar Software' };
 
-  return {
-    title: `${currentCase.title} | Caso de referencia | Mancar Software`,
+  return createPageMetadata({
+    title: `${currentCase.title} | Caso de referencia`,
     description: currentCase.summary,
-    openGraph: {
-      title: `${currentCase.title} | Caso de referencia`,
-      description: currentCase.summary,
-      type: 'article',
-    },
-  };
+    path: `/casos/${currentCase.slug}`,
+    type: 'article',
+  });
 }
 
 export function generateStaticParams() {

@@ -4,9 +4,10 @@ import Image from "next/image";
 import "./globals.css";
 import Header from "./components/Header";
 import Analytics from "./components/Analytics";
+import { defaultOgImage, siteUrl } from "./seo";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mancarsoftware.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
     template: "%s | Mancar Software",
@@ -51,21 +52,14 @@ export const metadata: Metadata = {
     title: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
     description:
       "Creamos sitios web, sistemas a medida, ecommerce y soporte técnico para pymes de Ecuador.",
-    images: [
-      {
-        url: "/brand/mancar-logo.svg",
-        width: 1200,
-        height: 630,
-        alt: "Logo de Mancar Software",
-      },
-    ],
+    images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
     description:
       "Soluciones digitales para vender mejor, ordenar procesos y crecer con confianza.",
-    images: ["/brand/mancar-logo.svg"],
+    images: [defaultOgImage.url],
   },
 };
 
@@ -78,9 +72,9 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Mancar Software",
-  url: "https://mancarsoftware.com",
-  logo: "https://mancarsoftware.com/brand/mancar-logo.svg",
-  image: "https://mancarsoftware.com/brand/mancar-logo.svg",
+  url: siteUrl,
+  logo: `${siteUrl}/brand/mancar-logo.svg`,
+  image: `${siteUrl}/brand/og-image.png`,
   description:
     "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador.",
   address: {

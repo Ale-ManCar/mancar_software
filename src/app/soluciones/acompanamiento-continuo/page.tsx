@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import SolutionPage from '../SolutionPage';
+import { createPageMetadata } from '../../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Acompañamiento técnico continuo para pymes',
+  description:
+    'Acompañamiento post-lanzamiento para mejorar, mantener y evolucionar tu sitio web, tienda virtual o sistema con criterio técnico.',
+  path: '/soluciones/acompanamiento-continuo',
+});
 
 export default function AcompanamientoContinuoPage() {
   return (

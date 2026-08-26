@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import LeadForm from "../components/LeadForm";
+import { createPageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Contacto",
+export const metadata: Metadata = createPageMetadata({
+  title: "Contacto para desarrollo web y sistemas en Ecuador",
   description:
     "Agenda una orientación inicial con Mancar Software para desarrollo web, sistemas a medida, tiendas virtuales o soporte para pymes en Ecuador.",
-};
+  path: "/contacto",
+});
 
 export default function ContactoPage() {
   return (

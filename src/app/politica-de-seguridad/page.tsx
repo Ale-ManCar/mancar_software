@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import { createPageMetadata } from '../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Política de seguridad',
+  description:
+    'Conoce el enfoque de seguridad de Mancar Software para proteger información, accesos y continuidad operativa en proyectos digitales.',
+  path: '/politica-de-seguridad',
+});
 
 const principles = [
   ['Confidencialidad', 'Solo las personas autorizadas acceden a la información necesaria para operar el proyecto.'],

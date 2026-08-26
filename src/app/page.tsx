@@ -1,24 +1,20 @@
 import type { Metadata } from 'next';
 import HomeClient from './HomeClient';
+import { createPageMetadata, siteUrl } from './seo';
 
-export const metadata: Metadata = {
-  title: 'Mancar Software | Desarrollo web y sistemas para pymes en Ecuador',
+export const metadata: Metadata = createPageMetadata({
+  title: 'Desarrollo web y sistemas para pymes en Ecuador',
   description:
     'Diseño web, sistemas a medida, tiendas virtuales y soporte continuo para pymes de Ecuador. Atención directa desde Guayaquil.',
-  openGraph: {
-    title: 'Mancar Software | Desarrollo web y sistemas para pymes en Ecuador',
-    description:
-      'Creamos software, sitios web y soluciones de mantenimiento para pymes que necesitan vender y operar mejor.',
-    type: 'website',
-  },
-}; 
+  path: '/',
+});
 
 export default function Page() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Mancar Software',
-    url: 'https://mancarsoftware.com',
+    url: siteUrl,
     email: 'mancarsoftwares@gmail.com',
     telephone: '+593986951419',
     areaServed: {

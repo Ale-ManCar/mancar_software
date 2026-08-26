@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import { createPageMetadata } from '../seo';
+
+export const metadata: Metadata = createPageMetadata({
+  title: 'Política de privacidad',
+  description:
+    'Consulta cómo Mancar Software recopila, usa, protege y conserva los datos personales enviados mediante el sitio web.',
+  path: '/politica-de-privacidad',
+});
 
 const sections = [
   ['Datos que recopilamos', 'Podemos recopilar datos de contacto, información de navegación y mensajes enviados mediante el formulario de contacto.'],
