@@ -14,6 +14,7 @@ export const defaultOgImage = {
 
 type PageMetadataInput = {
   title: string;
+  browserTitle?: string;
   description: string;
   path: string;
   type?: "website" | "article";
@@ -21,6 +22,7 @@ type PageMetadataInput = {
 
 export function createPageMetadata({
   title,
+  browserTitle,
   description,
   path,
   type = "website",
@@ -31,7 +33,7 @@ export function createPageMetadata({
 
   return {
     title: {
-      absolute: socialTitle,
+      absolute: browserTitle ?? socialTitle,
     },
     description,
     alternates: {

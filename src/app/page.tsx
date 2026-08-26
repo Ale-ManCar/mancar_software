@@ -4,6 +4,7 @@ import { createPageMetadata, siteUrl } from './seo';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Desarrollo web y sistemas para pymes en Ecuador',
+  browserTitle: 'Mancar Software',
   description:
     'Diseño web, sistemas a medida, tiendas virtuales y soporte continuo para pymes de Ecuador. Atención directa desde Guayaquil.',
   path: '/',

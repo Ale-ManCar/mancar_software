@@ -10,7 +10,7 @@ import { defaultOgImage, siteUrl } from "./seo";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
+    default: "Mancar Software",
     template: "%s | Mancar Software",
   },
   icons: {
