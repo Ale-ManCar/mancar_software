@@ -21,14 +21,14 @@ export default function ContactoPage() {
         <section className="grid items-start gap-8 pb-16 md:pb-20 lg:grid-cols-[0.82fr_1.18fr]">
           <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-gray-950/5 md:p-7">
             <p className="section-kicker">Canales directos</p>
-            <h2 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950">Hablemos sin vueltas.</h2>
+            <h2 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950">Atención directa para tu proyecto.</h2>
             <p className="mt-4 leading-7 text-gray-600">
               Recibimos solicitudes de pymes en Ecuador y coordinamos la primera orientación desde Guayaquil.
             </p>
 
             <div className="mt-7 grid gap-3">
-              <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
-                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Teléfono y WhatsApp</span>
+              <a href="tel:+593986951419" className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Teléfono</span>
                 <span className="mt-1 block text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800">+593 98 695 1419</span>
               </a>
               <a href="mailto:mancarsoftwares@gmail.com" className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">

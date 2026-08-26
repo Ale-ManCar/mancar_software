@@ -28,6 +28,10 @@ function loadTurnstile() {
   scriptPromise = new Promise((resolve, reject) => {
     const existing = document.querySelector<HTMLScriptElement>('script[data-turnstile-script="true"]');
     if (existing) {
+      if (window.turnstile) {
+        resolve();
+        return;
+      }
       existing.addEventListener("load", () => resolve(), { once: true });
       existing.addEventListener("error", () => reject(new Error("No pudimos cargar la verificación.")), { once: true });
       return;
@@ -49,6 +53,13 @@ function loadTurnstile() {
 export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
+  const onTokenRef = useRef(onToken);
+  const onExpireRef = useRef(onExpire);
+
+  useEffect(() => {
+    onTokenRef.current = onToken;
+    onExpireRef.current = onExpire;
+  }, [onToken, onExpire]);
 
   useEffect(() => {
     let cancelled = false;
@@ -61,14 +72,14 @@ export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }
         sitekey: siteKey,
         theme: "light",
         size: "normal",
-        callback: onToken,
+        callback: (token: string) => onTokenRef.current(token),
         "expired-callback": () => {
-          onToken("");
-          onExpire?.();
+          onTokenRef.current("");
+          onExpireRef.current?.();
         },
         "error-callback": () => {
-          onToken("");
-          onExpire?.();
+          onTokenRef.current("");
+          onExpireRef.current?.();
         },
       });
     });
@@ -76,7 +87,7 @@ export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }
     return () => {
       cancelled = true;
     };
-  }, [siteKey, resetKey, onToken, onExpire]);
+  }, [siteKey, resetKey]);
 
   return <div ref={containerRef} className="min-h-[65px] w-fit max-w-full" aria-label="Verificación contra solicitudes automatizadas" />;
 }

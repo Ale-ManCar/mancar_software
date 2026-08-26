@@ -351,8 +351,8 @@ export default function HomeClient() {
                 Te responderemos con una orientación clara para decidir si necesitas una web, un sistema, una tienda virtual o soporte técnico.
               </p>
               <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                <a href="https://wa.me/593986951419" target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
-                  <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">WhatsApp</span>
+                <a href="tel:+593986951419" className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
+                  <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Teléfono</span>
                   <span className="mt-1 block font-bold text-gray-950">+593 98 695 1419</span>
                 </a>
                 <a href="mailto:mancarsoftwares@gmail.com" className="rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-primary-200 hover:bg-primary-50">
