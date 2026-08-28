@@ -22,6 +22,7 @@ const routes = [
   "/casos/alma-vet",
   "/etica-y-conducta",
   "/politica-de-privacidad",
+  "/politica-de-cookies",
   "/politica-de-seguridad",
   "/aviso-legal",
 ];

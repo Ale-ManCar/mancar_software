@@ -4,6 +4,7 @@ import Image from "next/image";
 import "./globals.css";
 import Header from "./components/Header";
 import Analytics from "./components/Analytics";
+import CookieConsent from "./components/CookieConsent";
 import TrackedLink from "./components/TrackedLink";
 import { publicAsset } from "./asset-paths";
 import { defaultOgImage, siteUrl } from "./seo";
@@ -119,6 +120,7 @@ export default function RootLayout({
         <Analytics />
         <Header />
         {children}
+        <CookieConsent />
         <footer className="dark-section border-t border-white/10 pt-14 pb-8 text-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
@@ -144,6 +146,8 @@ export default function RootLayout({
                   <li><Link href="/casos" className="hover:text-white transition">Portafolio</Link></li>
                   <li><Link href="/contacto" className="hover:text-white transition">Contacto</Link></li>
                   <li><Link href="/politica-de-privacidad" className="hover:text-white transition">Política de privacidad</Link></li>
+                  <li><Link href="/politica-de-cookies" className="hover:text-white transition">Política de cookies</Link></li>
+                  <li><Link href="/politica-de-seguridad" className="hover:text-white transition">Política de seguridad</Link></li>
                   <li><Link href="/aviso-legal" className="hover:text-white transition">Aviso legal</Link></li>
                 </ul>
               </div>

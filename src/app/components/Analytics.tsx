@@ -1,8 +1,29 @@
+"use client";
+
+import { useSyncExternalStore } from "react";
 import Script from "next/script";
+
+const consentKey = "mancar_cookie_consent";
+const consentEvent = "mancar:cookie-consent";
+
+function subscribeToConsent(callback: () => void) {
+  window.addEventListener(consentEvent, callback);
+  return () => window.removeEventListener(consentEvent, callback);
+}
+
+function getConsentSnapshot() {
+  return window.localStorage.getItem(consentKey);
+}
+
+function getServerConsentSnapshot() {
+  return null;
+}
 
 export default function Analytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-  if (!gaId) return null;
+  const consent = useSyncExternalStore(subscribeToConsent, getConsentSnapshot, getServerConsentSnapshot);
+
+  if (!gaId || consent !== "accepted") return null;
 
   return (
     <>

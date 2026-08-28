@@ -71,6 +71,7 @@ export default function Header() {
                 <Link href="/sobre-nosotros#equipo" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Equipo</Link>
                 <Link href="/etica-y-conducta" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Ética y conducta</Link>
                 <Link href="/politica-de-seguridad" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Política de seguridad</Link>
+                <Link href="/politica-de-cookies" className="block rounded-xl px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-700" onClick={() => setOpenDropdown(null)}>Política de cookies</Link>
               </div>
             )}
           </div>
@@ -141,6 +142,7 @@ export default function Header() {
                   <Link href="/sobre-nosotros#equipo" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Equipo</Link>
                   <Link href="/etica-y-conducta" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Ética y conducta</Link>
                   <Link href="/politica-de-seguridad" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Política de seguridad</Link>
+                  <Link href="/politica-de-cookies" className="flex min-h-11 items-center rounded-xl px-3 py-2 text-gray-700 hover:bg-primary-50" onClick={closeMobileMenu}>Política de cookies</Link>
                 </div>
               )}
               <div className="my-2 border-t border-gray-100"></div>
