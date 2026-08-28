@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import TrackedLink from "../components/TrackedLink";
+import { publicAsset } from "../asset-paths";
 import { type SuccessCase, successCases } from "../cases";
 import { createPageMetadata } from "../seo";
 
@@ -21,19 +23,21 @@ function CaseLogoPanel({ successCase }: { successCase: SuccessCase }) {
         className="absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-15"
         style={{ background: successCase.brand.accent }}
       />
-      <div className="relative flex min-h-32 items-center gap-4">
-        <div
-          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-xl font-extrabold shadow-lg shadow-black/10"
-          style={{ background: successCase.brand.accent, color: "white" }}
-          aria-hidden="true"
-        >
-          {successCase.icon}
+      <div className="relative flex min-h-32 flex-col justify-center gap-3">
+        <div className="relative h-24 w-full">
+          <Image
+            src={publicAsset(successCase.logo.src)}
+            alt={successCase.logo.alt}
+            fill
+            className="object-contain"
+            sizes="(min-width: 1024px) 28vw, (min-width: 768px) 42vw, 82vw"
+          />
         </div>
         <div>
           <p className="text-xs font-extrabold uppercase tracking-[0.18em]" style={{ color: successCase.brand.accent }}>
             {successCase.category}
           </p>
-          <p className="mt-2 font-display text-2xl font-extrabold" style={{ color: successCase.brand.foreground }}>
+          <p className="mt-1 font-display text-2xl font-extrabold" style={{ color: successCase.brand.foreground }}>
             {successCase.title}
           </p>
         </div>
@@ -67,7 +71,7 @@ export default function CasesPage() {
                 </span>
               </div>
               <h2 className="mt-4 text-2xl font-bold text-gray-950">{successCase.title}</h2>
-              <p className="mt-3 flex-1 text-sm leading-6 text-gray-600">{successCase.summary}</p>
+              <p className="mt-3 text-sm leading-6 text-gray-600">{successCase.summary}</p>
               <ul className="mt-5 space-y-2 border-t border-gray-100 pt-5" aria-label={`Evidencia del caso ${successCase.title}`}>
                 {successCase.results.slice(0, 2).map((result) => (
                   <li key={result} className="flex gap-2 text-sm leading-6 text-gray-600">
@@ -83,27 +87,15 @@ export default function CasesPage() {
                   </span>
                 ))}
               </div>
-              <div className="mt-6 flex flex-col gap-3">
+              <div className="mt-auto pt-6">
                 <TrackedLink
                   href={`/casos/${successCase.slug}`}
                   eventName="case_open"
                   eventPayload={{ case: successCase.slug, location: "portfolio-grid" }}
-                  className="inline-flex justify-center rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
+                  className="inline-flex w-full justify-center rounded-full bg-gray-950 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
                 >
                   Ver caso completo
                 </TrackedLink>
-                {successCase.liveUrl && (
-                  <TrackedLink
-                    href={successCase.liveUrl}
-                    eventName="case_demo_open"
-                    eventPayload={{ case: successCase.slug, location: "portfolio-grid" }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-extrabold text-gray-950 transition hover:border-primary-200 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
-                  >
-                    Ver demo online
-                  </TrackedLink>
-                )}
               </div>
             </article>
           ))}

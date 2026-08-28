@@ -13,6 +13,10 @@ export type SuccessCase = {
   timeline: string;
   category: 'Web' | 'Sistema' | 'Soporte';
   liveUrl?: string;
+  logo: {
+    src: string;
+    alt: string;
+  };
   brand: {
     accent: string;
     background: string;
@@ -26,6 +30,10 @@ export const successCases: SuccessCase[] = [
     title: 'OdontoCare',
     icon: 'OC',
     category: 'Sistema',
+    logo: {
+      src: '/portfolio/logos/odontocare.png',
+      alt: 'Logo de OdontoCare',
+    },
     brand: {
       accent: '#22C7D8',
       background: '#EAFBFF',
@@ -58,6 +66,10 @@ export const successCases: SuccessCase[] = [
     title: 'VetCare Pro LAN',
     icon: 'VP',
     category: 'Sistema',
+    logo: {
+      src: '/portfolio/logos/vetcare-pro-lan.png',
+      alt: 'Logo de VetCare Pro LAN',
+    },
     brand: {
       accent: '#0F9B9A',
       background: '#EAF8F7',
@@ -91,6 +103,10 @@ export const successCases: SuccessCase[] = [
     icon: 'CN',
     category: 'Web',
     liveUrl: 'https://mancarsoftware.github.io/muebleria/',
+    logo: {
+      src: '/portfolio/logos/casa-nativa.png',
+      alt: 'Logo de Casa Nativa',
+    },
     brand: {
       accent: '#173F33',
       background: '#F2F5EE',
@@ -124,6 +140,10 @@ export const successCases: SuccessCase[] = [
     icon: 'NS',
     category: 'Web',
     liveUrl: 'https://ale-mancar.github.io/tiendaOnline/',
+    logo: {
+      src: '/portfolio/logos/nova-store.png',
+      alt: 'Logo de Nova Store',
+    },
     brand: {
       accent: '#FF5A45',
       background: '#FFF4F1',
@@ -157,6 +177,10 @@ export const successCases: SuccessCase[] = [
     icon: 'AV',
     category: 'Web',
     liveUrl: 'https://mancarsoftware.github.io/veterinaria/',
+    logo: {
+      src: '/portfolio/logos/alma-vet.png',
+      alt: 'Logo de Alma Vet',
+    },
     brand: {
       accent: '#FF003D',
       background: '#EEF5FF',

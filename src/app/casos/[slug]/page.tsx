@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import TrackedLink from '../../components/TrackedLink';
+import { publicAsset } from '../../asset-paths';
 import { type SuccessCase, successCases } from '../../cases';
 import { createPageMetadata } from '../../seo';
 
@@ -33,13 +35,16 @@ function CaseLogoHero({ currentCase }: { currentCase: SuccessCase }) {
             {currentCase.liveUrl ? 'Demo online' : 'Caso privado'}
           </span>
         </div>
-        <div className="flex items-center gap-5">
-          <div
-            className="flex h-24 w-24 shrink-0 items-center justify-center rounded-[1.75rem] text-3xl font-extrabold shadow-2xl shadow-black/15"
-            style={{ background: currentCase.brand.accent, color: 'white' }}
-            aria-hidden="true"
-          >
-            {currentCase.icon}
+        <div className="grid gap-5">
+          <div className="relative h-40 w-full md:h-48">
+            <Image
+              src={publicAsset(currentCase.logo.src)}
+              alt={currentCase.logo.alt}
+              fill
+              className="object-contain"
+              sizes="(min-width: 1024px) 46vw, 90vw"
+              priority
+            />
           </div>
           <div>
             <p className="text-sm font-extrabold uppercase tracking-[0.22em]" style={{ color: currentCase.brand.accent }}>
