@@ -9,8 +9,8 @@ import LeadForm from './components/LeadForm';
 import FaqSection from './components/FaqSection';
 
 const images = {
-  hero: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=85',
-  strategy: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85',
+  hero: 'https://www.digitalsofts.pk/images/software-dashboard-hero.png',
+  strategy: 'https://images.squarespace-cdn.com/content/v1/66a20d41f1d19c49cd04933a/e6db4234-b94d-46b8-a8c9-d690c1e9af7e/mooch-website-ux.jpg',
   web: 'https://images.unsplash.com/photo-1555066932-e78dd8fb77bb?auto=format&fit=crop&w=1200&q=85',
   systems: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=85',
   ecommerce: 'https://oneaso.com/content/uploads/images/horoshop-product-page-ui-catalog-filters-1-1.jpg',

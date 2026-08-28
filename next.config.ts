@@ -28,6 +28,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "oneaso.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.digitalsofts.pk",
+      },
+      {
+        protocol: "https",
+        hostname: "images.squarespace-cdn.com",
+      },
     ],
   },
 };
