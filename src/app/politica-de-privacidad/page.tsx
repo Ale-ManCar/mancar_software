@@ -21,25 +21,31 @@ const sections = [
 
 export default function PoliticaPrivacidadPage() {
   return (
-    <main className="min-h-screen bg-gray-50 py-16 md:py-20">
-      <section className="container mx-auto grid max-w-6xl gap-8 px-4 lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="image-frame min-h-[320px] lg:min-h-[520px]">
-          <Image src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=85" alt="Privacidad y protección de información digital" fill className="object-cover" sizes="(min-width: 1024px) 40vw, 100vw" />
-        </div>
-        <div className="content-panel">
-          <p className="section-kicker">Privacidad</p>
-          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-5xl">Política de privacidad</h1>
-          <p className="mt-5 leading-7 text-gray-600">En Mancar Software protegemos la información personal de usuarios y clientes con un enfoque responsable y transparente.</p>
-          <div className="mt-8 space-y-6">
-            {sections.map(([title, text]) => (
-              <section key={title} className="border-t border-gray-100 pt-5">
-                <h2 className="text-xl font-bold text-gray-950">{title}</h2>
-                <p className="mt-2 leading-7 text-gray-600">{text}</p>
-              </section>
-            ))}
+    <main className="bg-gray-50">
+      <section className="page-hero container mx-auto px-4">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <p className="section-kicker">Privacidad</p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Datos personales tratados con responsabilidad.</h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              En Mancar Software protegemos la información personal de usuarios y clientes con un enfoque claro, limitado y transparente.
+            </p>
           </div>
-          <p className="mt-8 text-sm text-gray-500">Última actualización: 26 de agosto de 2026.</p>
+          <div className="image-frame h-[320px] md:h-[430px]">
+            <Image src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=85" alt="Privacidad y protección de información digital" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+          </div>
         </div>
+      </section>
+      <section className="container mx-auto px-4 pb-16 md:pb-20">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {sections.map(([title, text]) => (
+            <article key={title} className="soft-card p-7">
+              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
+              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+            </article>
+          ))}
+        </div>
+        <p className="mt-8 text-sm text-gray-500">Última actualización: 26 de agosto de 2026.</p>
       </section>
     </main>
   );

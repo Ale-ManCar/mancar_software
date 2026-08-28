@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createPageMetadata } from '../seo';
 
@@ -39,31 +40,38 @@ const sections = [
 
 export default function PoliticaCookiesPage() {
   return (
-    <main className="min-h-screen bg-gray-50 py-16 md:py-20">
-      <section className="container mx-auto max-w-4xl px-4">
-        <div className="content-panel">
-          <p className="section-kicker">Cookies</p>
-          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-5xl">Política de cookies</h1>
-          <p className="mt-5 leading-7 text-gray-600">
-            En Mancar Software usamos cookies y tecnologías similares con un enfoque limitado: funcionamiento del sitio, seguridad del formulario y medición si el visitante lo permite.
-          </p>
-          <div className="mt-8 space-y-6">
-            {sections.map(([title, text]) => (
-              <section key={title} className="border-t border-gray-100 pt-5">
-                <h2 className="text-xl font-bold text-gray-950">{title}</h2>
-                <p className="mt-2 leading-7 text-gray-600">{text}</p>
-              </section>
-            ))}
+    <main className="bg-gray-50">
+      <section className="page-hero container mx-auto px-4">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <p className="section-kicker">Cookies</p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Medición clara, solo cuando el visitante acepta.</h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              Usamos cookies y tecnologías similares con un enfoque limitado: funcionamiento del sitio, seguridad del formulario y analítica si el visitante lo permite.
+            </p>
           </div>
-          <p className="mt-8 text-sm leading-6 text-gray-500">
-            Esta política complementa la{' '}
-            <Link href="/politica-de-privacidad" className="font-bold text-primary-800 underline underline-offset-2 hover:text-primary-950">
-              Política de privacidad
-            </Link>
-            .
-          </p>
-          <p className="mt-3 text-sm text-gray-500">Última actualización: 28 de agosto de 2026.</p>
+          <div className="image-frame h-[320px] md:h-[430px]">
+            <Image src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85" alt="Infraestructura digital y medición responsable del sitio" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+          </div>
         </div>
+      </section>
+      <section className="container mx-auto px-4 pb-16 md:pb-20">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {sections.map(([title, text]) => (
+            <article key={title} className="soft-card p-7">
+              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
+              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+            </article>
+          ))}
+        </div>
+        <p className="mt-8 text-sm leading-6 text-gray-500">
+          Esta política complementa la{' '}
+          <Link href="/politica-de-privacidad" className="font-bold text-primary-800 underline underline-offset-2 hover:text-primary-950">
+            Política de privacidad
+          </Link>
+          .
+        </p>
+        <p className="mt-3 text-sm text-gray-500">Última actualización: 28 de agosto de 2026.</p>
       </section>
     </main>
   );
