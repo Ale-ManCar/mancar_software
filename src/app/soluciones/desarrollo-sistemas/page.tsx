@@ -3,10 +3,10 @@ import SolutionPage from '../SolutionPage';
 import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Desarrollo de sistemas a medida para pymes',
+  title: 'Desarrollo de sistemas a medida para negocios',
   browserTitle: 'Sistemas a medida',
   description:
-    'Creamos sistemas web personalizados para centralizar información, automatizar procesos y reducir errores operativos en empresas de Ecuador.',
+    'Creamos sistemas web personalizados para centralizar información, automatizar procesos y reducir errores operativos en empresas que necesitan más control.',
   path: '/soluciones/desarrollo-sistemas',
 });
 

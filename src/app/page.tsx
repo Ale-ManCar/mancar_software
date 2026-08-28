@@ -3,10 +3,10 @@ import HomeClient from './HomeClient';
 import { createPageMetadata, siteUrl } from './seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Desarrollo web y sistemas para pymes en Ecuador',
+  title: 'Desarrollo web y sistemas para negocios',
   browserTitle: 'Mancar Software',
   description:
-    'Diseño web, sistemas a medida, tiendas virtuales y soporte continuo para pymes de Ecuador. Atención directa desde Guayaquil.',
+    'Diseño web, sistemas a medida, tiendas virtuales y soporte continuo para negocios en crecimiento. Atención directa desde Ecuador.',
   path: '/',
 });
 
@@ -18,10 +18,7 @@ export default function Page() {
     url: siteUrl,
     email: 'mancarsoftwares@gmail.com',
     telephone: '+593986951419',
-    areaServed: {
-      '@type': 'Country',
-      name: 'Ecuador',
-    },
+    areaServed: ['Ecuador', 'Remote projects'],
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Guayaquil',
@@ -31,7 +28,7 @@ export default function Page() {
       '@type': 'ContactPoint',
       telephone: '+593986951419',
       contactType: 'sales',
-      areaServed: 'EC',
+      areaServed: ['EC', 'Remote'],
       availableLanguage: 'Spanish',
     },
     makesOffer: [
@@ -45,7 +42,7 @@ export default function Page() {
       itemOffered: {
         '@type': 'Service',
         name: serviceName,
-        areaServed: 'Ecuador',
+        areaServed: 'Ecuador and remote projects',
       },
     })),
   };

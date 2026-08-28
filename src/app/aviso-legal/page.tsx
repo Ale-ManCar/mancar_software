@@ -13,7 +13,7 @@ export const metadata: Metadata = createPageMetadata({
 const sections = [
   [
     'Titular del sitio',
-    'Este sitio web es operado por Mancar Software para presentar servicios de desarrollo web, sistemas a medida, tiendas virtuales, soporte técnico y consultoría digital para pymes en Ecuador.',
+    'Este sitio web es operado por Mancar Software para presentar servicios de desarrollo web, sistemas a medida, tiendas virtuales, soporte técnico y consultoría digital para negocios que buscan crecer con tecnología.',
   ],
   [
     'Uso del sitio',

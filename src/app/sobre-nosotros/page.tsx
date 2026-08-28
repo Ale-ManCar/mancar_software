@@ -8,7 +8,7 @@ export const metadata: Metadata = createPageMetadata({
   title: 'Sobre nosotros | Equipo y valores',
   browserTitle: 'Sobre nosotros',
   description:
-    'Conoce al equipo de Mancar Software, nuestra forma de trabajo y los valores con los que desarrollamos sitios web, sistemas y soporte para pymes en Ecuador.',
+    'Conoce al equipo de Mancar Software, nuestra forma de trabajo y los valores con los que desarrollamos sitios web, sistemas y soporte técnico para negocios en crecimiento.',
   path: '/sobre-nosotros',
 });
 
@@ -54,7 +54,7 @@ const aboutFaqs = [
   {
     question: '¿Qué diferencia a Mancar Software?',
     answer:
-      'Combinamos diseño, desarrollo y criterio comercial para crear soluciones útiles para pymes, evitando funciones innecesarias y explicando cada decisión importante.',
+      'Combinamos diseño, desarrollo y criterio comercial para crear soluciones útiles para negocios en crecimiento, evitando funciones innecesarias y explicando cada decisión importante.',
   },
 ];
 
@@ -69,7 +69,7 @@ export default function SobreNosotrosPage() {
               Tecnología con criterio, cercanía y responsabilidad.
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              En <strong>Mancar Software</strong> ayudamos a pymes de Ecuador a convertir ideas y procesos en soluciones digitales claras, mantenibles y orientadas a resultados.
+              En <strong>Mancar Software</strong> ayudamos a negocios en crecimiento a convertir ideas y procesos en soluciones digitales claras, mantenibles y orientadas a resultados.
             </p>
             <p className="mt-4 text-lg leading-8 text-gray-600">
               Trabajamos con comunicación directa, entregas por etapas y decisiones técnicas explicadas sin complicar lo necesario.

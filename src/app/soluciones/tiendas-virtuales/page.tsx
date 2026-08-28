@@ -3,7 +3,7 @@ import SolutionPage from '../SolutionPage';
 import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Tiendas virtuales para vender online en Ecuador',
+  title: 'Tiendas virtuales para vender online',
   browserTitle: 'Tiendas virtuales',
   description:
     'Diseñamos tiendas online con catálogo, carrito, pagos, inventario y una experiencia clara para que tus clientes compren sin complicaciones.',
@@ -40,7 +40,7 @@ export default function TiendasVirtualesPage() {
         },
         {
           title: 'Pasarelas de pago',
-          description: 'Integramos métodos de pago según el alcance del proyecto y la forma en que tu negocio atiende ventas en Ecuador.',
+          description: 'Integramos métodos de pago según el alcance del proyecto, el mercado objetivo y la forma en que tu negocio atiende ventas.',
         },
         {
           title: 'Gestión de inventario',

@@ -3,7 +3,7 @@ import SolutionPage from '../SolutionPage';
 import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Acompañamiento técnico continuo para pymes',
+  title: 'Acompañamiento técnico continuo para negocios',
   browserTitle: 'Acompañamiento continuo',
   description:
     'Acompañamiento post-lanzamiento para mejorar, mantener y evolucionar tu sitio web, tienda virtual o sistema con criterio técnico.',
@@ -16,7 +16,7 @@ export default function AcompanamientoContinuoPage() {
       kicker="Acompañamiento"
       title="Un aliado técnico para seguir mejorando después del lanzamiento."
       description="No entregamos y desaparecemos. Te acompañamos con soporte, ajustes, mejoras y criterio técnico para que tu proyecto evolucione con tu negocio."
-      secondary="Ideal para pymes que necesitan mantener su operación digital activa, segura y alineada a nuevos objetivos."
+      secondary="Ideal para negocios que necesitan mantener su operación digital activa, segura y alineada a nuevos objetivos."
       image="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=85"
       imageAlt="Wireframes y planificación digital sin personas"
       problems={[

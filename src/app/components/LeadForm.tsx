@@ -86,7 +86,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
 
     if (form.name.trim().length < 2) nextErrors.name = "Ingresa tu nombre.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) nextErrors.email = "Ingresa un email válido.";
-    if (!/^(?:\+593\s?)?0?9\d{8}$/.test(form.phone.replace(/\s|-/g, ""))) nextErrors.phone = "Ingresa un teléfono ecuatoriano válido.";
+    if (!/^\+?\d{7,15}$/.test(form.phone.replace(/[\s()-]/g, ""))) nextErrors.phone = "Ingresa un teléfono válido.";
     if (form.message.trim().length < 12) nextErrors.message = "Describe brevemente qué necesitas resolver.";
     if (!form.consent) nextErrors.consent = "Acepta el uso de tus datos para responder la solicitud.";
     if (!staticPreview && !turnstileSiteKey) nextErrors.turnstile = "La verificación de seguridad todavía no está configurada.";

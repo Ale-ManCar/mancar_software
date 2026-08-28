@@ -4,10 +4,10 @@ import TrackedLink from "../components/TrackedLink";
 import { createPageMetadata } from "../seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Contacto para desarrollo web y sistemas en Ecuador",
+  title: "Contacto para desarrollo web y sistemas",
   browserTitle: "Contacto",
   description:
-    "Agenda una orientación inicial con Mancar Software para desarrollo web, sistemas a medida, tiendas virtuales o soporte para pymes en Ecuador.",
+    "Agenda una orientación inicial con Mancar Software para desarrollo web, sistemas a medida, tiendas virtuales o soporte técnico.",
   path: "/contacto",
 });
 
@@ -19,7 +19,7 @@ export default function ContactoPage() {
           <p className="section-kicker mx-auto">Contacto</p>
           <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Conversemos sobre tu proyecto</h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Cuéntanos qué necesitas mejorar, automatizar o vender mejor. Te responderemos con una orientación clara y aterrizada para tu negocio en Ecuador.
+            Cuéntanos qué necesitas mejorar, automatizar o vender mejor. Te responderemos con una orientación clara, realista y aterrizada a tu negocio.
           </p>
         </section>
         <section className="grid items-start gap-8 pb-16 md:pb-20 lg:grid-cols-[0.82fr_1.18fr]">
@@ -27,7 +27,7 @@ export default function ContactoPage() {
             <p className="section-kicker">Canales directos</p>
             <h2 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950">Atención directa para tu proyecto.</h2>
             <p className="mt-4 leading-7 text-gray-600">
-              Recibimos solicitudes de pymes en Ecuador y coordinamos la primera orientación desde Guayaquil.
+              Atendemos principalmente desde Ecuador y podemos coordinar proyectos remotos según alcance, horarios y necesidades del cliente.
             </p>
 
             <div className="mt-7 grid gap-3">

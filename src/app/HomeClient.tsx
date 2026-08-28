@@ -40,7 +40,7 @@ const serviceDetails = [
     label: 'Venta online',
     image: images.ecommerce,
     fullDescription:
-      'Construimos ecommerce con catálogo, carrito, pagos, inventario y una experiencia de compra clara para Ecuador.',
+      'Construimos ecommerce con catálogo, carrito, pagos, inventario y una experiencia de compra clara para tus clientes.',
     features: ['Catálogo', 'Carrito', 'Pasarelas de pago', 'Inventario', 'SEO de productos'],
   },
   {
@@ -106,7 +106,7 @@ const homeFaqs = [
   {
     question: '¿Pueden trabajar por fases?',
     answer:
-      'Sí. Para pymes suele ser mejor lanzar una primera versión útil y luego mejorar con datos reales, nuevas funciones o ajustes comerciales.',
+      'Sí. Para negocios en crecimiento suele ser mejor lanzar una primera versión útil y luego mejorar con datos reales, nuevas funciones o ajustes comerciales.',
   },
   {
     question: '¿El proyecto queda preparado para crecer?',
@@ -146,7 +146,7 @@ export default function HomeClient() {
         <div className="container mx-auto px-4 py-14 md:py-20">
           <div className="grid min-w-0 items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
             <div className="min-w-0">
-              <p className="section-kicker">Software para pymes de Ecuador</p>
+              <p className="section-kicker">Software creado desde Ecuador</p>
               <h1 className="mt-5 max-w-4xl break-words text-[2rem] font-extrabold leading-[1.08] text-gray-950 sm:text-5xl md:text-7xl">
                 Webs y sistemas que ayudan a vender, ordenar y crecer.
               </h1>
@@ -237,7 +237,7 @@ export default function HomeClient() {
             <p className="section-kicker mx-auto">Soluciones</p>
             <h2 className="section-title">Construimos lo que tu negocio necesita para avanzar.</h2>
             <p className="section-copy">
-              Cada servicio combina estrategia, diseño y desarrollo para resolver necesidades reales de pymes.
+              Cada servicio combina estrategia, diseño y desarrollo para resolver necesidades reales de negocios en crecimiento.
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">

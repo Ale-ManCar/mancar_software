@@ -4,7 +4,7 @@ import TrackedLink from '../components/TrackedLink';
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Soporte técnico web para pymes en Ecuador',
+  title: 'Soporte técnico web para negocios',
   browserTitle: 'Soporte',
   description:
     'Soporte técnico para sitios web, tiendas virtuales y sistemas: errores, formularios, rendimiento, mantenimiento y mejoras puntuales.',

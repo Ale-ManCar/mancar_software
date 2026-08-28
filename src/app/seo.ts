@@ -9,7 +9,7 @@ export const defaultOgImage = {
   url: "/brand/og-image.png",
   width: 1200,
   height: 630,
-  alt: "Mancar Software - desarrollo web y sistemas para pymes en Ecuador",
+  alt: "Mancar Software - desarrollo web y sistemas para negocios",
 };
 
 type PageMetadataInput = {

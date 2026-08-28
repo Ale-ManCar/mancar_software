@@ -4,10 +4,10 @@ import FaqSection from '../components/FaqSection';
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Aplicativos empresariales para pymes en Ecuador',
+  title: 'Aplicativos empresariales para negocios en crecimiento',
   browserTitle: 'Aplicativos empresariales',
   description:
-    'Desarrollamos sistemas internos, inventarios, CRM, dashboards y aplicaciones empresariales a medida para que las pymes operen con más control.',
+    'Desarrollamos sistemas internos, inventarios, CRM, dashboards y aplicaciones empresariales a medida para que los negocios operen con más control.',
   path: '/aplicativos-empresariales',
 });
 
@@ -27,7 +27,7 @@ const outcomes = [
 
 const appFaqs = [
   {
-    question: '¿Qué tipo de aplicativo puede necesitar una pyme?',
+    question: '¿Qué tipo de aplicativo puede necesitar un negocio?',
     answer:
       'Puede ser un inventario, CRM, panel de pedidos, dashboard, sistema de turnos, control interno o una herramienta conectada a procesos propios del negocio.',
   },

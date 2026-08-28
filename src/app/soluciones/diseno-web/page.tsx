@@ -3,10 +3,10 @@ import SolutionPage from '../SolutionPage';
 import { createPageMetadata } from '../../seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Diseño web profesional para pymes en Ecuador',
+  title: 'Diseño web profesional para negocios',
   browserTitle: 'Diseño web',
   description:
-    'Sitios web rápidos, responsive y orientados a conversión para pymes que necesitan explicar su oferta, generar contactos y verse profesionales.',
+    'Sitios web rápidos, responsive y orientados a conversión para negocios que necesitan explicar su oferta, generar contactos y verse profesionales.',
   path: '/soluciones/diseno-web',
 });
 
@@ -15,7 +15,7 @@ export default function DisenoWebPage() {
     <SolutionPage
       kicker="Diseño web"
       title="Sitios web rápidos, elegantes y preparados para convertir."
-      description="Diseñamos sitios modernos para pymes que necesitan verse profesionales, explicar bien su oferta y generar contactos desde cualquier dispositivo."
+      description="Diseñamos sitios modernos para negocios que necesitan verse profesionales, explicar bien su oferta y generar contactos desde cualquier dispositivo."
       secondary="Incluimos estructura estratégica, responsive, SEO técnico base y formularios conectados al flujo comercial del negocio."
       image="https://images.unsplash.com/photo-1555066932-e78dd8fb77bb?auto=format&fit=crop&w=1200&q=85"
       imageAlt="Pantalla con código de desarrollo web sin personas"

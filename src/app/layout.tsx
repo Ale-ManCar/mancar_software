@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     apple: publicAsset("/brand/mancar-mark.png"),
   },
   description:
-    "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador que quieren vender mejor y ordenar sus procesos.",
+    "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para negocios que quieren vender mejor y ordenar sus procesos.",
   keywords: [
     "desarrollo web Ecuador",
-    "software para pymes",
+    "software para negocios",
     "sistemas a medida Guayaquil",
     "tiendas virtuales Ecuador",
     "soporte web Ecuador",
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
     locale: "es_EC",
     url: "https://mancarsoftware.com",
     siteName: "Mancar Software",
-    title: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
+    title: "Mancar Software | Desarrollo web y sistemas para negocios",
     description:
-      "Creamos sitios web, sistemas a medida, ecommerce y soporte técnico para pymes de Ecuador.",
+      "Creamos sitios web, sistemas a medida, ecommerce y soporte técnico para negocios en crecimiento.",
     images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mancar Software | Desarrollo web y sistemas para pymes en Ecuador",
+    title: "Mancar Software | Desarrollo web y sistemas para negocios",
     description:
       "Soluciones digitales para vender mejor, ordenar procesos y crecer con confianza.",
     images: [defaultOgImage.url],
@@ -79,22 +79,19 @@ const organizationJsonLd = {
   logo: `${siteUrl}/brand/mancar-logo.png`,
   image: `${siteUrl}/brand/og-image.png`,
   description:
-    "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para pymes de Ecuador.",
+    "Desarrollo web, sistemas a medida, tiendas virtuales y soporte técnico para negocios en crecimiento.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Guayaquil",
     addressCountry: "EC",
   },
-  areaServed: {
-    "@type": "Country",
-    name: "Ecuador",
-  },
+  areaServed: ["Ecuador", "Remote projects"],
   contactPoint: [
     {
       "@type": "ContactPoint",
       telephone: "+593986951419",
       contactType: "sales",
-      areaServed: "EC",
+      areaServed: ["EC", "Remote"],
       availableLanguage: ["es"],
     },
   ],
@@ -135,7 +132,7 @@ export default function RootLayout({
                   />
                 </div>
                 <p className="mt-4 max-w-xs text-sm leading-6 text-gray-400">
-                  Soluciones digitales claras, cercanas y diseñadas para que las pymes vendan mejor, ordenen procesos y crezcan con confianza.
+                  Soluciones digitales claras, cercanas y diseñadas para que los negocios vendan mejor, ordenen procesos y crezcan con confianza.
                 </p>
               </div>
               <div>
