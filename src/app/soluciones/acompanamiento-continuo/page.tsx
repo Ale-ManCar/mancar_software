@@ -17,8 +17,8 @@ export default function AcompanamientoContinuoPage() {
       title="Un aliado técnico para seguir mejorando después del lanzamiento."
       description="No entregamos y desaparecemos. Te acompañamos con soporte, ajustes, mejoras y criterio técnico para que tu proyecto evolucione con tu negocio."
       secondary="Ideal para pymes que necesitan mantener su operación digital activa, segura y alineada a nuevos objetivos."
-      image="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85"
-      imageAlt="Equipo en reunión de acompañamiento y mejora continua"
+      image="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=85"
+      imageAlt="Wireframes y planificación digital sin personas"
       problems={[
         'Publicaste una web o sistema, pero no tienes un equipo técnico cercano para resolver dudas, ajustes o mejoras.',
         'El negocio cambia y necesitas actualizar contenido, flujos, secciones o funciones sin empezar desde cero.',

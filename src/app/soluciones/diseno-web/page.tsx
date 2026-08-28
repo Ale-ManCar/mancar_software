@@ -17,8 +17,8 @@ export default function DisenoWebPage() {
       title="Sitios web rápidos, elegantes y preparados para convertir."
       description="Diseñamos sitios modernos para pymes que necesitan verse profesionales, explicar bien su oferta y generar contactos desde cualquier dispositivo."
       secondary="Incluimos estructura estratégica, responsive, SEO técnico base y formularios conectados al flujo comercial del negocio."
-      image="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85"
-      imageAlt="Composición visual de arquitectura y diseño web"
+      image="https://images.unsplash.com/photo-1555066932-e78dd8fb77bb?auto=format&fit=crop&w=1200&q=85"
+      imageAlt="Pantalla con código de desarrollo web sin personas"
       problems={[
         'Tu negocio se ve activo en redes, pero no tiene una página clara para explicar servicios, precios referenciales o canales de contacto.',
         'Los clientes preguntan lo mismo una y otra vez porque no encuentran información ordenada antes de escribirte.',

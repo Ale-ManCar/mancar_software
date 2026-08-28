@@ -17,8 +17,8 @@ export default function MantenimientoSoportePage() {
       title="Mantenimiento para que tu operación digital no se detenga."
       description="Mantenemos sitios, tiendas y sistemas actualizados, protegidos y funcionando correctamente para reducir incidencias y evitar tiempos muertos."
       secondary="Atendemos errores, mejoras y revisiones preventivas con comunicación clara y respuesta directa."
-      image="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=85"
-      imageAlt="Equipo revisando soporte y mantenimiento técnico"
+      image="https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&w=1200&q=85"
+      imageAlt="Centro de datos para mantenimiento y soporte técnico sin personas"
       problems={[
         'Tu sitio o sistema presenta errores, enlaces rotos, formularios fallando o problemas visibles que afectan la confianza.',
         'No sabes si el proyecto está actualizado, protegido o preparado para cambios pequeños sin romper otras partes.',
