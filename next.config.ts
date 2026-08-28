@@ -36,6 +36,22 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.squarespace-cdn.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.coforge.com",
+      },
+      {
+        protocol: "https",
+        hostname: "pub-ad20c03bcf344486bdbcb33e6a5a69dd.r2.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "idataprotection.es",
+      },
+      {
+        protocol: "https",
+        hostname: "ppc.land",
+      },
     ],
   },
 };

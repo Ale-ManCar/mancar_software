@@ -51,7 +51,7 @@ export default function PoliticaCookiesPage() {
             </p>
           </div>
           <div className="image-frame h-[320px] md:h-[430px]">
-            <Image src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85" alt="Infraestructura digital y medición responsable del sitio" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+            <Image src="https://ppc.land/content/images/size/w2000/2025/07/Cookie-Consent.webp" alt="Interfaz de consentimiento de cookies y controles de privacidad" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
         </div>
       </section>

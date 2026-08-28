@@ -30,7 +30,7 @@ export default function EticaPage() {
             </p>
           </div>
           <div className="image-frame h-[320px] md:h-[430px]">
-            <Image src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85" alt="Acuerdo profesional entre colaboradores" fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" />
+            <Image src="https://pub-ad20c03bcf344486bdbcb33e6a5a69dd.r2.dev/article-images/18-panel-workplace-drug-testing-legal-rules-best-featured-44my.png" alt="Documentos y políticas corporativas sobre ética profesional" fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" />
           </div>
         </div>
       </section>

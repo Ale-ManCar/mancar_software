@@ -32,7 +32,7 @@ export default function PoliticaSeguridadPage() {
             </p>
           </div>
           <div className="image-frame h-[320px] md:h-[430px]">
-            <Image src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=85" alt="Seguridad digital y protección de datos" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+            <Image src="https://idataprotection.es/wp-content/uploads/2022/05/Proteccion-datos_1680143202_157553914_1200x675.png" alt="Protección de datos e infraestructura de seguridad digital" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
         </div>
       </section>

@@ -77,7 +77,7 @@ export default function SobreNosotrosPage() {
           </div>
           <div className="image-frame bg-gray-950">
             <div className="relative h-80 md:h-[420px]">
-              <Image src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85" alt="Equipo colaborando en una planificación digital" fill className="object-cover opacity-80" sizes="(min-width: 1024px) 50vw, 100vw" />
+              <Image src="https://www.coforge.com/hubfs/Workplace-Setup.jpg" alt="Espacio de trabajo tecnológico con laptops y monitores" fill className="object-cover opacity-80" sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
             <div className="p-7 text-white">
               <h2 className="text-2xl font-bold">Datos que nos respaldan</h2>
