@@ -36,9 +36,11 @@ export default function Header() {
   };
 
   useEffect(() => {
+    document.documentElement.style.overflow = isMobileMenuOpen ? "hidden" : "";
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
 
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
