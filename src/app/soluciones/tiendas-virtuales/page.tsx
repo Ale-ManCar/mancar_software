@@ -17,8 +17,8 @@ export default function TiendasVirtualesPage() {
       title="Tiendas virtuales listas para vender con claridad."
       description="Implementamos tiendas online con catálogo, carrito, pagos, inventario y una experiencia de compra pensada para que el cliente encuentre y compre sin complicaciones."
       secondary="Te acompañamos desde la estructura de productos hasta el panel de administración y el flujo de atención."
-      image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85"
-      imageAlt="Persona comprando en una tienda virtual"
+      image="https://oneaso.com/content/uploads/images/horoshop-product-page-ui-catalog-filters-1-1.jpg"
+      imageAlt="Interfaz de catálogo ecommerce con productos y filtros"
       problems={[
         'Vendes por redes o WhatsApp, pero el catálogo se vuelve difícil de organizar cuando crecen productos, precios o pedidos.',
         'Los clientes abandonan la compra porque no encuentran rápido información, fotos, disponibilidad o pasos claros para pagar.',
