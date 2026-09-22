@@ -1,3 +1,4 @@
+import Text from "../i18n/Text";
 import type { Metadata } from "next";
 import LeadForm from "../components/LeadForm";
 import TrackedLink from "../components/TrackedLink";
@@ -16,42 +17,42 @@ export default function ContactoPage() {
     <main className="bg-gray-50">
       <div className="container mx-auto px-4">
         <section className="page-hero mx-auto max-w-3xl text-center">
-          <p className="section-kicker mx-auto">Contacto</p>
-          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Conversemos sobre tu proyecto</h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="section-kicker mx-auto"><Text>Contacto</Text></p>
+          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>Conversemos sobre tu proyecto</Text></h1>
+          <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
             Cuéntanos qué necesitas mejorar, automatizar o vender mejor. Te responderemos con una orientación clara, realista y aterrizada a tu negocio.
-          </p>
+          </Text></p>
         </section>
         <section className="grid items-start gap-8 pb-16 md:pb-20 lg:grid-cols-[0.82fr_1.18fr]">
           <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-xl shadow-gray-950/5 md:p-7">
-            <p className="section-kicker">Canales directos</p>
-            <h2 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950">Atención directa para tu proyecto.</h2>
-            <p className="mt-4 leading-7 text-gray-600">
+            <p className="section-kicker"><Text>Canales directos</Text></p>
+            <h2 className="mt-5 text-3xl font-extrabold leading-tight text-gray-950"><Text>Atención directa para tu proyecto.</Text></h2>
+            <p className="mt-4 leading-7 text-gray-600"><Text>
               Atendemos principalmente desde Ecuador y podemos coordinar proyectos remotos según alcance, horarios y necesidades del cliente.
-            </p>
+            </Text></p>
 
             <div className="mt-7 grid gap-3">
               <TrackedLink href="tel:+593986951419" eventName="phone_click" eventPayload={{ location: "contact-page" }} className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
-                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Teléfono</span>
-                <span className="mt-1 block text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800">+593 98 695 1419</span>
+                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700"><Text>Teléfono</Text></span>
+                <span className="mt-1 block text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800"><Text>+593 98 695 1419</Text></span>
               </TrackedLink>
               <TrackedLink href="mailto:mancarsoftwares@gmail.com" eventName="email_click" eventPayload={{ location: "contact-page" }} className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 transition hover:border-primary-200 hover:bg-primary-50">
-                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700">Email</span>
-                <span className="mt-1 block break-words text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800">mancarsoftwares@gmail.com</span>
+                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-700"><Text>Email</Text></span>
+                <span className="mt-1 block break-words text-lg font-extrabold text-gray-950 transition group-hover:text-primary-800"><Text>mancarsoftwares@gmail.com</Text></span>
               </TrackedLink>
               <div className="rounded-2xl border border-gray-200 bg-gray-950 p-4 text-white">
-                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-200">Siguiente paso</span>
-                <p className="mt-2 text-sm leading-6 text-gray-200">
+                <span className="text-xs font-extrabold uppercase tracking-wide text-primary-200"><Text>Siguiente paso</Text></span>
+                <p className="mt-2 text-sm leading-6 text-gray-200"><Text>
                   Revisamos tu caso y te respondemos con una ruta clara: web, sistema, tienda virtual o soporte.
-                </p>
+                </Text></p>
               </div>
             </div>
           </div>
           <div className="soft-card p-8">
-            <h2 className="text-2xl font-bold text-gray-950">Solicita una orientación inicial</h2>
-            <p className="mt-2 text-sm leading-6 text-gray-600">
+            <h2 className="text-2xl font-bold text-gray-950"><Text>Solicita una orientación inicial</Text></h2>
+            <p className="mt-2 text-sm leading-6 text-gray-600"><Text>
               Enviaremos tu solicitud al equipo comercial con el contexto necesario para darte una respuesta clara.
-            </p>
+            </Text></p>
             <LeadForm source="pagina-contacto" submitLabel="Solicitar orientación inicial" />
           </div>
         </section>

@@ -1,5 +1,6 @@
 "use client";
 
+import Text from "../i18n/Text";
 import { FormEvent, useCallback, useState } from "react";
 import Link from "next/link";
 import { trackConversion } from "../analytics";
@@ -159,9 +160,9 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
     <form className="mt-4 space-y-3.5" onSubmit={handleSubmit} noValidate>
       <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
-          <label htmlFor={`${source}-nombre`} className="block text-sm font-semibold text-gray-700">
+          <label htmlFor={`${source}-nombre`} className="block text-sm font-semibold text-gray-700"><Text>
             Nombre
-          </label>
+          </Text></label>
           <input
             type="text"
             id={`${source}-nombre`}
@@ -173,12 +174,12 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             aria-describedby={errors.name ? `${source}-nombre-error` : undefined}
             required
           />
-          {errors.name && <p id={`${source}-nombre-error`} className="mt-1 text-sm font-medium text-secondary-700">{errors.name}</p>}
+          {errors.name && <p id={`${source}-nombre-error`} className="mt-1 text-sm font-medium text-secondary-700"><Text>{errors.name}</Text></p>}
         </div>
         <div>
-          <label htmlFor={`${source}-email`} className="block text-sm font-semibold text-gray-700">
+          <label htmlFor={`${source}-email`} className="block text-sm font-semibold text-gray-700"><Text>
             Email
-          </label>
+          </Text></label>
           <input
             type="email"
             id={`${source}-email`}
@@ -190,15 +191,15 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             aria-describedby={errors.email ? `${source}-email-error` : undefined}
             required
           />
-          {errors.email && <p id={`${source}-email-error`} className="mt-1 text-sm font-medium text-secondary-700">{errors.email}</p>}
+          {errors.email && <p id={`${source}-email-error`} className="mt-1 text-sm font-medium text-secondary-700"><Text>{errors.email}</Text></p>}
         </div>
       </div>
 
       <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
-          <label htmlFor={`${source}-telefono`} className="block text-sm font-semibold text-gray-700">
+          <label htmlFor={`${source}-telefono`} className="block text-sm font-semibold text-gray-700"><Text>
             Teléfono
-          </label>
+          </Text></label>
           <input
             type="tel"
             id={`${source}-telefono`}
@@ -211,31 +212,34 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
             aria-describedby={errors.phone ? `${source}-telefono-error` : undefined}
             required
           />
-          {errors.phone && <p id={`${source}-telefono-error`} className="mt-1 text-sm font-medium text-secondary-700">{errors.phone}</p>}
+          {errors.phone && <p id={`${source}-telefono-error`} className="mt-1 text-sm font-medium text-secondary-700"><Text>{errors.phone}</Text></p>}
         </div>
         <div>
-          <label htmlFor={`${source}-tipo`} className="block text-sm font-semibold text-gray-700">
+          <label htmlFor={`${source}-tipo`} className="block text-sm font-semibold text-gray-700"><Text>
             Tipo de proyecto
-          </label>
+          </Text></label>
           <select
             id={`${source}-tipo`}
             value={form.projectType}
             onChange={(event) => updateField("projectType", event.target.value)}
             className="mt-1 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 transition focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200"
+            aria-invalid={!!errors.projectType}
+            aria-describedby={errors.projectType ? `${source}-tipo-error` : undefined}
           >
             {projectTypes.map((type) => (
               <option key={type} value={type}>
-                {type}
+                <Text>{type}</Text>
               </option>
             ))}
           </select>
+          {errors.projectType && <p id={`${source}-tipo-error`} className="mt-1 text-sm font-medium text-secondary-700"><Text>{errors.projectType}</Text></p>}
         </div>
       </div>
 
       <div>
-        <label htmlFor={`${source}-mensaje`} className="block text-sm font-semibold text-gray-700">
+        <label htmlFor={`${source}-mensaje`} className="block text-sm font-semibold text-gray-700"><Text>
           ¿Qué necesitas resolver?
-        </label>
+        </Text></label>
         <textarea
           id={`${source}-mensaje`}
           rows={3}
@@ -247,12 +251,12 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
           aria-describedby={errors.message ? `${source}-mensaje-error` : undefined}
           required
         />
-        {errors.message && <p id={`${source}-mensaje-error`} className="mt-1 text-sm font-medium text-secondary-700">{errors.message}</p>}
+        {errors.message && <p id={`${source}-mensaje-error`} className="mt-1 text-sm font-medium text-secondary-700"><Text>{errors.message}</Text></p>}
       </div>
 
-      <label className="hidden" aria-hidden="true">
+      <label className="hidden" aria-hidden="true"><Text>
         Sitio web
-        <input
+        </Text><input
           type="text"
           value={form.website}
           onChange={(event) => updateField("website", event.target.value)}
@@ -270,15 +274,15 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
           aria-invalid={!!errors.consent}
           required
         />
-        <span>
-          Acepto que mis datos se utilicen para gestionar esta solicitud conforme a la{" "}
-          <Link href="/politica-de-privacidad" className="font-extrabold text-primary-800 underline underline-offset-2 hover:text-primary-950">
+        <span><Text>
+          Acepto que mis datos se utilicen para gestionar esta solicitud conforme a la</Text>{" "}
+          <Link href="/politica-de-privacidad" className="font-extrabold text-primary-800 underline underline-offset-2 hover:text-primary-950"><Text>
             Política de privacidad
-          </Link>
+          </Text></Link><Text>
           .
-        </span>
+        </Text></span>
       </label>
-      {errors.consent && <p className="text-sm font-medium text-secondary-700">{errors.consent}</p>}
+      {errors.consent && <p className="text-sm font-medium text-secondary-700"><Text>{errors.consent}</Text></p>}
 
       {!staticPreview && turnstileSiteKey ? (
         <div className="max-w-full overflow-x-auto">
@@ -290,21 +294,21 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
           />
         </div>
       ) : !staticPreview ? (
-        <p className="rounded-xl border border-secondary-200 bg-secondary-50 px-4 py-2.5 text-sm font-medium text-secondary-800">
+        <p className="rounded-xl border border-secondary-200 bg-secondary-50 px-4 py-2.5 text-sm font-medium text-secondary-800"><Text>
           La verificación de seguridad todavía no está configurada.
-        </p>
+        </Text></p>
       ) : null}
-      {errors.turnstile && <p className="text-sm font-medium text-secondary-700">{errors.turnstile}</p>}
+      {errors.turnstile && <p className="text-sm font-medium text-secondary-700"><Text>{errors.turnstile}</Text></p>}
 
       {submission.kind === "success" && (
         <p aria-live="polite" className="rounded-xl border border-primary-100 bg-primary-50 px-4 py-2.5 text-sm font-medium text-primary-800">
-          {submission.message}
+          <Text>{submission.message}</Text>
         </p>
       )}
 
       {submission.kind === "error" && (
         <p aria-live="polite" className="rounded-xl border border-secondary-200 bg-secondary-50 px-4 py-2.5 text-sm font-medium text-secondary-800">
-          {submission.message}
+          <Text>{submission.message}</Text>
         </p>
       )}
 
@@ -313,7 +317,7 @@ export default function LeadForm({ source, submitLabel = "Enviar solicitud" }: L
         disabled={busy || (!staticPreview && !turnstileSiteKey)}
         className="w-full rounded-full bg-gray-950 px-5 py-3 font-extrabold text-white transition hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
-        {busy ? "Enviando..." : submitLabel}
+        <Text>{busy ? "Enviando..." : submitLabel}</Text>
       </button>
     </form>
   );

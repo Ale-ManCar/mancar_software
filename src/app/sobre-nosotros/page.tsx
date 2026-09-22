@@ -1,5 +1,7 @@
+import Text from "../i18n/Text";
+import LabeledRegion from "../i18n/LabeledRegion";
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "../i18n/LocalizedImage";
 import FaqSection from '../components/FaqSection';
 import { publicAsset } from '../asset-paths';
 import { createPageMetadata } from '../seo';
@@ -64,27 +66,27 @@ export default function SobreNosotrosPage() {
       <div className="container mx-auto px-4">
         <section className="page-hero grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="section-kicker">Sobre nosotros</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">
+            <p className="section-kicker"><Text>Sobre nosotros</Text></p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>
               Tecnología con criterio, cercanía y responsabilidad.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              En <strong>Mancar Software</strong> ayudamos a negocios en crecimiento a convertir ideas y procesos en soluciones digitales claras, mantenibles y orientadas a resultados.
-            </p>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
+            </Text></h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
+              En </Text><strong><Text>Mancar Software</Text></strong><Text> ayudamos a negocios en crecimiento a convertir ideas y procesos en soluciones digitales claras, mantenibles y orientadas a resultados.
+            </Text></p>
+            <p className="mt-4 text-lg leading-8 text-gray-600"><Text>
               Trabajamos con comunicación directa, entregas por etapas y decisiones técnicas explicadas sin complicar lo necesario.
-            </p>
+            </Text></p>
           </div>
           <div className="image-frame bg-gray-950">
             <div className="relative h-80 md:h-[420px]">
               <Image src="https://www.coforge.com/hubfs/Workplace-Setup.jpg" alt="Espacio de trabajo tecnológico con laptops y monitores" fill className="object-cover opacity-80" sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
             <div className="p-7 text-white">
-              <h2 className="text-2xl font-bold">Datos que nos respaldan</h2>
+              <h2 className="text-2xl font-bold"><Text>Datos que nos respaldan</Text></h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                <div><div className="text-4xl font-extrabold text-primary-200">+2</div><div className="mt-1 text-sm text-gray-300">años de experiencia</div></div>
-                <div><div className="text-4xl font-extrabold text-primary-200">+15</div><div className="mt-1 text-sm text-gray-300">proyectos entregados</div></div>
-                <div><div className="text-4xl font-extrabold text-primary-200">100%</div><div className="mt-1 text-sm text-gray-300">atención personalizada</div></div>
+                <div><div className="text-4xl font-extrabold text-primary-200"><Text>+2</Text></div><div className="mt-1 text-sm text-gray-300"><Text>años de experiencia</Text></div></div>
+                <div><div className="text-4xl font-extrabold text-primary-200"><Text>+15</Text></div><div className="mt-1 text-sm text-gray-300"><Text>proyectos entregados</Text></div></div>
+                <div><div className="text-4xl font-extrabold text-primary-200"><Text>100%</Text></div><div className="mt-1 text-sm text-gray-300"><Text>atención personalizada</Text></div></div>
               </div>
             </div>
           </div>
@@ -98,19 +100,19 @@ export default function SobreNosotrosPage() {
             ['Calidad', 'Cuidamos diseño, rendimiento, seguridad y mantenimiento.'],
           ].map(([title, text]) => (
               <article key={title} className="soft-card p-6">
-                <h2 className="text-lg font-bold text-gray-950">{title}</h2>
-                <p className="mt-3 text-sm leading-6 text-gray-600">{text}</p>
+                <h2 className="text-lg font-bold text-gray-950"><Text>{title}</Text></h2>
+                <p className="mt-3 text-sm leading-6 text-gray-600"><Text>{text}</Text></p>
             </article>
           ))}
         </section>
 
         <section id="equipo" className="scroll-mt-24 border-t border-gray-200 py-16 md:py-20">
           <div className="mx-auto mb-10 max-w-3xl text-center">
-            <p className="section-kicker mx-auto">Equipo</p>
-            <h2 className="section-title">Nuestro equipo de desarrolladores</h2>
-            <p className="section-copy">
+            <p className="section-kicker mx-auto"><Text>Equipo</Text></p>
+            <h2 className="section-title"><Text>Nuestro equipo de desarrolladores</Text></h2>
+            <p className="section-copy"><Text>
               Personas cercanas, criterio técnico y comunicación clara para construir soluciones confiables desde el primer contacto.
-            </p>
+            </Text></p>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member) => (
@@ -118,26 +120,26 @@ export default function SobreNosotrosPage() {
                 {member.image ? (
                   <Image
                     src={member.image}
-                    alt={`Foto de ${member.name}`}
+                    alt={member.name}
                     width={108}
                     height={108}
                     className={`mb-6 h-28 w-28 rounded-full border border-primary-100 object-cover ${member.imagePosition}`}
                   />
                 ) : (
-                  <div role="img" aria-label={`Placeholder de foto de ${member.name}`} className="mb-6 flex h-28 w-28 items-center justify-center rounded-full bg-primary-100 text-2xl font-extrabold text-primary-700">
-                    {member.initials}
-                  </div>
+                  <LabeledRegion as="div" role="img" label="Placeholder de foto de" name={member.name} className="mb-6 flex h-28 w-28 items-center justify-center rounded-full bg-primary-100 text-2xl font-extrabold text-primary-700">
+                    <Text>{member.initials}</Text>
+                  </LabeledRegion>
                 )}
-                <h3 className="text-2xl font-bold text-gray-950">{member.name}</h3>
-                <p className="mt-1 font-semibold text-primary-700">{member.role}</p>
-                <p className="mt-5 leading-7 text-gray-600">{member.description}</p>
-                <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Fortalezas de ${member.name}`}>
+                <h3 className="text-2xl font-bold text-gray-950"><Text>{member.name}</Text></h3>
+                <p className="mt-1 font-semibold text-primary-700"><Text>{member.role}</Text></p>
+                <p className="mt-5 leading-7 text-gray-600"><Text>{member.description}</Text></p>
+                <LabeledRegion as="ul" className="mt-6 flex flex-wrap gap-2" label="Fortalezas de" name={member.name}>
                   {member.strengths.map((strength) => (
                     <li key={strength} className="rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-sm font-medium text-primary-700">
-                      {strength}
+                      <Text>{strength}</Text>
                     </li>
                   ))}
-                </ul>
+                </LabeledRegion>
               </article>
             ))}
           </div>

@@ -11,6 +11,16 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Languages
+
+The site renders in Spanish by default. The header selector offers English, Simplified Chinese (Mandarin), Hindi and Arabic. The selected catalog loads on demand from the application; visitors' content is never sent to a translation service. The preference is stored in `mancar_language` in local storage and restored after hydration. Selection also works when preference storage is blocked.
+
+Arabic sets `dir="rtl"`; switching back restores left-to-right layout. Form input and backend project-type values are preserved when switching languages. Visible copy, image descriptions, navigation, form feedback and legal pages use the same local catalogs. Spanish remains the canonical server-rendered language, including SEO metadata and structured data; this feature does not add separate multilingual SEO routes.
+
+Translations are in `src/app/i18n/{en,zh,hi,ar}.json`, keyed by the original normalized Spanish copy. Use `Text` for visible strings in server or client components and `useLanguage().t()` for client-side attributes. Use `LocalizedImage` for translated alternative text. Keep analytics payloads, URLs, identifiers and form values unchanged. Add each new phrase to all four catalogs and run `npm run test:translations`; proper names and technology names remain unchanged. Native-speaker review is recommended before treating the translations, especially legal copy, as editorially approved.
+
+Verification: `npm run test`, `npm run test:translations`, `npm run lint -- --max-warnings=0` and `npm run test:e2e`. The language browser tests cover navigation, saved preferences, RTL, form state and submission, catalog-load failure, blocked preference storage and a 320px viewport.
+
 ## Production Environment
 
 Configure these public variables in the website hosting provider before launch:

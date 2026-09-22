@@ -1,5 +1,6 @@
+import Text from "../i18n/Text";
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "../i18n/LocalizedImage";
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -25,11 +26,11 @@ export default function PoliticaSeguridadPage() {
       <section className="page-hero container mx-auto px-4">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="section-kicker">Seguridad</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Protección de información desde el diseño.</h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="section-kicker"><Text>Seguridad</Text></p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>Protección de información desde el diseño.</Text></h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
               La seguridad no es un extra. En cada solución buscamos proteger datos, accesos y continuidad operativa con medidas técnicas y organizativas razonables.
-            </p>
+            </Text></p>
           </div>
           <div className="image-frame h-[320px] md:h-[430px]">
             <Image src="https://idataprotection.es/wp-content/uploads/2022/05/Proteccion-datos_1680143202_157553914_1200x675.png" alt="Protección de datos e infraestructura de seguridad digital" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
@@ -40,8 +41,8 @@ export default function PoliticaSeguridadPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {principles.map(([title, text]) => (
             <article key={title} className="soft-card p-7">
-              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
-              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+              <h2 className="text-2xl font-bold text-gray-950"><Text>{title}</Text></h2>
+              <p className="mt-4 leading-7 text-gray-600"><Text>{text}</Text></p>
             </article>
           ))}
         </div>

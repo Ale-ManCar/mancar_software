@@ -1,5 +1,6 @@
+import Text from "../i18n/Text";
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "../i18n/LocalizedImage";
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -51,11 +52,11 @@ export default function AvisoLegalPage() {
       <section className="page-hero container mx-auto px-4">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="section-kicker">Legal</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Condiciones claras para usar este sitio.</h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="section-kicker"><Text>Legal</Text></p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>Condiciones claras para usar este sitio.</Text></h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
               Estas condiciones regulan el uso informativo del sitio web de Mancar Software y ayudan a establecer una relación clara entre visitantes, prospectos y la empresa.
-            </p>
+            </Text></p>
           </div>
           <div className="image-frame h-[320px] md:h-[430px]">
             <Image src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=85" alt="Documento legal y acuerdos profesionales" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
@@ -66,12 +67,12 @@ export default function AvisoLegalPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {sections.map(([title, text]) => (
             <article key={title} className="soft-card p-7">
-              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
-              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+              <h2 className="text-2xl font-bold text-gray-950"><Text>{title}</Text></h2>
+              <p className="mt-4 leading-7 text-gray-600"><Text>{text}</Text></p>
             </article>
           ))}
         </div>
-        <p className="mt-8 text-sm text-gray-500">Última actualización: 28 de agosto de 2026.</p>
+        <p className="mt-8 text-sm text-gray-500"><Text>Última actualización: 28 de agosto de 2026.</Text></p>
       </section>
     </main>
   );

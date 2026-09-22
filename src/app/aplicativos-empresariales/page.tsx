@@ -1,5 +1,6 @@
+import Text from "../i18n/Text";
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "../i18n/LocalizedImage";
 import FaqSection from '../components/FaqSection';
 import { createPageMetadata } from '../seo';
 
@@ -49,13 +50,13 @@ export default function AplicativosPage() {
       <section className="page-hero container mx-auto px-4">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="section-kicker">Aplicativos empresariales</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">
+            <p className="section-kicker"><Text>Aplicativos empresariales</Text></p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>
               Sistemas internos para operar con más control.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            </Text></h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
               Diseñamos software personalizado para que tu empresa reduzca trabajo manual, centralice información y tenga procesos más fáciles de seguir.
-            </p>
+            </Text></p>
           </div>
           <div className="image-frame h-[340px] md:h-[480px]">
             <Image
@@ -71,23 +72,23 @@ export default function AplicativosPage() {
 
       <section className="container mx-auto px-4 pb-16 md:pb-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="section-kicker mx-auto">Módulos frecuentes</p>
-          <h2 className="section-title">Aplicaciones pensadas para tareas reales.</h2>
-          <p className="section-copy">Partimos de tu proceso actual y diseñamos módulos que tu equipo pueda adoptar sin fricción.</p>
+          <p className="section-kicker mx-auto"><Text>Módulos frecuentes</Text></p>
+          <h2 className="section-title"><Text>Aplicaciones pensadas para tareas reales.</Text></h2>
+          <p className="section-copy"><Text>Partimos de tu proceso actual y diseñamos módulos que tu equipo pueda adoptar sin fricción.</Text></p>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {features.map(([title, text]) => (
             <article key={title} className="soft-card p-7">
-              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
-              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+              <h2 className="text-2xl font-bold text-gray-950"><Text>{title}</Text></h2>
+              <p className="mt-4 leading-7 text-gray-600"><Text>{text}</Text></p>
             </article>
           ))}
         </div>
         <div className="mt-10 rounded-2xl bg-white p-6 md:p-8">
-          <h2 className="text-2xl font-bold text-gray-950">Impacto esperado</h2>
+          <h2 className="text-2xl font-bold text-gray-950"><Text>Impacto esperado</Text></h2>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {outcomes.map((item) => (
-              <li key={item} className="rounded-2xl bg-gray-50 p-4 font-semibold text-gray-700">{item}</li>
+              <li key={item} className="rounded-2xl bg-gray-50 p-4 font-semibold text-gray-700"><Text>{item}</Text></li>
             ))}
           </ul>
         </div>

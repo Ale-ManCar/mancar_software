@@ -1,5 +1,6 @@
+import Text from "../i18n/Text";
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "../i18n/LocalizedImage";
 import { createPageMetadata } from '../seo';
 
 export const metadata: Metadata = createPageMetadata({
@@ -23,11 +24,11 @@ export default function EticaPage() {
       <section className="page-hero container mx-auto px-4">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div>
-            <p className="section-kicker">Ética y conducta</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">La confianza también se diseña.</h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="section-kicker"><Text>Ética y conducta</Text></p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>La confianza también se diseña.</Text></h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
               En Mancar Software trabajamos con principios claros para que cada proyecto avance con honestidad, respeto, responsabilidad y protección de la información.
-            </p>
+            </Text></p>
           </div>
           <div className="image-frame h-[320px] md:h-[430px]">
             <Image src="https://pub-ad20c03bcf344486bdbcb33e6a5a69dd.r2.dev/article-images/18-panel-workplace-drug-testing-legal-rules-best-featured-44my.png" alt="Documentos y políticas corporativas sobre ética profesional" fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" />
@@ -38,8 +39,8 @@ export default function EticaPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {commitments.map(([title, text]) => (
             <article key={title} className="soft-card p-7">
-              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
-              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+              <h2 className="text-2xl font-bold text-gray-950"><Text>{title}</Text></h2>
+              <p className="mt-4 leading-7 text-gray-600"><Text>{text}</Text></p>
             </article>
           ))}
         </div>

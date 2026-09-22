@@ -1,8 +1,10 @@
+import Text from "./i18n/Text";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "./i18n/LocalizedImage";
 import "./globals.css";
 import Header from "./components/Header";
+import { LanguageProvider } from "./i18n/LanguageProvider";
 import Analytics from "./components/Analytics";
 import CookieConsent from "./components/CookieConsent";
 import TrackedLink from "./components/TrackedLink";
@@ -115,6 +117,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <Analytics />
+        <LanguageProvider>
         <Header />
         {children}
         <CookieConsent />
@@ -131,33 +134,33 @@ export default function RootLayout({
                     className="h-12 w-auto object-contain"
                   />
                 </div>
-                <p className="mt-4 max-w-xs text-sm leading-6 text-gray-400">
+                <p className="mt-4 max-w-xs text-sm leading-6 text-gray-400"><Text>
                   Soluciones digitales claras, cercanas y diseñadas para que los negocios vendan mejor, ordenen procesos y crezcan con confianza.
-                </p>
+                </Text></p>
               </div>
               <div>
-                <h4 className="font-semibold">Enlaces</h4>
+                <h4 className="font-semibold"><Text>Enlaces</Text></h4>
                 <ul className="mt-4 space-y-2 text-sm text-gray-400">
-                  <li><Link href="/" className="hover:text-white transition">Inicio</Link></li>
-                  <li><Link href="/sobre-nosotros" className="hover:text-white transition">Sobre nosotros</Link></li>
-                  <li><Link href="/casos" className="hover:text-white transition">Portafolio</Link></li>
-                  <li><Link href="/contacto" className="hover:text-white transition">Contacto</Link></li>
-                  <li><Link href="/politica-de-privacidad" className="hover:text-white transition">Política de privacidad</Link></li>
-                  <li><Link href="/politica-de-cookies" className="hover:text-white transition">Política de cookies</Link></li>
-                  <li><Link href="/politica-de-seguridad" className="hover:text-white transition">Política de seguridad</Link></li>
-                  <li><Link href="/aviso-legal" className="hover:text-white transition">Aviso legal</Link></li>
+                  <li><Link href="/" className="hover:text-white transition"><Text>Inicio</Text></Link></li>
+                  <li><Link href="/sobre-nosotros" className="hover:text-white transition"><Text>Sobre nosotros</Text></Link></li>
+                  <li><Link href="/casos" className="hover:text-white transition"><Text>Portafolio</Text></Link></li>
+                  <li><Link href="/contacto" className="hover:text-white transition"><Text>Contacto</Text></Link></li>
+                  <li><Link href="/politica-de-privacidad" className="hover:text-white transition"><Text>Política de privacidad</Text></Link></li>
+                  <li><Link href="/politica-de-cookies" className="hover:text-white transition"><Text>Política de cookies</Text></Link></li>
+                  <li><Link href="/politica-de-seguridad" className="hover:text-white transition"><Text>Política de seguridad</Text></Link></li>
+                  <li><Link href="/aviso-legal" className="hover:text-white transition"><Text>Aviso legal</Text></Link></li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold">Contacto</h4>
+                <h4 className="font-semibold"><Text>Contacto</Text></h4>
                 <ul className="mt-4 space-y-2 text-sm text-gray-400">
-                  <li>+593 98 695 1419</li>
-                  <li>mancarsoftwares@gmail.com</li>
-                  <li>Guayaquil, Ecuador</li>
+                  <li><Text>+593 98 695 1419</Text></li>
+                  <li><Text>mancarsoftwares@gmail.com</Text></li>
+                  <li><Text>Guayaquil, Ecuador</Text></li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold">Síguenos</h4>
+                <h4 className="font-semibold"><Text>Síguenos</Text></h4>
                 <div className="mt-4 flex space-x-3">
                   <TrackedLink href="https://www.tiktok.com/@mancar_software?_r=1&_t=ZS-96f2U0kQRCn" eventName="social_click" eventPayload={{ network: "TikTok", location: "footer" }} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="rounded-full border border-white/10 p-3 text-gray-400 transition hover:bg-white hover:text-gray-950">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.35h-3.2v12.53a2.89 2.89 0 1 1-2-2.75V8.86a6.13 6.13 0 1 0 5.2 6v-6.4a8 8 0 0 0 4.77 1.58V6.69z"/></svg>
@@ -171,11 +174,12 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
-            <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-gray-500">
-              © {new Date().getFullYear()} Mancar Software. Todos los derechos reservados.
-            </div>
+            <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-gray-500"><Text>
+              © </Text><Text>{new Date().getFullYear()}</Text><Text> Mancar Software. Todos los derechos reservados.
+            </Text></div>
           </div>
         </footer>
+        </LanguageProvider>
       </body>
     </html>
   );

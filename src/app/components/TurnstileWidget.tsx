@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useLanguage } from "../i18n/LanguageProvider";
 
 declare global {
   interface Window {
@@ -51,6 +52,7 @@ function loadTurnstile() {
 }
 
 export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }: TurnstileWidgetProps) {
+  const { locale, t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const onTokenRef = useRef(onToken);
@@ -72,6 +74,7 @@ export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }
         sitekey: siteKey,
         theme: "light",
         size: "normal",
+        language: locale === "zh" ? "zh-cn" : locale,
         callback: (token: string) => onTokenRef.current(token),
         "expired-callback": () => {
           onTokenRef.current("");
@@ -82,12 +85,21 @@ export default function TurnstileWidget({ siteKey, resetKey, onToken, onExpire }
           onExpireRef.current?.();
         },
       });
+    }).catch(() => {
+      if (!cancelled) {
+        onTokenRef.current("");
+        onExpireRef.current?.();
+      }
     });
 
     return () => {
       cancelled = true;
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
+      }
     };
-  }, [siteKey, resetKey]);
+  }, [siteKey, resetKey, locale]);
 
-  return <div ref={containerRef} className="min-h-[65px] w-fit max-w-full" aria-label="Verificación contra solicitudes automatizadas" />;
+  return <div ref={containerRef} className="min-h-[65px] w-fit max-w-full" aria-label={t("Verificación contra solicitudes automatizadas")} />;
 }

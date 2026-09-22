@@ -1,3 +1,4 @@
+import Text from "../i18n/Text";
 import type { Metadata } from 'next';
 import FaqSection from '../components/FaqSection';
 import TrackedLink from '../components/TrackedLink';
@@ -41,44 +42,44 @@ export default function SoportePage() {
     <main className="bg-gray-50">
       <section className="page-hero container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="section-kicker mx-auto">Soporte</p>
-          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Soporte técnico claro y directo.</h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="section-kicker mx-auto"><Text>Soporte</Text></p>
+          <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>Soporte técnico claro y directo.</Text></h1>
+          <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
             Si tu sitio, tienda o sistema necesita atención, te ayudamos a diagnosticar el problema y definir el siguiente paso con claridad.
-          </p>
+          </Text></p>
         </div>
       </section>
 
       <section className="container mx-auto px-4 pb-16 md:pb-20">
         <div className="grid gap-5 md:grid-cols-3">
           <div className="soft-card p-6">
-            <h2 className="text-xl font-bold text-gray-950">Teléfono</h2>
-            <TrackedLink href="tel:+593986951419" eventName="phone_click" eventPayload={{ location: "support-page" }} className="mt-4 block font-bold text-primary-700">
+            <h2 className="text-xl font-bold text-gray-950"><Text>Teléfono</Text></h2>
+            <TrackedLink href="tel:+593986951419" eventName="phone_click" eventPayload={{ location: "support-page" }} className="mt-4 block font-bold text-primary-700"><Text>
               +593 98 695 1419
-            </TrackedLink>
-            <p className="mt-1 text-sm text-gray-500">Lunes a viernes, 9:00 a 18:00</p>
+            </Text></TrackedLink>
+            <p className="mt-1 text-sm text-gray-500"><Text>Lunes a viernes, 9:00 a 18:00</Text></p>
           </div>
           <div className="soft-card p-6">
-            <h2 className="text-xl font-bold text-gray-950">Correo</h2>
-            <TrackedLink href="mailto:mancarsoftwares@gmail.com" eventName="email_click" eventPayload={{ location: "support-page" }} className="mt-4 block break-words font-bold text-primary-700">
+            <h2 className="text-xl font-bold text-gray-950"><Text>Correo</Text></h2>
+            <TrackedLink href="mailto:mancarsoftwares@gmail.com" eventName="email_click" eventPayload={{ location: "support-page" }} className="mt-4 block break-words font-bold text-primary-700"><Text>
               mancarsoftwares@gmail.com
-            </TrackedLink>
+            </Text></TrackedLink>
           </div>
           <div className="soft-card p-6">
-            <h2 className="text-xl font-bold text-gray-950">Respuesta</h2>
-            <p className="mt-4 text-gray-600">Priorizamos incidentes que afectan ventas, formularios o disponibilidad.</p>
+            <h2 className="text-xl font-bold text-gray-950"><Text>Respuesta</Text></h2>
+            <p className="mt-4 text-gray-600"><Text>Priorizamos incidentes que afectan ventas, formularios o disponibilidad.</Text></p>
           </div>
         </div>
 
         <div className="mt-12 mx-auto max-w-3xl text-center">
-          <p className="section-kicker mx-auto">Casos comunes</p>
-          <h2 className="section-title">Te ayudamos a recuperar estabilidad.</h2>
+          <p className="section-kicker mx-auto"><Text>Casos comunes</Text></p>
+          <h2 className="section-title"><Text>Te ayudamos a recuperar estabilidad.</Text></h2>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {supportCards.map(([title, text]) => (
             <article key={title} className="soft-card p-7">
-              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
-              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+              <h2 className="text-2xl font-bold text-gray-950"><Text>{title}</Text></h2>
+              <p className="mt-4 leading-7 text-gray-600"><Text>{text}</Text></p>
             </article>
           ))}
         </div>

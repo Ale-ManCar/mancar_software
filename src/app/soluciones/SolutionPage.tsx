@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import Text from "../i18n/Text";
+import Image from "../i18n/LocalizedImage";
 import Link from 'next/link';
 import FaqSection from '../components/FaqSection';
 import TrackedLink from '../components/TrackedLink';
@@ -41,22 +42,22 @@ export default function SolutionPage({
       <section className="page-hero container mx-auto px-4">
         <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
           <div>
-            <p className="section-kicker">{kicker}</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">{title}</h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">{description}</p>
-            <p className="mt-4 text-lg leading-8 text-gray-600">{secondary}</p>
+            <p className="section-kicker"><Text>{kicker}</Text></p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>{title}</Text></h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600"><Text>{description}</Text></p>
+            <p className="mt-4 text-lg leading-8 text-gray-600"><Text>{secondary}</Text></p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <TrackedLink
                 href="/contacto"
                 eventName="contact_cta_click"
                 eventPayload={{ location: 'solution-hero', solution: kicker }}
                 className="btn-primary w-full sm:w-auto"
-              >
+              ><Text>
                 Cotizar mi proyecto
-              </TrackedLink>
-              <Link href="/casos" className="btn-secondary w-full sm:w-auto">
+              </Text></TrackedLink>
+              <Link href="/casos" className="btn-secondary w-full sm:w-auto"><Text>
                 Ver proyectos
-              </Link>
+              </Text></Link>
             </div>
           </div>
           <div className="image-frame h-[320px] md:h-[470px]">
@@ -70,13 +71,13 @@ export default function SolutionPage({
           <div className="grid gap-6 lg:grid-cols-2">
             {problems.length > 0 && (
               <article className="soft-card p-7">
-                <p className="section-kicker">Problemas que resolvemos</p>
-                <h2 className="mt-4 text-2xl font-bold text-gray-950">Señales de que tu negocio necesita esta solución.</h2>
+                <p className="section-kicker"><Text>Problemas que resolvemos</Text></p>
+                <h2 className="mt-4 text-2xl font-bold text-gray-950"><Text>Señales de que tu negocio necesita esta solución.</Text></h2>
                 <ul className="mt-6 space-y-3">
                   {problems.map((problem) => (
                     <li key={problem} className="flex gap-3 text-gray-600">
                       <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary-400" />
-                      <span className="leading-7">{problem}</span>
+                      <span className="leading-7"><Text>{problem}</Text></span>
                     </li>
                   ))}
                 </ul>
@@ -84,13 +85,13 @@ export default function SolutionPage({
             )}
             {deliverables.length > 0 && (
               <article className="soft-card p-7">
-                <p className="section-kicker">Entregables</p>
-                <h2 className="mt-4 text-2xl font-bold text-gray-950">Qué puedes esperar al finalizar.</h2>
+                <p className="section-kicker"><Text>Entregables</Text></p>
+                <h2 className="mt-4 text-2xl font-bold text-gray-950"><Text>Qué puedes esperar al finalizar.</Text></h2>
                 <ul className="mt-6 space-y-3">
                   {deliverables.map((deliverable) => (
                     <li key={deliverable} className="flex gap-3 text-gray-600">
                       <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary-500" />
-                      <span className="leading-7">{deliverable}</span>
+                      <span className="leading-7"><Text>{deliverable}</Text></span>
                     </li>
                   ))}
                 </ul>
@@ -101,15 +102,15 @@ export default function SolutionPage({
       )}
       <section className="container mx-auto px-4 pb-16 md:pb-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="section-kicker">{kicker}</p>
-          <h2 className="section-title">Alcance de trabajo</h2>
-          <p className="section-copy">Estos son los componentes que trabajamos según el tipo de proyecto, siempre ajustados al contexto real de tu empresa.</p>
+          <p className="section-kicker"><Text>{kicker}</Text></p>
+          <h2 className="section-title"><Text>Alcance de trabajo</Text></h2>
+          <p className="section-copy"><Text>Estos son los componentes que trabajamos según el tipo de proyecto, siempre ajustados al contexto real de tu empresa.</Text></p>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <article key={feature.title} className="soft-card p-6">
-              <h2 className="text-lg font-bold text-gray-950">{feature.title}</h2>
-              <p className="mt-3 text-sm leading-6 text-gray-600">{feature.description}</p>
+              <h2 className="text-lg font-bold text-gray-950"><Text>{feature.title}</Text></h2>
+              <p className="mt-3 text-sm leading-6 text-gray-600"><Text>{feature.description}</Text></p>
             </article>
           ))}
         </div>

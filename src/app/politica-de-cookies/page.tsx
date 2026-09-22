@@ -1,5 +1,6 @@
+import Text from "../i18n/Text";
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "../i18n/LocalizedImage";
 import Link from 'next/link';
 import { createPageMetadata } from '../seo';
 
@@ -44,11 +45,11 @@ export default function PoliticaCookiesPage() {
       <section className="page-hero container mx-auto px-4">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="section-kicker">Cookies</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl">Medición clara, solo cuando el visitante acepta.</h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="section-kicker"><Text>Cookies</Text></p>
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-gray-950 md:text-6xl"><Text>Medición clara, solo cuando el visitante acepta.</Text></h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600"><Text>
               Usamos cookies y tecnologías similares con un enfoque limitado: funcionamiento del sitio, seguridad del formulario y analítica si el visitante lo permite.
-            </p>
+            </Text></p>
           </div>
           <div className="image-frame h-[320px] md:h-[430px]">
             <Image src="https://ppc.land/content/images/size/w2000/2025/07/Cookie-Consent.webp" alt="Interfaz de consentimiento de cookies y controles de privacidad" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
@@ -59,19 +60,19 @@ export default function PoliticaCookiesPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {sections.map(([title, text]) => (
             <article key={title} className="soft-card p-7">
-              <h2 className="text-2xl font-bold text-gray-950">{title}</h2>
-              <p className="mt-4 leading-7 text-gray-600">{text}</p>
+              <h2 className="text-2xl font-bold text-gray-950"><Text>{title}</Text></h2>
+              <p className="mt-4 leading-7 text-gray-600"><Text>{text}</Text></p>
             </article>
           ))}
         </div>
-        <p className="mt-8 text-sm leading-6 text-gray-500">
-          Esta política complementa la{' '}
-          <Link href="/politica-de-privacidad" className="font-bold text-primary-800 underline underline-offset-2 hover:text-primary-950">
+        <p className="mt-8 text-sm leading-6 text-gray-500"><Text>
+          Esta política complementa la</Text>{' '}
+          <Link href="/politica-de-privacidad" className="font-bold text-primary-800 underline underline-offset-2 hover:text-primary-950"><Text>
             Política de privacidad
-          </Link>
+          </Text></Link><Text>
           .
-        </p>
-        <p className="mt-3 text-sm text-gray-500">Última actualización: 28 de agosto de 2026.</p>
+        </Text></p>
+        <p className="mt-3 text-sm text-gray-500"><Text>Última actualización: 28 de agosto de 2026.</Text></p>
       </section>
     </main>
   );

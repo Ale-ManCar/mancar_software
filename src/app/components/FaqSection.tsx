@@ -1,5 +1,6 @@
 "use client";
 
+import Text from "../i18n/Text";
 type FaqItem = {
   question: string;
   answer: string;
@@ -36,18 +37,18 @@ export default function FaqSection({ kicker = "Preguntas frecuentes", title, des
       />
       <div className="container mx-auto max-w-4xl px-4">
         <div className="text-center">
-          <p className="section-kicker mx-auto">{kicker}</p>
-          <h2 className="section-title">{title}</h2>
-          {description && <p className="section-copy">{description}</p>}
+          <p className="section-kicker mx-auto"><Text>{kicker}</Text></p>
+          <h2 className="section-title"><Text>{title}</Text></h2>
+          {description && <p className="section-copy"><Text>{description}</Text></p>}
         </div>
         <div className="mt-10 space-y-4">
           {items.map((item) => (
             <details key={item.question} className="soft-card group p-5">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-gray-950">
-                <span>{item.question}</span>
-                <span className="text-2xl leading-none text-primary-700 transition group-open:rotate-45">+</span>
+                <span><Text>{item.question}</Text></span>
+                <span className="text-2xl leading-none text-primary-700 transition group-open:rotate-45"><Text>+</Text></span>
               </summary>
-              <p className="mt-3 leading-7 text-gray-600">{item.answer}</p>
+              <p className="mt-3 leading-7 text-gray-600"><Text>{item.answer}</Text></p>
             </details>
           ))}
         </div>

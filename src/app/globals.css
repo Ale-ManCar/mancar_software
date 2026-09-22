@@ -1,6 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
+/* Arabic and Hindi need a looser line box; Arabic letters must stay joined. */
+html:lang(ar) h1,
+html:lang(ar) h2,
+html:lang(ar) h3,
+html:lang(hi) h1,
+html:lang(hi) h2,
+html:lang(hi) h3 {
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+html:lang(ar) .section-kicker {
+  letter-spacing: normal;
+}
+
+html[dir="rtl"] a[href^="tel:"],
+html[dir="rtl"] a[href^="mailto:"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="tel"] {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
 @theme {
   --font-sans: "Manrope", system-ui, sans-serif;
   --font-display: "Outfit", "Manrope", system-ui, sans-serif;
