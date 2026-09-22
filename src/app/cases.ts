@@ -1,7 +1,6 @@
 export type SuccessCase = {
   slug: string;
   title: string;
-  icon: string;
   summary: string;
   clientProfile: string;
   challenge: string;
@@ -28,7 +27,6 @@ export const successCases: SuccessCase[] = [
   {
     slug: 'odontocare',
     title: 'OdontoCare',
-    icon: 'OC',
     category: 'Sistema',
     logo: {
       src: '/portfolio/logos/odontocare.png',
@@ -64,7 +62,6 @@ export const successCases: SuccessCase[] = [
   {
     slug: 'vetcare-pro-lan',
     title: 'VetCare Pro LAN',
-    icon: 'VP',
     category: 'Sistema',
     logo: {
       src: '/portfolio/logos/vetcare-pro-lan.png',
@@ -100,7 +97,6 @@ export const successCases: SuccessCase[] = [
   {
     slug: 'casa-nativa',
     title: 'Casa Nativa',
-    icon: 'CN',
     category: 'Web',
     liveUrl: 'https://mancarsoftware.github.io/muebleria/',
     logo: {
@@ -137,7 +133,6 @@ export const successCases: SuccessCase[] = [
   {
     slug: 'nova-store',
     title: 'Nova Store',
-    icon: 'NS',
     category: 'Web',
     liveUrl: 'https://ale-mancar.github.io/tiendaOnline/',
     logo: {
@@ -174,7 +169,6 @@ export const successCases: SuccessCase[] = [
   {
     slug: 'alma-vet',
     title: 'Alma Vet',
-    icon: 'AV',
     category: 'Web',
     liveUrl: 'https://mancarsoftware.github.io/veterinaria/',
     logo: {
